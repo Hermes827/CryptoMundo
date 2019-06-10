@@ -1,0 +1,299 @@
+@import url('https://fonts.googleapis.com/css?family=Amatic+SC&display=swap');
+
+:root {
+  --site-font: 'Amatic SC', cursive;
+}
+
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 40vmin;
+  pointer-events: none;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.error-message {
+  background-color: red;
+  line-height: 3em;
+  color: white;
+  animation: fadein 1.5s;
+}
+
+.feedback-message {
+  background-color: green;
+  line-height: 3em;
+  color: white;
+  animation: fadein 1.5s;
+}
+
+@keyframes fadein {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+
+
+.user-info-form {
+  margin: 20px auto;
+  width: 50%;
+}
+.cryptosContainer {
+  overflow-x: auto;
+  margin-bottom: -3%;
+  position: relative;
+  top: -25px;
+  background-color: rgba(1, 1, 1, .8);
+
+}
+
+.crypto {
+  border-radius: 50%;
+  flex: 0 0 250px;
+  position: relative;
+  margin: auto;
+}
+
+.cryptoImage {
+  border-radius: 50%;
+  width: 70%;
+  height: auto;
+  transition: 1s;
+}
+
+.cryptoItem {
+  overflow: scroll;
+  border-style: solid;
+  border-color: orange;
+  /* opacity: 0.75; */
+  background-color: black;
+  text-align: center;
+  margin-right: 60%;
+  margin-left: 3%;
+  height: 85%;
+  position: fixed;
+  width: 45%;
+  margin-top: -11%;
+  padding-bottom: 2%;
+
+
+}
+
+.main {
+  position: fixed;
+  width:100%;
+  height: 120%;
+  min-height:calc(100vh - 61px);
+  padding-top: 25px;
+
+  color: white;
+  background-size: cover;
+  background-attachment:fixed;
+}
+
+.main::before{
+  /* background: url("picture/bar2.jpg") no-repeat center center fixed; */
+  /* background-color: black; */
+  background-size: cover;
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: calc(100% + 15px);
+  z-index: -2;
+  opacity: 0.85;
+}
+
+.loading-dimmer {
+  height: 200px;
+  border: none !important;
+  border-radius: 0 !important;
+  opacity: .9;
+
+}
+
+.ui.menu {
+    border-radius: 0px !important;
+    margin: 0px !important;
+}
+
+.user-form {
+  /* background-color: rgba(189, 195, 199, .75); */
+  padding: 25px;
+  width: 50%;
+  margin: auto;
+  color:  white;
+
+}
+
+.login {
+  color: white;
+  font-size: 10%;
+}
+
+.title {
+  font-size: 100px;
+  color: orange;
+  margin: 25px;
+  /* text-shadow: 0 0 3px black; */
+  /* visibility: hidden; */
+
+}
+
+.hide-title {
+  visibility: hidden;
+}
+
+.card-title {
+  font-size: 3em;
+  color: orange;
+}
+
+.subtitle {
+  font-size: 3em;
+}
+
+.forms {
+  border-style: solid;
+  border-color: orange;
+  margin-left: 30%;
+  margin-right: 30%;
+  margin-top: -1%;
+  background-color: rgba(1,1,1,.85);
+}
+
+.detailedView {
+  text-align: center;
+  color: orange;
+  font-size: 150%;
+  border-style: solid;
+  border-color: orange;
+  background-color: black;
+  /* opacity: 0.9; */
+  margin-left: 55%;
+
+  /* margin-right: 00%; */
+  margin-bottom: -30%;
+  padding-bottom: 5%;
+  margin-top: -30%;
+  width: 115%;
+  /* padding-top: 10%; */
+  /* margin-bottom: 15%; */
+  height: 200%;
+}
+
+.detailedViewImg {
+  height: 50%;
+  width: 50%;
+}
+
+.userCrypto {
+  /* border-radius: 50%;
+  flex: 0 0 250px;
+  cursor: pointer;
+  transition: .5s;
+  margin: auto 0;
+  position: relative; */
+}
+
+.cryptoImage:hover {
+  box-shadow: 0 0 20px 3px white;
+  transition: .5s;
+}
+
+.crypto-title {
+  position: absolute;
+  text-shadow: 0 0 5px orange, 0 0 2px black;
+  color: white;
+  position: absolute;
+  top: 78%;
+  left: 36%;
+  width: 63%;
+  font-size: 1.85em;
+  font-family: var(--site-font);
+}
+
+.userCryptoItem {
+  /* position: absolute;
+  top: 0;
+  width: 100%;
+  height: 317px;
+  overflow-x: auto;
+  margin-bottom: -15%;
+  background-color: rgba(1,1,1,.95);
+  border-bottom: 2px solid orange;
+  z-index: 1; */
+  overflow: scroll;
+  border-style: solid;
+  border-color: orange;
+  /* opacity: 0.75; */
+  background-color: black;
+  text-align: center;
+  margin-right: 60%;
+  margin-left: 3%;
+  height: 85%;
+  position: fixed;
+  width: 45%;
+  margin-top: -11%;
+  padding-bottom: 2%;
+
+
+
+}
+
+.flex-container {
+  display:flex;
+}
+
+iframe {
+    position: absolute;
+    left: 0; top: 0;
+    height:0; width:0;
+    border: none;
+}
+
+.hidden {
+  display: none;
+}
+
+#volume-icon {
+  margin: 0;
+}
+
+.banner {
+  background-color: black;
+  opacity: 0.85;
+}
+
+body {
+ background: url("picture/Cryptocurrency.jpg") no-repeat center center fixed;
+ background-size: cover;
+ color: white;
+}
