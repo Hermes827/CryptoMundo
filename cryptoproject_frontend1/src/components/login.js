@@ -25,20 +25,22 @@ export default class Login extends Component {
     return (
       <div className="user-form">
         <h2 className="title subtitle">Log in to MyCrypto</h2>
-        <form className="ui center form user-info-form" onSubmit={this.handleSubmit}>
-          <div className="two fields">
-            <div className="field">
-              <label className="login">Username
+        <form onSubmit={this.handleSubmit}>
+          <div>
+            <div>
+              <label className="login">Username&nbsp;&nbsp;
                 <input type="text" name="username" placeholder="username"/>
               </label>
             </div>
-            <div className="field">
-              <label className="login">Password
+
+            <div>
+              <label className="login">Password&nbsp;&nbsp;
                 <input type="password" name="password" placeholder="password"/>
               </label>
             </div>
           </div>
-          <input className="ui primary submit button" type="submit" value="Log In"/>
+          <br/>
+          <input type="submit" value="Login"/>
         </form>
       </div>
     )

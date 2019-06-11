@@ -150,12 +150,16 @@
   width: 50%;
   margin: auto;
   color:  white;
+  border-style: solid;
+  background-color: black;
+  border-color: orange;
+  opacity: 0.8;
 
 }
 
 .login {
   color: white;
-  font-size: 10%;
+  font-size: 20px;
 }
 
 .title {
