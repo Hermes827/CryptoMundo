@@ -68,7 +68,6 @@
   margin-bottom: -3%;
   position: relative;
   top: -25px;
-  background-color: rgba(1, 1, 1, .8);
 
 }
 
@@ -98,7 +97,7 @@
   height: 85%;
   position: fixed;
   width: 45%;
-  margin-top: -11%;
+  margin-top: -13%;
   padding-bottom: 2%;
 
 
@@ -149,6 +148,7 @@
   padding: 25px;
   width: 50%;
   margin: auto;
+  margin-top: 10%;
   color:  white;
   border-style: solid;
   background-color: black;
@@ -178,6 +178,7 @@
 .card-title {
   font-size: 3em;
   color: orange;
+  visibility: hidden;
 }
 
 .subtitle {
@@ -185,12 +186,21 @@
 }
 
 .forms {
-  border-style: solid;
+  /* border-style: solid;
   border-color: orange;
   margin-left: 30%;
   margin-right: 30%;
   margin-top: -1%;
-  background-color: rgba(1,1,1,.85);
+  background-color: rgba(1,1,1,.85); */
+  padding: 25px;
+  width: 50%;
+  margin: auto;
+  margin-top: 5%;
+  color:  white;
+  border-style: solid;
+  background-color: black;
+  border-color: orange;
+  /* opacity: 0.8; */
 }
 
 .detailedView {
@@ -267,9 +277,6 @@
   width: 45%;
   margin-top: -11%;
   padding-bottom: 2%;
-
-
-
 }
 
 .flex-container {
@@ -293,11 +300,24 @@ iframe {
 
 .banner {
   background-color: black;
-  opacity: 0.85;
+  opacity: 0.8;
 }
 
 body {
  background: url("picture/Cryptocurrency.jpg") no-repeat center center fixed;
  background-size: cover;
  color: white;
+}
+
+/* .button {
+  font-size: 50px;
+} */
+
+/* .login {
+  margin-top: 20%;
+} */
+
+.CCbutton {
+  /* margin-left: 80%; */
+  margin-top: 5%;
 }

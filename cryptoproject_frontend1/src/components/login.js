@@ -25,7 +25,7 @@ export default class Login extends Component {
     return (
       <div className="user-form">
         <h2 className="title subtitle">Log in to MyCrypto</h2>
-        <form onSubmit={this.handleSubmit}>
+        <form className="login" onSubmit={this.handleSubmit}>
           <div>
             <div>
               <label className="login">Username&nbsp;&nbsp;
@@ -40,7 +40,7 @@ export default class Login extends Component {
             </div>
           </div>
           <br/>
-          <input type="submit" value="Login"/>
+          <input className="button" type="submit" value="Login"/>
         </form>
       </div>
     )

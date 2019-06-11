@@ -3,6 +3,7 @@ import {Link, withRouter} from 'react-router-dom'
 
 class Banner extends Component {
 
+
   constructor(props){
     super(props)
     this.state = {
@@ -42,6 +43,7 @@ class Banner extends Component {
         <a href="#/" className={this.state.active === "main" ? 'item active' : "item"} onClick={this.selectMain}>
           Home
         </a>
+        <br/>
         <a href="#/" className={this.state.active === "cryptos" ? 'item active' : "item"} onClick={this.selectCryptos}>
           My Cryptos
         </a>
@@ -50,7 +52,7 @@ class Banner extends Component {
             <Link to='/user_signup'><div className="ui primary button">Sign up</div></Link>
           </div>
           <div className="item">
-            <Link to="/login"><div className="ui button">Log-in</div></Link>
+            <Link to="/login"><div className="ui button">Login</div></Link>
           </div></>
           }
           { this.userIsLoggedIn() && <div className="item">Welcome, {this.props.current_user.username}</div>}

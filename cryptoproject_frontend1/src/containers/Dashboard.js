@@ -75,7 +75,12 @@ export default class Dashboard extends Component {
     console.log(crypto)
   }
 
-
+returnHome = () => {
+  console.log("hello")
+  this.setState({
+    cryptosAreLoading: true
+  })
+}
 
 
   renderCryptos() {
@@ -84,21 +89,13 @@ export default class Dashboard extends Component {
     } else if (!this.state.cryptosAreLoading){
       return  <div className="cryptosContainer">
         <h2 className="card-title">View Cryptos</h2>
-        <CryptosContainer cryptos={this.state.cryptos}
-                                    setCurrentCrypto={this.setCurrentCrypto}/>
+        <CryptosContainer
+          cryptos={this.state.cryptos}
+          setCurrentCrypto={this.setCurrentCrypto}
+          returnHome={this.returnHome}
+          />
       </div>
-
-    } else {
-        return <div className="cryptosContainer">
-          <div className="loading-dimmer ui segment">
-            <div className="ui active dimmer">
-              <div className="ui text loader">Finding Cryptos...</div>
-            </div>
-          </div>
-        </div>
     }
-
-
   }
 
 
