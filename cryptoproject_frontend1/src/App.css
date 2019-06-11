@@ -47,9 +47,10 @@
 
 .feedback-message {
   background-color: green;
-  line-height: 3em;
+  line-height: 2em;
   color: white;
   animation: fadein 1.5s;
+  margin-top: 5%;
 }
 
 @keyframes fadein {
@@ -72,10 +73,13 @@
 }
 
 .crypto {
-  border-radius: 50%;
-  flex: 0 0 250px;
+  /* border-radius: 50%; */
+  /* flex: 0 0 250px;
   position: relative;
-  margin: auto;
+  margin: auto; */
+  border-style: solid;
+  border-color: orange;
+  border-width: thin;
 }
 
 .cryptoImage {
@@ -203,26 +207,6 @@
   /* opacity: 0.8; */
 }
 
-.detailedView {
-  text-align: center;
-  color: orange;
-  font-size: 150%;
-  border-style: solid;
-  border-color: orange;
-  background-color: black;
-  /* opacity: 0.9; */
-  margin-left: 55%;
-
-  /* margin-right: 00%; */
-  margin-bottom: -30%;
-  padding-bottom: 5%;
-  margin-top: -30%;
-  width: 115%;
-  /* padding-top: 10%; */
-  /* margin-bottom: 15%; */
-  height: 200%;
-}
-
 .detailedViewImg {
   height: 50%;
   width: 50%;
@@ -320,4 +304,34 @@ body {
 .CCbutton {
   /* margin-left: 80%; */
   margin-top: 5%;
+  margin-bottom: 5%;
+}
+
+.detailedView {
+  text-align: center;
+  color: orange;
+  font-size: 150%;
+  border-style: solid;
+  border-color: orange;
+  background-color: black;
+  opacity: 0.99;
+  width: 40%;
+  margin-left: 53%;
+  margin-top: -25%;
+  padding-top: 5%;
+  padding-bottom: 7%;
+  /* margin-left: 50%;
+  margin-right: 30%;
+  margin-bottom: -30%;
+  padding-bottom: 5%;
+  margin-top: -40%;
+  width: 115%;
+  padding-top: 10%;
+  margin-bottom: 15%;
+  height: 200%; */
+}
+
+.cryptoElement {
+  border-style: solid;
+  border-color: orange;
 }

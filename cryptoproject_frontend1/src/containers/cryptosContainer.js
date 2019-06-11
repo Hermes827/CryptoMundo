@@ -11,6 +11,7 @@ class CryptosContainer extends React.Component {
         {
         this.props.cryptos.map((crypto)=>{
           return <Crypto
+                  className="cryptoElement"
                   key={"display-"+crypto.name+"-"+crypto.id}
                   crypto={crypto}
                   setCurrentCrypto={this.props.setCurrentCrypto}

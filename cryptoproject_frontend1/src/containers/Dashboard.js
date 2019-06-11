@@ -72,8 +72,8 @@ export default class Dashboard extends Component {
     .then(data => {
       this.props.setFeedback(`Added ${crypto.name} to "My Cryptos"`)
     })
-    console.log(crypto)
   }
+
 
 returnHome = () => {
   console.log("hello")
@@ -103,6 +103,7 @@ returnHome = () => {
     const {currentCrypto} = this.state
     if(this.state.lookingAtSingleCrypto === true) {
       return <DetailedView
+              feedback={this.props.feedback}
               currentCrypto={currentCrypto}
               returnMainMenu={this.returnMainMenu}
               addCrypto={this.addCrypto}
@@ -123,9 +124,10 @@ returnHome = () => {
           <div className="forms">
             <h1 className="title">My Crypto</h1>
             <CryptoNameForm getCryptosName={this.getCryptosName}/>
-            {this.renderDetailedView()}
+
           <br/>
           </div>
+          {this.renderDetailedView()}
         </div>
     );
   }

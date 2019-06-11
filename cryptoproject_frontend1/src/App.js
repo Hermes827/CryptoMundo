@@ -255,7 +255,7 @@ class App extends React.Component{
       <div className="App">
         <Route path='/' render={() => <Banner current_user={this.state.current_user}
                                               error={this.state.error}
-                                              feedback={this.state.feedback}
+
                                               logout={this.logout}
                                               displayUserCryptos={this.displayUserCryptos}
                                               returnMainMenu={this.returnMainMenu}
@@ -267,7 +267,11 @@ class App extends React.Component{
           <Route exact path="/user_signup" render={() => <NewUserForm createNewUser={this.createNewUser}/>}/>
           <Route path='/my-crypto' render={() => this.renderDetailedView()} />
           {this.renderUserCryptos()}
-          <Route exact path="/dashboard" render={() =>  <Dashboard setFeedback={this.setFeedback}/>} />
+          <Route exact path="/dashboard" render={() =>  <Dashboard
+                                                         setFeedback={this.setFeedback}
+                                                         feedback={this.state.feedback}
+                                                         />}
+                                                         />
           <Route exact path="/update_profile" render={() => <EditUserContainer current_user={this.state.current_user}
                                                                                updateUser={this.updateUser}
                                                                                deleteUser={this.deleteUser}/>} />
