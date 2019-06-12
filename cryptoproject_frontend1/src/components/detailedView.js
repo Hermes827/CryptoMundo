@@ -27,4 +27,5 @@ class DetailedView extends React.Component {
 }
 
 
+
 export default DetailedView

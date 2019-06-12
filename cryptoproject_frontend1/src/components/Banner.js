@@ -67,8 +67,8 @@ class Banner extends Component {
           </div>
         </div>
       </div>
-      {this.props.error !== "" && <div className="error-message">{this.props.error}</div>}
-      
+
+
     </div>;
   }
 }

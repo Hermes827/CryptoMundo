@@ -5,9 +5,10 @@ class UserCryptos extends React.Component {
 
   render(){
     return(
-      <div className="userCryptoItem">
-      <h2 className="card-title">My Cryptos</h2>
-      <div className="flex-container">
+      <div className="userCryptos">
+      <h1>My Cryptocurrencies</h1>
+      <button className="CCbutton" onClick={this.props.returnHome}>Return to homepage</button>
+      <div>
       {this.props.userCryptos.map((crypto)=>{
         return <UserCrypto
                 key={"user-"+crypto.name+"-"+crypto.id}
@@ -16,7 +17,7 @@ class UserCryptos extends React.Component {
                 setCurrentCrypto={this.props.setCurrentCrypto}
                 />
       })}
-    </div>
+      </div>
       </div>
     )
   }

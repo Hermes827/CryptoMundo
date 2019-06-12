@@ -75,6 +75,7 @@ export default class Dashboard extends Component {
   }
 
 
+
 returnHome = () => {
   console.log("hello")
   this.setState({
@@ -110,6 +111,7 @@ returnHome = () => {
               />
     }
   }
+  
 
   render(){
     if(!localStorage.token){
@@ -122,7 +124,7 @@ returnHome = () => {
             {this.renderCryptos()}
 
           <div className="forms">
-            <h1 className="title">My Crypto</h1>
+            <h1 className="title">Crypto Mundo</h1>
             <CryptoNameForm getCryptosName={this.getCryptosName}/>
 
           <br/>

@@ -20,9 +20,9 @@ class UserCrypto extends React.Component {
 
   render(){
     return(
-    <div className="userCrypto" onClick={this.viewCrypto}>
-    <h2 className="crypto-title">{this.trim(this.props.crypto.name)}</h2>
-    <img className="cryptoImage" src={this.props.crypto.img_url} alt={this.props.crypto.name}/>
+    <div className="crypto" onClick={this.viewCrypto}>
+    <h1 >{this.trim(this.props.crypto.name)}</h1>
+    <h3>{this.props.crypto.price} USD</h3>
     </div>
     )
   }

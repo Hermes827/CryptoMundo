@@ -7,6 +7,7 @@ class CryptosContainer extends React.Component {
   render(){
     return(
       <div className="cryptoItem">
+        <h1>All Cryptocurrencies</h1>
         <button className="CCbutton" onClick={this.props.returnHome}>Return to homepage</button>
         {
         this.props.cryptos.map((crypto)=>{

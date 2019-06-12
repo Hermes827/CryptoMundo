@@ -25,7 +25,8 @@ class App extends React.Component{
       userCryptos: [],
       hasClickedMyCryptos: false,
       currentCrypto: {},
-      lookingAtSingleCrypto: false
+      lookingAtSingleCrypto: false,
+      cryptosAreLoading: false
     }
 
     this.createNewUser = this.createNewUser.bind(this)
@@ -137,7 +138,8 @@ class App extends React.Component{
     .then(data => {
       this.setState({
         userCryptos: data.user.cryptos,
-        hasClickedMyCryptos: !this.state.hasClickedMyCryptos
+        hasClickedMyCryptos: !this.state.hasClickedMyCryptos,
+        cryptosAreLoading: false
       })
     })
   }
@@ -188,8 +190,9 @@ class App extends React.Component{
 
   renderUserCryptos = () => {
     const {userCryptos} = this.state
-    if(this.state.hasClickedMyCryptos === true) {
+    if(this.state.hasClickedMyCryptos === true &&!this.state.cryptosAreLoading) {
       return <UserCryptos
+              returnHome={this.returnHome}
               toggleCryptos={this.toggleMyCryptos}
               userCryptos={userCryptos}
               setCurrentCrypto={this.setCurrentCrypto}
@@ -197,14 +200,27 @@ class App extends React.Component{
     }
   }
 
+
   renderDetailedView = () => {
+    const {userCryptos} = this.state
     const {currentCrypto} = this.state
     if(this.state.lookingAtSingleCrypto === true) {
-      return <UserCryptoDetailedView
+      return(
+        <div>
+              <UserCryptos
+              returnHome={this.returnHome}
+              toggleCryptos={this.toggleMyCryptos}
+              userCryptos={userCryptos}
+              setCurrentCrypto={this.setCurrentCrypto}
+              />
+              <UserCryptoDetailedView
               currentCrypto={currentCrypto}
               returnMyCryptos={this.returnMyCryptos}
               deleteCrypto={this.deleteCrypto}
+              error={this.state.error}
               />
+        </div>
+          )
     }
 
   }
@@ -226,6 +242,13 @@ class App extends React.Component{
     this.props.history.push('/dashboard')
   }
 
+  returnHome = () => {
+    console.log("hello")
+    this.setState({
+      cryptosAreLoading: true
+    })
+  }
+
   deleteCrypto = (crypto) => {
     const cryptoId = crypto.id
     fetch("http://localhost:3000/api/v1/remove_crypto/"+ cryptoId, {
@@ -237,10 +260,11 @@ class App extends React.Component{
     })
     .then(res => res.json())
     .then(data => {
-      this.setState({
+      setTimeout(() => this.setState({
         currentCrypto: null,
         lookingAtSingleCrypto: false,
-      })
+      }), 2000)
+
       this.setError(`Deleted ${crypto.name} from Cryptos`)
       this.displayUserCryptos()
     })
@@ -249,12 +273,13 @@ class App extends React.Component{
 
 
 
+
   render(){
 
     return (
       <div className="App">
         <Route path='/' render={() => <Banner current_user={this.state.current_user}
-                                              error={this.state.error}
+
 
                                               logout={this.logout}
                                               displayUserCryptos={this.displayUserCryptos}
