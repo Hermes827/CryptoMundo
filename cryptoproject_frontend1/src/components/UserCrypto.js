@@ -23,7 +23,6 @@ class UserCrypto extends React.Component {
     <div className="crypto" onClick={this.viewCrypto}>
     <h1>{this.trim(this.props.crypto.name)}</h1>
     <img className="logo" src={"https://www.cryptocompare.com" + this.props.crypto.image}></img>
-    <h3>Current Price: {this.props.crypto.price} USD</h3>
     </div>
     )
   }

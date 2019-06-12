@@ -19,6 +19,11 @@ ActiveRecord::Schema.define(version: 2019_05_23_231334) do
     t.string "name"
     t.string "price"
     t.string "image"
+    t.string "market"
+    t.string "volume"
+    t.string "supply"
+    t.string "highday"
+    t.string "lowday"
   end
 
   create_table "user_cryptos", force: :cascade do |t|

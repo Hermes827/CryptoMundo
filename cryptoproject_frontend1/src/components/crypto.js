@@ -11,7 +11,7 @@ class Crypto extends React.Component {
             >
           <h1>{this.props.crypto.name}</h1>
           <img className="logo" src={"https://www.cryptocompare.com" + this.props.crypto.image}></img>
-          <h3>Current Price: {this.props.crypto.price} USD</h3>
+  
 
       </div>
     )

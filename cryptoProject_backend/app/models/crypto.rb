@@ -8,7 +8,12 @@ class Crypto < ApplicationRecord
     Crypto.create({
         name: crypto['CoinInfo']["Name"],
         price: crypto['RAW']['USD']['PRICE'],
-        image: crypto['CoinInfo']['ImageUrl']
+        image: crypto['CoinInfo']['ImageUrl'],
+        market: crypto['DISPLAY']['USD']['MARKET'],
+        volume: crypto['DISPLAY']['USD']['VOLUMEDAY'],
+        supply: crypto['DISPLAY']['USD']['SUPPLY'],
+        highday: crypto['DISPLAY']['USD']['HIGHDAY'],
+        lowday: crypto['DISPLAY']['USD']['LOWDAY']
         })
 
     end
