@@ -200,6 +200,17 @@ class App extends React.Component{
     }
   }
 
+  countCrypto = (cc) => {
+    const cryptos = []
+    this.state.userCryptos.map((crypto) => {
+      if(cc.name === crypto.name) {
+        cryptos.push(crypto)
+        console.log(crypto)
+      }
+    })
+    return cryptos.length
+  }
+
 
   renderDetailedView = () => {
     const {userCryptos} = this.state
@@ -214,6 +225,7 @@ class App extends React.Component{
               setCurrentCrypto={this.setCurrentCrypto}
               />
               <UserCryptoDetailedView
+              countCrypto={this.countCrypto}
               currentCrypto={currentCrypto}
               returnMyCryptos={this.returnMyCryptos}
               deleteCrypto={this.deleteCrypto}
