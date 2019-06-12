@@ -24,7 +24,7 @@ export default class Login extends Component {
   render(){
     return (
       <div className="user-form">
-        <h2 className="title subtitle">Log in to MyCrypto</h2>
+        <h2 className="title subtitle">Log in to Crypto Mundo</h2>
         <form className="login" onSubmit={this.handleSubmit}>
           <div>
             <div>
