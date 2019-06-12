@@ -6,7 +6,8 @@ class DetailedView extends React.Component {
     return(
       <div className="detailedView">
           <h1>{this.props.currentCrypto.name}</h1>
-          <h3>{this.props.currentCrypto.price}</h3>
+          <img className="logo" src={"https://www.cryptocompare.com" + this.props.currentCrypto.image}></img>
+          <h3>Current Price: {this.props.currentCrypto.price} USD</h3>
 
 
 

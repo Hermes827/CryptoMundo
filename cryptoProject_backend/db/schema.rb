@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 2019_05_23_231334) do
   create_table "cryptos", force: :cascade do |t|
     t.string "name"
     t.string "price"
+    t.string "image"
   end
 
   create_table "user_cryptos", force: :cascade do |t|

@@ -7,16 +7,17 @@ class Api::V1::CryptosController < ApplicationController
     # addCryptos(data)
 
     render json: Crypto.all
+    # render json: data
 
   end
 
   def addCryptos(data)
     return if !data['Data']
     data['Data'].each do |crypto|
-
     Crypto.create({
         name: crypto['CoinInfo']["Name"],
-        price: crypto['RAW']['USD']['PRICE']
+        price: crypto['RAW']['USD']['PRICE'],
+        image: crypto['CoinInfo']['ImageUrl']
         })
 
     end

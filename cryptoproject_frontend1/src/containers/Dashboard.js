@@ -5,6 +5,7 @@ import {Redirect} from 'react-router-dom'
 import DetailedView from '../components/detailedView'
 
 const URL = "http://localhost:3000/api/v1/searchbyname"
+const API = "https://min-api.cryptocompare.com/data/top/totalvolfull?limit=10&tsym=USD&api_key={2eb0a0afcdbd0af89e90104132e9424984ac9324e5c2b62272a6afbe9567cb19}"
 const random = document.getElementsByClassName("title")
 
 export default class Dashboard extends Component {
@@ -21,10 +22,6 @@ export default class Dashboard extends Component {
 
   getCryptosName = (event) => {
     this.setLoading()
-
-    // const title = document.getElementsByClassName("forms")
-    // console.log(title)
-    // title.classList.add("hide-title")
     fetch(URL)
       .then(res => res.json())
       .then(data => {
@@ -32,6 +29,7 @@ export default class Dashboard extends Component {
           cryptos: data,
           cryptosAreLoading: false
         })
+        console.log(data)
       })
 
   }
@@ -76,6 +74,7 @@ export default class Dashboard extends Component {
 
 
 
+
 returnHome = () => {
   console.log("hello")
   this.setState({
@@ -111,7 +110,7 @@ returnHome = () => {
               />
     }
   }
-  
+
 
   render(){
     if(!localStorage.token){
