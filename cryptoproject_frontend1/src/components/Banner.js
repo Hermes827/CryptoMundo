@@ -40,28 +40,35 @@ class Banner extends Component {
     return <div className="ui attached top">
 
       <div className="banner">
+        <div className="home">
         <a href="#/" className={this.state.active === "main" ? 'item active' : "item"} onClick={this.selectMain}>
           Home
         </a>
-        <br/>
+        </div>
+        <div  className="myCryptos">
         <a href="#/" className={this.state.active === "cryptos" ? 'item active' : "item"} onClick={this.selectCryptos}>
           My Cryptos
         </a>
+        </div>
         <div className="right menu">
-          {!this.userIsLoggedIn() && <><div className="item">
+          {!this.userIsLoggedIn() &&
+            <>
+            <div className="signup1">
             <Link to='/user_signup'><div className="ui primary button">Sign up</div></Link>
-          </div>
-          <div className="item">
+            </div>
+
+            <div className="login1">
             <Link to="/login"><div className="ui button">Login</div></Link>
-          </div></>
+            </div>
+          </>
           }
-          { this.userIsLoggedIn() && <div className="item">Welcome, {this.props.current_user.username}</div>}
-          {this.userIsLoggedIn() && <div className="item">
+
+          {this.userIsLoggedIn() && <div className="settings1">
                                         <div onClick={() => this.props.history.push('/update_profile')} className="ui button">
                                           Settings
                                         </div>
                                     </div>}
-          {this.userIsLoggedIn() && <div className="item"><div onClick={this.props.logout} className="ui primary button">Log Out</div></div>}
+          {this.userIsLoggedIn() && <div className="logout1"><div onClick={this.props.logout} className="ui primary button">Log Out</div></div>}
           <div className="item">
 
           </div>
@@ -74,3 +81,5 @@ class Banner extends Component {
 }
 
 export default withRouter(Banner)
+
+    // { this.userIsLoggedIn() && <div className="item">Welcome, {this.props.current_user.username}</div>}
