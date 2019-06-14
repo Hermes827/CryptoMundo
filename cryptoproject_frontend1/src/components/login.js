@@ -32,7 +32,7 @@ export default class Login extends Component {
                 <input type="text" name="username" placeholder="username"/>
               </label>
             </div>
-
+            <br/>
             <div>
               <label className="login">Password&nbsp;&nbsp;
                 <input type="password" name="password" placeholder="password"/>
@@ -40,7 +40,7 @@ export default class Login extends Component {
             </div>
           </div>
           <br/>
-          <input className="button" type="submit" value="Login"/>
+          <input className="login-button" type="submit" value="Login"/>
         </form>
       </div>
     )

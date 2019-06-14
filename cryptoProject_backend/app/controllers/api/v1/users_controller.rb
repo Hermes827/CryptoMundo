@@ -35,7 +35,7 @@ class Api::V1::UsersController < ApplicationController
       render json: { error: 'Invalid crypto id.'}, status: :not_acceptable
     end
   end
-  
+
 
   def removeCrypto
     @user = current_user
@@ -55,7 +55,7 @@ class Api::V1::UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:username, :password)
+    params.require(:user).permit(:username, :password, :email)
   end
 
   def user_crypto_params

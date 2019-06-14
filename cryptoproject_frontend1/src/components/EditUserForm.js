@@ -19,27 +19,39 @@ export default class EditUserForm extends Component {
     if(ev.target.elements['password'].value !== ""){
       user.password = ev.target.elements['password'].value
     }
-
+    if(ev.target.elements['email'].value !== ""){
+      user.email = ev.target.elements['email'].value
+    }
+    console.log(user)
     this.props.updateUser(user)
   }
 
 
   render(){
     return <div className="user-form">
-            <h2 className="title subtitle">Update Your Account</h2>
-            <form className="ui center form user-info-form" onSubmit={this.handleSubmit}>
+            <h2 className="title subtitle">Update Account</h2>
+            <form className="edit" onSubmit={this.handleSubmit}>
                 <div className="field">
-                  <label>Username
-                    <input type="text" name="username" defaultValue={this.props.current_user.username} placeholder="username"/>
+                  <label>New Username&nbsp;&nbsp;
+                    <input className="input" type="text" name="username" defaultValue={this.props.current_user.username} placeholder="username"/>
                   </label>
                 </div>
+                <br/>
                 <div className="field">
-                  <label>New Password
-                    <input type="password" name="password" placeholder="password"/>
+                  <label>&nbsp;New Password&nbsp;&nbsp;
+                    <input className="input" type="text" name="password" placeholder="password"/>
                   </label>
                 </div>
+                <br/>
+                <div className="field">
+                  <label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;New Email&nbsp;&nbsp;
+                    <input className="input" type="text" name="email" placeholder="email"/>
+                  </label>
+                </div>
+                <br/>
               <input className="ui submit button" type="submit" value="Update Account"/>
             </form>
+
             <button onClick={() => this.props.deleteUser(this.props.current_user.id)}
                     className="negative ui button">Delete Account</button>
           </div>

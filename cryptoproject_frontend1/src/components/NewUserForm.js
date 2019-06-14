@@ -15,7 +15,8 @@ export default class NewUserForm extends Component {
     ev.preventDefault()
     const user = {
       username: ev.target.elements['username'].value,
-      password: ev.target.elements['password'].value
+      password: ev.target.elements['password'].value,
+      email: ev.target.elements['email'].value
     }
 
     this.props.createNewUser(user)
@@ -24,7 +25,7 @@ export default class NewUserForm extends Component {
 
   render(){
     return <div className="user-form">
-            <h2 className="title subtitle">Create account at MyCrypto</h2>
+            <h2 className="title subtitle">Create new account at Crypto Mundo!</h2>
             <form className="NewUserForm" onSubmit={this.handleSubmit}>
               <div className="two fields">
                 <div>
@@ -32,14 +33,21 @@ export default class NewUserForm extends Component {
                     <input type="text" name="username" placeholder="username"/>
                   </label>
                 </div>
+                <br/>
                 <div>
-                  <label className="login">Password&nbsp;&nbsp;
-                    <input type="password" name="password" placeholder="password"/>
+                  <label className="login">&nbsp;&nbsp;Password&nbsp;&nbsp;
+                    <input type="text" name="password" placeholder="password"/>
+                  </label>
+                </div>
+                <br/>
+                <div>
+                  <label className="login">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Email&nbsp;&nbsp;
+                    <input type="text" name="email" placeholder="email"/>
                   </label>
                 </div>
               </div>
               <br/>
-              <input className="button" type="submit" value="Create Account"/>
+              <input className="submit-button" type="submit" value="Create Account"/>
             </form>
           </div>
   }

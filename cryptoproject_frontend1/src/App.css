@@ -148,14 +148,15 @@
 
 .user-form {
   /* background-color: rgba(189, 195, 199, .75); */
-  padding: 25px;
+  /* padding: 25px; */
   width: 50%;
   margin: auto;
-  margin-top: 10%;
+  margin-top: 5%;
   color:  white;
   border-style: solid;
   background-color: black;
   border-color: orange;
+  padding-bottom: 2%;
   /* opacity: 0.8; */
 
 }
@@ -477,4 +478,21 @@ body {
   background-color: black;
   font-size: 170%;
   color: orange;
+}
+
+.edit {
+  color: orange;
+}
+
+.input {
+  width: 50%;
+}
+
+.login-button {
+  width: 20%;
+
+}
+
+.submit-button  {
+  width: 20%;
 }
