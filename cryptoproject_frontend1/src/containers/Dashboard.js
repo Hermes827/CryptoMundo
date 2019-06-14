@@ -68,7 +68,7 @@ export default class Dashboard extends Component {
     })
     .then(res => res.json())
     .then(data => {
-      this.props.setFeedback(`Added ${crypto.name} to "My Cryptos"`)
+      this.props.setFeedback(`Added ${crypto.name} to portfolio`)
     })
   }
 

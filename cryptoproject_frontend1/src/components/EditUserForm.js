@@ -49,11 +49,11 @@ export default class EditUserForm extends Component {
                   </label>
                 </div>
                 <br/>
-              <input className="ui submit button" type="submit" value="Update Account"/>
+              <input className="editBtn" type="submit" value="Update Account"/>
             </form>
 
             <button onClick={() => this.props.deleteUser(this.props.current_user.id)}
-                    className="negative ui button">Delete Account</button>
+                    className="editBtn">Delete Account</button>
           </div>
   }
 }

@@ -21,7 +21,7 @@ class DetailedView extends React.Component {
             Go back to cryptos
           </button>
           <button onClick={()=> this.props.addCrypto(this.props.currentCrypto)}>
-            Save crypto
+            Add crypto to portfolio
 
           </button>
 

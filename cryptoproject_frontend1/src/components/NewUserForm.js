@@ -30,19 +30,19 @@ export default class NewUserForm extends Component {
               <div className="two fields">
                 <div>
                   <label className="login">Username&nbsp;&nbsp;
-                    <input type="text" name="username" placeholder="username"/>
+                    <input className="input" type="text" name="username" placeholder="username"/>
                   </label>
                 </div>
                 <br/>
                 <div>
                   <label className="login">&nbsp;&nbsp;Password&nbsp;&nbsp;
-                    <input type="text" name="password" placeholder="password"/>
+                    <input className="input" type="text" name="password" placeholder="password"/>
                   </label>
                 </div>
                 <br/>
                 <div>
                   <label className="login">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Email&nbsp;&nbsp;
-                    <input type="text" name="email" placeholder="email"/>
+                    <input className="input" type="text" name="email" placeholder="email"/>
                   </label>
                 </div>
               </div>

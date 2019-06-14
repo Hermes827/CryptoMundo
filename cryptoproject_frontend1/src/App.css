@@ -99,10 +99,11 @@
   text-align: center;
   margin-right: 60%;
   margin-left: 3%;
-  height: 85%;
+  height: 89%;
   position: fixed;
   width: 45%;
   margin-top: -13%;
+  margin-bottom: 2%;
   padding-bottom: 2%;
 }
 
@@ -162,7 +163,7 @@
 }
 
 .login {
-  color: white;
+  color: orange;
   font-size: 20px;
 }
 
@@ -280,7 +281,8 @@ iframe {
 
 .banner {
   background-color: black;
-  /* opacity: 0.8; */
+  color: orange;
+  opacity: 0.85;
 }
 
 body {
@@ -347,7 +349,7 @@ body {
   text-align: center;
   margin-right: 60%;
   margin-left: 3%;
-  height: 85%;
+  height: 90%;
   position: fixed;
   width: 45%;
   margin-top: -5%;
@@ -369,7 +371,7 @@ body {
   padding-bottom: 7%; */
   text-align: center;
   overflow: scroll;
-  height: 85%;
+  height: 86%;
   position: fixed;
   width: 40%;
   color: orange;
@@ -380,7 +382,7 @@ body {
   opacity: 0.99;
   /* width: 40%; */
   margin-left: 53%;
-  margin-top: -6%;
+  margin-top: -5%;
   padding-bottom: 4%;
 }
 
@@ -404,7 +406,7 @@ body {
 .home {
   float: left;
   border-style: solid;
-  border-color: orange;
+  border-color: black;
   padding-top: 1%;
   padding-bottom: 1%;
   padding-left: 5%;
@@ -417,7 +419,7 @@ body {
 .myCryptos {
   float: left;
   border-style: solid;
-  border-color: orange;
+  border-color: black;
   padding-top: 1%;
   padding-bottom: 1%;
   padding-left: 5%;
@@ -430,7 +432,7 @@ body {
 .signup1 {
   float: left;
   border-style: solid;
-  border-color: orange;
+  border-color: black;
   padding-top: 1%;
   padding-bottom: 1%;
   padding-left: 5%;
@@ -443,7 +445,7 @@ body {
 .login1 {
   /* float: left; */
   border-style: solid;
-  border-color: orange;
+  border-color: black;
   padding-top: 1%;
   padding-bottom: 1%;
   padding-left: 5%;
@@ -454,9 +456,10 @@ body {
 }
 
 .settings1 {
+
   float: left;
   border-style: solid;
-  border-color: orange;
+  border-color: black;
   padding-top: 1%;
   padding-bottom: 1%;
   padding-left: 5%;
@@ -470,7 +473,7 @@ body {
 .logout1 {
   /* float: left; */
   border-style: solid;
-  border-color: orange;
+  border-color: black;
   padding-top: 1%;
   padding-bottom: 1%;
   padding-left: 5%;
@@ -495,4 +498,8 @@ body {
 
 .submit-button  {
   width: 20%;
+}
+
+.editBtn {
+  display:inline-block;
 }
