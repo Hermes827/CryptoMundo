@@ -15,11 +15,11 @@ class UserCryptoDetailedView extends React.Component {
           <h3>Total Supply: {this.props.currentCrypto.supply}</h3>
           <h3>Daily High: {this.props.currentCrypto.highday}</h3>
           <h3>Daily Low: {this.props.currentCrypto.lowday}</h3>
-          <button onClick={this.props.returnMyCryptos}>
-            Back
+          <button className="detailButton" onClick={this.props.returnMyCryptos}>
+            Go back to portfolio
           </button>
-
-          <button onClick={()=>this.props.deleteCrypto(this.props.currentCrypto)}>
+          &nbsp;
+          <button className="detailButton" onClick={()=>this.props.deleteCrypto(this.props.currentCrypto)}>
             Delete from my portfolio
           </button>
 

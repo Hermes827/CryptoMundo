@@ -15,14 +15,12 @@ class DetailedView extends React.Component {
           <h3>Daily Volume: {this.props.currentCrypto.volume} USD</h3>
           <h3>Total Supply: {this.props.currentCrypto.supply}</h3>
 
-
-          <button onClick={this.props.returnMainMenu}>
-            <i className="arrow left icon"></i>
+          <button className="detailButton" onClick={this.props.returnMainMenu}>
             Go back to cryptos
           </button>
-          <button onClick={()=> this.props.addCrypto(this.props.currentCrypto)}>
+          &nbsp;
+          <button className="detailButton" onClick={()=> this.props.addCrypto(this.props.currentCrypto)}>
             Add crypto to portfolio
-
           </button>
 
       </div>

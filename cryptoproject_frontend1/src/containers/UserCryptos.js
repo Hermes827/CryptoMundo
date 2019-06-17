@@ -63,8 +63,8 @@ return result
   render(){
     return(
       <div className="userCryptos">
-      <h1>My Cryptocurrencies</h1>
-      <h2>Total portfolio value: ${this.getPrices()}</h2>
+      <h1 className="ccHeader">My Cryptocurrencies</h1>
+      <h1 className="">Total portfolio value: ${this.getPrices()}</h1>
       <button className="CCbutton" onClick={this.props.returnHome}>Return to homepage</button>
 
       <div>
