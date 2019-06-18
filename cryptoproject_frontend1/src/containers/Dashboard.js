@@ -78,9 +78,12 @@ export default class Dashboard extends Component {
 returnHome = () => {
   console.log("hello")
   this.setState({
-    cryptosAreLoading: true
+    cryptosAreLoading: true,
+    currentCrypto: null,
+    lookingAtSingleCrypto: false
   })
 }
+
 
 
   renderCryptos() {

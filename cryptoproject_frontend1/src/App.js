@@ -257,9 +257,13 @@ class App extends React.Component{
   returnHome = () => {
     console.log("hello")
     this.setState({
-      cryptosAreLoading: true
+      cryptosAreLoading: true,
+      currentCrypto: null,
+      lookingAtSingleCrypto: false,
+      hasClickedMyCryptos: true
     })
   }
+
 
   deleteCrypto = (crypto) => {
     const cryptoId = crypto.id
@@ -272,10 +276,18 @@ class App extends React.Component{
     })
     .then(res => res.json())
     .then(data => {
-      setTimeout(() => this.setState({
-        currentCrypto: null,
-        lookingAtSingleCrypto: false,
-      }), 2000)
+      let cryptoNames = data.user.cryptos.map((crypto) => {
+        return crypto.name
+      })
+      // console.log(cryptoNames)
+      // console.log(data.user.cryptos)
+      if(!cryptoNames.includes(crypto.name)){
+        setTimeout(() => this.setState({
+          currentCrypto: null,
+          lookingAtSingleCrypto: false,
+        }), 2000)
+      }
+
 
       this.setError(`Deleted ${crypto.name} from Cryptos`)
       this.displayUserCryptos()

@@ -21,7 +21,7 @@ countCrypto = (cc) => {
   this.props.userCryptos.map((crypto) => {
     if(cc.name === crypto.name) {
       cryptos.push(crypto)
-      console.log(crypto)
+  
     }
   })
   return cryptos.length
