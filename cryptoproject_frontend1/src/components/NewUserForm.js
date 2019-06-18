@@ -25,7 +25,7 @@ export default class NewUserForm extends Component {
 
   render(){
     return <div className="user-form">
-            <h2 className="title subtitle">Create new account at Crypto Mundo!</h2>
+            <h2 className="title subtitle">Create a new account at Crypto Mundo!</h2>
             <form className="NewUserForm" onSubmit={this.handleSubmit}>
               <div className="two fields">
                 <div>

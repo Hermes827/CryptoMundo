@@ -1,3 +1,5 @@
+/* @import url('https://fonts.googleapis.com/css?family=Orbitron:700&display=swap'); */
+@import url('https://fonts.googleapis.com/css?family=Orbitron:500&display=swap');
 
 :root {
   --site-font: 'Amatic SC', cursive;
@@ -68,7 +70,8 @@
   overflow-x: auto;
   margin-bottom: -3%;
   position: relative;
-  top: -25px;
+  /* margin-top: 10%; */
+
 
 }
 
@@ -102,9 +105,9 @@
   height: 89%;
   position: fixed;
   width: 45%;
-  margin-top: -13%;
+  margin-top: -14%;
   margin-bottom: 2%;
-  padding-bottom: 2%;
+  padding-bottom: 3%;
 }
 
 .main {
@@ -159,6 +162,7 @@
   border-color: orange;
   padding-bottom: 2%;
   /* opacity: 0.8; */
+  font-family: Orbitron;
 
 }
 
@@ -198,14 +202,16 @@
   margin-top: -1%;
   background-color: rgba(1,1,1,.85); */
   padding: 25px;
-  width: 50%;
+  width: 40%;
   margin: auto;
   margin-top: 5%;
   color:  white;
   border-style: solid;
+  /* border-width: thick; */
   background-color: black;
   border-color: orange;
   /* opacity: 0.8; */
+  font-family: Orbitron;
 }
 
 .detailedViewImg {
@@ -283,12 +289,14 @@ iframe {
   background-color: black;
   color: orange;
   opacity: 0.85;
+  font-family: Orbitron;
 }
 
 body {
  background: url("picture/Cryptocurrency.jpg") no-repeat center center fixed;
  background-size: cover;
  color: white;
+ font-family: Orbitron;
 }
 
 /* .button {
@@ -303,7 +311,8 @@ body {
   /* margin-left: 80%; */
   margin-top: 5%;
   margin-bottom: 5%;
-  font-size: 175%;
+  font-size: 150%;
+  font-family: Orbitron;
 }
 
 .detailedView {
@@ -311,7 +320,7 @@ body {
   overflow: scroll;
   height: 85%;
   position: fixed;
-  width: 40%;
+  width: 45%;
   color: orange;
   font-size: 150%;
   border-style: solid;
@@ -319,20 +328,10 @@ body {
   background-color: black;
   opacity: 0.99;
   /* width: 40%; */
-  margin-left: 53%;
-  margin-top: -35%;
-  padding-bottom: 4%;
-  /* padding-top: 5%; */
-  /* padding-bottom: 7%; */
-  /* margin-left: 50%;
-  margin-right: 30%;
-  margin-bottom: -30%;
-
+  margin-left: 50%;
   margin-top: -40%;
-  width: 115%;
-  padding-top: 10%;
-  margin-bottom: 15%;
-  height: 200%; */
+  padding-bottom: 5%;
+
 }
 
 .cryptoElement {
@@ -374,7 +373,7 @@ body {
   overflow: scroll;
   height: 86%;
   position: fixed;
-  width: 40%;
+  width: 45%;
   color: orange;
   font-size: 150%;
   border-style: solid;
@@ -382,7 +381,7 @@ body {
   background-color: black;
   opacity: 0.99;
   /* width: 40%; */
-  margin-left: 53%;
+  margin-left: 50%;
   margin-top: -5%;
   padding-bottom: 4%;
 }
@@ -494,29 +493,45 @@ body {
 
 .login-button {
   width: 20%;
-  font-size: 110%;
+  font-size: 120%;
+  height: 20%;
+  font-family: Orbitron;
 
 }
 
 .submit-button  {
   width: 20%;
   font-size: 120%;
+  font-family: Orbitron;
 }
 
 .editBtn {
   display:inline-block;
+  font-family: Orbitron;
+  font-size: 120%;
 }
 
 .detailButton {
   font-size: 110%;
+  font-family: Orbitron;
+}
+
+.returnButton {
+  font-size: 110%;
+  font-family: Orbitron;
+  margin-bottom: 2%;
 }
 
 .crypto-button {
   font-size: 110%;
+  font-family: Orbitron;
 }
 
-.editBtn {
-
+.updateBtn {
+  display:inline-block;
+  font-family: Orbitron;
+  font-size: 120%;
+  margin-bottom: 1%;
 }
 
 .ccHeader {

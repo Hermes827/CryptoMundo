@@ -308,6 +308,7 @@ class App extends React.Component{
                                               logout={this.logout}
                                               displayUserCryptos={this.displayUserCryptos}
                                               returnMainMenu={this.returnMainMenu}
+                                              returnMainMenu1={this.returnMainMenu1}
                                               onCryptos={this.state.hasClickedMyCryptos}
 
                                               />}/>

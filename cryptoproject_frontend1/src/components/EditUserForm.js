@@ -49,9 +49,9 @@ export default class EditUserForm extends Component {
                   </label>
                 </div>
                 <br/>
-              <input className="editBtn" type="submit" value="Update Account"/>
+              <button className="updateBtn" type="submit" value="Update Account">Update Account</button>
             </form>
-
+          
             <button onClick={() => this.props.deleteUser(this.props.current_user.id)}
                     className="editBtn">Delete Account</button>
           </div>

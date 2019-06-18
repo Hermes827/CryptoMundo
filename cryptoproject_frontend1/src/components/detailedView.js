@@ -15,7 +15,7 @@ class DetailedView extends React.Component {
           <h3>Daily Volume: {this.props.currentCrypto.volume} USD</h3>
           <h3>Total Supply: {this.props.currentCrypto.supply}</h3>
 
-          <button className="detailButton" onClick={this.props.returnMainMenu}>
+          <button className="returnButton" onClick={this.props.returnMainMenu}>
             Go back to cryptos
           </button>
           &nbsp;
