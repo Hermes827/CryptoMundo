@@ -76,7 +76,9 @@ class Banner extends Component {
                                     </div>}
           {this.userIsLoggedIn() && <div className="settings1">
                                         <div onClick={() => this.props.history.push('/update_profile')} className="ui button">
+                                          <div onClick={this.props.setEdit}>
                                           Settings
+                                          </div>
                                         </div>
                                     </div>}
           {this.userIsLoggedIn() && <div className="logout1"><div onClick={this.props.logout} className="ui primary button">Log Out</div></div>}

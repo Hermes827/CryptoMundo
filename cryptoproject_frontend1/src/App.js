@@ -46,7 +46,8 @@ class App extends React.Component{
       news: [],
       hasClickedNews: false,
       currentNews: {},
-      lookingAtSingleNews: false
+      lookingAtSingleNews: false,
+      hasClickedSettings: false
     }
 
     this.createNewUser = this.createNewUser.bind(this)
@@ -405,7 +406,23 @@ renderDetailedViewNews = () => {
   }
 }
 
+renderEditUser = () => {
+if(this.state.hasClickedSettings === true) {
+  return <EditUserContainer
+            current_user={this.state.current_user}
+            updateUser={this.updateUser}
+            deleteUser={this.deleteUser}
+            setEdit={this.setEdit}
+          />
+}
+}
 
+setEdit = () => {
+  console.log("hello")
+  this.setState({
+    hasClickedSettings: !this.state.hasClickedSettings
+  })
+}
 
   render(){
 
@@ -420,6 +437,7 @@ renderDetailedViewNews = () => {
                                               returnMainMenu1={this.returnMainMenu1}
                                               onCryptos={this.state.hasClickedMyCryptos}
                                               setNews={this.setNews}
+                                              setEdit={this.setEdit}
 
                                               />}/>
         <main className="main">
@@ -434,9 +452,7 @@ renderDetailedViewNews = () => {
                                                          feedback={this.state.feedback}
                                                          />}
                                                          />
-          <Route exact path="/update_profile" render={() => <EditUserContainer current_user={this.state.current_user}
-                                                                               updateUser={this.updateUser}
-                                                                               deleteUser={this.deleteUser}/>}/>
+                                                       <Route exact path="/update_profile" render={() => this.renderEditUser()}/>
         </main>
 
       </div>
