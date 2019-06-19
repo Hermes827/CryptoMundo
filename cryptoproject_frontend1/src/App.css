@@ -455,6 +455,32 @@ body {
   color: orange;
 }
 
+.news1 {
+  float: left;
+  border-style: solid;
+  border-color: black;
+  padding-top: 1%;
+  padding-bottom: 1%;
+  padding-left: 5%;
+  padding-right: 5%;
+  background-color: black;
+  font-size: 170%;
+  color: orange;
+}
+
+.news {
+  float: left;
+  border-style: solid;
+  border-color: black;
+  padding-top: 1%;
+  padding-bottom: 1%;
+  padding-left: 5%;
+  padding-right: 5%;
+  background-color: black;
+  font-size: 170%;
+  color: orange;
+}
+
 .settings1 {
 
   float: left;
@@ -536,4 +562,75 @@ body {
 
 .ccHeader {
   font-size: 300%;
+  color: orange;
+  font-family: Orbitron;
+}
+
+.graph {
+  border-style: solid;
+  border-color: orange;
+  border-width: thin;
+  height: 15%;
+  width: auto;
+  margin-top: 3%;
+
+}
+
+/* .subtitle {
+
+} */
+
+.articles {
+  color: orange;
+  overflow: scroll;
+  border-style: solid;
+  border-color: orange;
+  /* opacity: 0.75; */
+  background-color: black;
+  text-align: center;
+  margin-right: 60%;
+  margin-left: 3%;
+  height: 89%;
+  position: fixed;
+  width: 45%;
+  margin-top: -5%;
+  margin-bottom: 2%;
+  padding-bottom: 3%;
+  font-size: 95%;
+  font-family: sans-serif;
+}
+
+/* .article {
+  padding-top: 5%;
+} */
+
+.articleView  {
+
+  text-align: center;
+  overflow: scroll;
+  height: 86%;
+  position: fixed;
+  width: 47%;
+  color: orange;
+  font-size: 140%;
+  border-style: solid;
+  border-color: orange;
+  background-color: black;
+  opacity: 0.99;
+  /* width: 40%; */
+  margin-left: 50%;
+  margin-top: -5%;
+  padding-bottom: 4.5%;
+  font-family: sans-serif;
+}
+
+.storyImg {
+  height: 50%;
+  width: auto;
+}
+
+.returnButtonNews {
+  font-size: 110%;
+  font-family: Orbitron;
+  margin-top: 3%;
 }

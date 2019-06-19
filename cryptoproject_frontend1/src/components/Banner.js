@@ -36,6 +36,10 @@ class Banner extends Component {
     this.props.displayUserCryptos(ev)
   }
 
+  setNews = () => {
+    console.log("hello")
+  }
+
   render(){
     return <div className="ui attached top">
 
@@ -53,6 +57,9 @@ class Banner extends Component {
         <div className="right menu">
           {!this.userIsLoggedIn() &&
             <>
+            <div className="news">
+            <Link to="/news"><div className="ui button" onClick={this.props.setNews}>News</div></Link>
+            </div>
             <div className="signup1">
             <Link to='/user_signup'><div className="ui primary button">Sign up</div></Link>
             </div>
@@ -62,13 +69,18 @@ class Banner extends Component {
             </div>
           </>
           }
-
+          {this.userIsLoggedIn() && <div className="news1">
+                                      <div>
+                                      <Link to="/news"><div className="ui button"  onClick={this.props.setNews}>News</div></Link>
+                                      </div>
+                                    </div>}
           {this.userIsLoggedIn() && <div className="settings1">
                                         <div onClick={() => this.props.history.push('/update_profile')} className="ui button">
                                           Settings
                                         </div>
                                     </div>}
           {this.userIsLoggedIn() && <div className="logout1"><div onClick={this.props.logout} className="ui primary button">Log Out</div></div>}
+
           <div className="item">
 
           </div>
@@ -81,5 +93,8 @@ class Banner extends Component {
 }
 
 export default withRouter(Banner)
+
+
+
 
     // { this.userIsLoggedIn() && <div className="item">Welcome, {this.props.current_user.username}</div>}

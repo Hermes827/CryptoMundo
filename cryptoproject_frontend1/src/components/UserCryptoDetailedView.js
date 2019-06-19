@@ -5,18 +5,18 @@ class UserCryptoDetailedView extends React.Component {
   render(){
     return(
       <div className="UserCryptoDetailedView">
-          <h1>{this.props.currentCrypto.name}</h1>
+          <h3>{this.props.currentCrypto.name}</h3>
           <img className="logo1" src={"https://www.cryptocompare.com" + this.props.currentCrypto.image}></img>
+          <br/>
+          <img className="graph" src={"https://images.cryptocompare.com/sparkchart/" + this.props.currentCrypto.name + "/USD/latest.png?ts=1560901200"}></img>
           {this.props.error !== "" && <div className="error-message">{this.props.error}</div>}
-
           <h3>Current Price: {this.props.currentCrypto.price} USD</h3>
-          <h3>Market: {this.props.currentCrypto.market}</h3>
           <h3>Daily Volume: {this.props.currentCrypto.volume}</h3>
           <h3>Total Supply: {this.props.currentCrypto.supply}</h3>
           <h3>Daily High: {this.props.currentCrypto.highday}</h3>
           <h3>Daily Low: {this.props.currentCrypto.lowday}</h3>
           <button className="returnButton" onClick={this.props.returnMyCryptos}>
-            Go back to portfolio
+            Return
           </button>
           &nbsp;
           <button className="detailButton" onClick={()=>this.props.deleteCrypto(this.props.currentCrypto)}>

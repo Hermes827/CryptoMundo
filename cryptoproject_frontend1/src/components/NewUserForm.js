@@ -35,7 +35,7 @@ export default class NewUserForm extends Component {
                 </div>
                 <br/>
                 <div>
-                  <label className="login">&nbsp;&nbsp;Password&nbsp;&nbsp;
+                  <label className="login">Password&nbsp;&nbsp;
                     <input className="input" type="text" name="password" placeholder="password"/>
                   </label>
                 </div>

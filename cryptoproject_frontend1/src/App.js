@@ -9,11 +9,27 @@ import EditUserContainer from './containers/EditUserContainer'
 import './App.css';
 import UserCryptos from './containers/UserCryptos'
 import UserCryptoDetailedView from './components/UserCryptoDetailedView'
+import NewsContainer from './containers/newsContainer'
+import ArticleView from './components/articleView'
 
 const USER_URL = "http://localhost:3000/api/v1/users"
 const LOGIN_URL = "http://localhost:3000/api/v1/login"
+const newsAPI = "https://newsapi.org/v2/everything?q=cryptocurrency&from=2019-05-19&sortBy=publishedAt&apiKey=4c2d0d49eecc43688aeefdd3bd0ff4fe"
+
+// const newsAPI = "https://min-api.cryptocompare.com/data/top/totalvolfull?limit=10&tsym=USD&api_key={2eb0a0afcdbd0af89e90104132e9424984ac9324e5c2b62272a6afbe9567cb19}"
 
 class App extends React.Component{
+
+  componentDidMount(){
+    fetch(newsAPI)
+      .then(res => res.json())
+      .then(data => {
+        this.setState({
+          news: data.articles
+        })
+        console.log(data.articles)
+      })
+  }
 
   constructor(props){
     super(props)
@@ -26,7 +42,11 @@ class App extends React.Component{
       hasClickedMyCryptos: false,
       currentCrypto: {},
       lookingAtSingleCrypto: false,
-      cryptosAreLoading: false
+      cryptosAreLoading: false,
+      news: [],
+      hasClickedNews: false,
+      currentNews: {},
+      lookingAtSingleNews: false
     }
 
     this.createNewUser = this.createNewUser.bind(this)
@@ -188,6 +208,15 @@ class App extends React.Component{
 
   }
 
+  setCurrentCrypto1 = (crypto) => {
+    this.setState({
+      currentCrypto: crypto,
+      lookingAtSingleCrypto: true
+    })
+    // this.props.history.push('/my-crypto/' + crypto.id)
+
+  }
+
   renderUserCryptos = () => {
     const {userCryptos} = this.state
     if(this.state.hasClickedMyCryptos === true &&!this.state.cryptosAreLoading) {
@@ -295,6 +324,86 @@ class App extends React.Component{
 
   }
 
+setNews = () => {
+  this.setState({
+    hasClickedNews: true
+  })
+}
+
+returnHomeNews = () => {
+  this.setState({
+    currentNews: null,
+    lookingAtSingleNews: false,
+    hasClickedNews: false
+  })
+}
+
+  toggleNews = () => {
+    this.setState({
+      hasClickedNews: !this.state.hasClickedNews
+    })
+  }
+
+  setCurrentNews = (article) => {
+    this.setState({
+      currentNews: article,
+      lookingAtSingleNews: true
+    })
+  }
+
+  // returnHomeNews = () => {
+  //   console.log("hello")
+  //   this.setState({
+  //     // cryptosAreLoading: true,
+  //     currentNews: null,
+  //     lookingAtSingleNews: false,
+  //     hasClickedNews: true
+  //   })
+  // }
+
+  returnMyNews = () => {
+    this.setState({
+      currentNews: null,
+      lookingAtSingleNews: false,
+      hasClickedNews: true
+    })
+  }
+
+renderNews = () => {
+  const {news} = this.state
+  if(this.state.hasClickedNews === true){
+    return <NewsContainer
+            returnHomeNews={this.returnHomeNews}
+            toggleNews={this.toggleNews}
+            setCurrentNews={this.setCurrentNews}
+            news={news}
+            currentNews={this.state.currentNews}
+            lookingAtSingleNews={this.state.lookingAtSingleNews}
+            />
+  }
+}
+
+renderDetailedViewNews = () => {
+  const {news, currentNews} = this.state
+  if(this.state.lookingAtSingleNews === true) {
+    return(
+      <div>
+        <NewsContainer
+                returnHomeNews={this.returnHomeNews}
+                toggleNews={this.toggleNews}
+                setCurrentNews={this.setCurrentNews}
+                news={news}
+                currentNews={this.state.currentNews}
+                lookingAtSingleNews={this.state.lookingAtSingleNews}
+                />
+                <ArticleView
+                currentNews={currentNews}
+                returnMyNews={this.returnMyNews}
+                />
+      </div>
+        )
+  }
+}
 
 
 
@@ -310,9 +419,12 @@ class App extends React.Component{
                                               returnMainMenu={this.returnMainMenu}
                                               returnMainMenu1={this.returnMainMenu1}
                                               onCryptos={this.state.hasClickedMyCryptos}
+                                              setNews={this.setNews}
 
                                               />}/>
         <main className="main">
+          <Route exact path="/news" render={() => this.renderDetailedViewNews()} />
+          {this.renderNews()}
           <Route exact path="/login" render={() => <Login attemptLogin={this.attemptLogin}/>}/>
           <Route exact path="/user_signup" render={() => <NewUserForm createNewUser={this.createNewUser}/>}/>
           <Route path='/my-crypto' render={() => this.renderDetailedView()} />
@@ -324,7 +436,7 @@ class App extends React.Component{
                                                          />
           <Route exact path="/update_profile" render={() => <EditUserContainer current_user={this.state.current_user}
                                                                                updateUser={this.updateUser}
-                                                                               deleteUser={this.deleteUser}/>} />
+                                                                               deleteUser={this.deleteUser}/>}/>
         </main>
 
       </div>
