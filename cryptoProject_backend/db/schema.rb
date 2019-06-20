@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 2019_05_23_231334) do
     t.string "supply"
     t.string "highday"
     t.string "lowday"
+    t.integer "lastUpdate"
   end
 
   create_table "user_cryptos", force: :cascade do |t|

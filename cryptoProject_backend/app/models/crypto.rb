@@ -13,7 +13,8 @@ class Crypto < ApplicationRecord
         volume: crypto['DISPLAY']['USD']['VOLUMEDAY'],
         supply: crypto['DISPLAY']['USD']['SUPPLY'],
         highday: crypto['DISPLAY']['USD']['HIGHDAY'],
-        lowday: crypto['DISPLAY']['USD']['LOWDAY']
+        lowday: crypto['DISPLAY']['USD']['LOWDAY'],
+        lastUpdate: crypto['RAW']['USD']['LASTUPDATE']
         })
 
     end

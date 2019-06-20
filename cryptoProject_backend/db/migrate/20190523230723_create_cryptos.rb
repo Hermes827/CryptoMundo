@@ -9,6 +9,7 @@ class CreateCryptos < ActiveRecord::Migration[5.2]
       t.string :supply
       t.string :highday
       t.string :lowday
+      t.integer :lastUpdate
     end
   end
 end

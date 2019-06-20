@@ -11,7 +11,7 @@ class DetailedView extends React.Component {
           <h3>{this.props.currentCrypto.name}</h3>
           <img className="logo1" src={"https://www.cryptocompare.com" + this.props.currentCrypto.image}></img>
           <br/>
-          <img className="graph" src={"https://images.cryptocompare.com/sparkchart/" + this.props.currentCrypto.name + "/USD/latest.png?ts=1560901200"}></img>
+          <img className="graph" src={"https://images.cryptocompare.com/sparkchart/" + this.props.currentCrypto.name + "/USD/latest.png?ts=" + this.props.currentCrypto.lastUpdate}></img>
           <br/>
           {this.props.feedback !== "" && <div className="feedback-message">{this.props.feedback}</div>}
           <h3>Current Price: ${this.props.currentCrypto.price} USD</h3>
