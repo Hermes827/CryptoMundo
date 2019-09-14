@@ -14,7 +14,7 @@ import ArticleView from './components/articleView'
 
 const USER_URL = "http://localhost:3000/api/v1/users"
 const LOGIN_URL = "http://localhost:3000/api/v1/login"
-const newsAPI = "https://newsapi.org/v2/everything?q=cryptocurrency&from=2019-05-20&sortBy=publishedAt&apiKey=1d18a5c615394121babd9a9dfd43bff7"
+const newsAPI = "https://newsapi.org/v2/everything?q=cryptocurrency&from=2019-09-14&sortBy=publishedAt&apiKey=e17454af05b842518705a1a4960a4f94"
 
 // const newsAPI = "https://min-api.cryptocompare.com/data/top/totalvolfull?limit=10&tsym=USD&api_key={2eb0a0afcdbd0af89e90104132e9424984ac9324e5c2b62272a6afbe9567cb19}"
 
