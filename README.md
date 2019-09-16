@@ -1,8 +1,8 @@
-CryptoMundo
+# CryptoMundo
 
-An interactive app for keeping track of cryptocurrency assets
+## An interactive app for keeping track of cryptocurrency assets
 
-CryptoMundo's features includes the following:
+###  CryptoMundo's features includes the following:
 	•	API querying using a backend rails engine
 	•	JWT login
 	•	React Routing for conditional element display
