@@ -11,10 +11,10 @@
 ## Setup
 ### To fork and boot up CryptoMundo simply do the following steps:
 	1.	Clone the project into a local directory
-	2.	From the terminal, navigate to the cryptoProject_backend folder and run rails db:create
+	2.	From the terminal, navigate to the backend folder and run rails db:create
 	3.	Run rails db:migrate
 	4.	Run rails s
-	5.	Run cd ../cryptoProject_frontend1
+	5.	Run cd ../frontend
 	6.	Run npm install && npm start
 	7.	When prompted to run on an alternate server, do so.
 	
