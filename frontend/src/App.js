@@ -292,6 +292,8 @@ class App extends React.Component{
       lookingAtSingleCrypto: false,
       hasClickedMyCryptos: true
     })
+    this.props.history.push('/dashboard')
+
   }
 
 
@@ -337,6 +339,7 @@ returnHomeNews = () => {
     lookingAtSingleNews: false,
     hasClickedNews: false
   })
+  this.props.history.push('/dashboard')
 }
 
   toggleNews = () => {
@@ -422,6 +425,8 @@ setEdit = () => {
   this.setState({
     hasClickedSettings: !this.state.hasClickedSettings
   })
+  this.props.history.push('/dashboard')
+
 }
 
   render(){
