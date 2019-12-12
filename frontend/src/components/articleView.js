@@ -11,7 +11,7 @@ class ArticleDetailedView extends React.Component {
         <h5>{this.props.currentNews.publishedAt}</h5>
         <h5>{this.props.currentNews.author}</h5>
         <h3>{this.props.currentNews.description}</h3>
-        <a href={this.props.currentNews.url} target="_blank">Read More Here</a>
+        <a href={this.props.currentNews.url} target="_blank">Read More Here HELLO</a>
         {console.log(this.props.currentNews.url)}
         <br/>
         &nbsp;
