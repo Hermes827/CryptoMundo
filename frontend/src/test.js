@@ -102,3 +102,6 @@ returnToHomepageFromNewsContainer = () => {
 }
 
   {this.renderNews()}
+
+  <Route exact path="/news" render={() => this.renderDetailedNewsView()} />
+  {this.renderNews()}

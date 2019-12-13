@@ -15,7 +15,7 @@ class NewsContainer extends Component {
             return <Article
                     className="article"
                     article={article}
-                    
+
                     setCurrentNewsArticle={this.props.setCurrentNewsArticle}
                     />
           })
