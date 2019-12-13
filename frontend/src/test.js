@@ -11,7 +11,7 @@ function changeState(state, action){
 
 // <Route exact path="/news" render={() => <NewsContainer news={this.state.news}
 //                                                        toggleNews={this.toggleNews}
-//                                                        setCurrentNews={this.setCurrentNews}
+//                                                        setCurrentNewsArticle={this.setCurrentNewsArticle}
 //                                                        />}/>
 //only reason that newscontainer doesnt render properly is because of the logic in newscontainer component itself
 //turns out I just had to pass in props for this newscontainer component, when i access news by clicking on the button
@@ -19,21 +19,21 @@ function changeState(state, action){
 //changing the URL name
 {this.renderNews()}
 
-// renderDetailedViewNews = () => {
-//   const {news, currentNews} = this.state
-//   if(this.state.lookingAtSingleNews === true) {
+// renderDetailedNewsView = () => {
+//   const {news, currentNewsArticle} = this.state
+//   if(this.state.lookingAtSingleNewsArticle === true) {
 //     return(
 //       <div>
 //         <NewsContainer
 //                 returnHomeNews={this.returnHomeNews}
 //                 toggleNews={this.toggleNews}
-//                 setCurrentNews={this.setCurrentNews}
+//                 setCurrentNewsArticle={this.setCurrentNewsArticle}
 //                 news={news}
-//                 currentNews={this.state.currentNews}
-//                 lookingAtSingleNews={this.state.lookingAtSingleNews}
+//                 currentNewsArticle={this.state.currentNewsArticle}
+//                 lookingAtSingleNewsArticle={this.state.lookingAtSingleNewsArticle}
 //                 />
 //                 <ArticleView
-//                 currentNews={currentNews}
+//                 currentNewsArticle={currentNewsArticle}
 //                 returnToNewsContainer={this.returnToNewsContainer}
 //                 />
 //       </div>
@@ -47,18 +47,18 @@ function changeState(state, action){
 //     return <NewsContainer
 //             returnHomeNews={this.returnHomeNews}
 //             toggleNews={this.toggleNews}
-//             setCurrentNews={this.setCurrentNews}
+//             setCurrentNewsArticle={this.setCurrentNewsArticle}
 //             news={news}
-//             currentNews={this.state.currentNews}
-//             lookingAtSingleNews={this.state.lookingAtSingleNews}
+//             currentNewsArticle={this.state.currentNewsArticle}
+//             lookingAtSingleNewsArticle={this.state.lookingAtSingleNewsArticle}
 //             />
 //   }
 // }
 
 returnToNewsContainer = () => {
   this.setState({
-    currentNews: null,
-    lookingAtSingleNews: false,
+    currentNewsArticle: null,
+    lookingAtSingleNewsArticle: false,
     hasClickedNewsButton: true
   })
 }
@@ -70,10 +70,10 @@ toggleNews = () => {
   console.log("hello")
 }
 
-setCurrentNews = (article) => {
+setCurrentNewsArticle = (article) => {
   this.setState({
-    currentNews: article,
-    lookingAtSingleNews: true
+    currentNewsArticle: article,
+    lookingAtSingleNewsArticle: true
   })
 }
 
@@ -81,13 +81,13 @@ setCurrentNews = (article) => {
 //   console.log("hello")
 //   this.setState({
 //     // cryptosAreLoading: true,
-//     currentNews: null,
-//     lookingAtSingleNews: false,
+//     currentNewsArticle: null,
+//     lookingAtSingleNewsArticle: false,
 //     hasClickedNewsButton: true
 //   })
 // }
 
-// setNews = () => {
+// setNewsState = () => {
 //   this.setState({
 //     hasClickedNewsButton: true
 //   })
@@ -95,8 +95,8 @@ setCurrentNews = (article) => {
 
 returnHomeNews = () => {
   this.setState({
-    currentNews: null,
-    lookingAtSingleNews: false,
+    currentNewsArticle: null,
+    lookingAtSingleNewsArticle: false,
     hasClickedNewsButton: false
   })
 }

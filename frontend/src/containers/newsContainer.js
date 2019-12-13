@@ -16,7 +16,7 @@ class NewsContainer extends Component {
                     className="article"
                     article={article}
                     toggleNews={this.props.toggleNews}
-                    setCurrentNews={this.props.setCurrentNews}
+                    setCurrentNewsArticle={this.props.setCurrentNewsArticle}
                     />
           })
         }

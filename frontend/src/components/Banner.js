@@ -36,7 +36,7 @@ class Banner extends Component {
     this.props.displayUserCryptos(ev)
   }
 
-  // setNews = () => {
+  // setNewsState = () => {
   //   console.log("hello")
   // }
 
@@ -58,7 +58,7 @@ class Banner extends Component {
           {!this.userIsLoggedIn() &&
             <>
             <div className="news">
-            <Link to="/news"><div className="ui button" onClick={this.props.setNews}>News</div></Link>
+            <Link to="/news"><div className="ui button" onClick={this.props.setNewsState}>News</div></Link>
             </div>
             <div className="signup1">
             <Link to='/user_signup'><div className="ui primary button">Sign up</div></Link>
@@ -71,7 +71,7 @@ class Banner extends Component {
           }
           {this.userIsLoggedIn() && <div className="news1">
                                       <div>
-                                      <Link to="/news"><div className="ui button"  onClick={this.props.setNews}>News</div></Link>
+                                      <Link to="/news"><div className="ui button"  onClick={this.props.setNewsState}>News</div></Link>
                                       </div>
                                     </div>}
           {this.userIsLoggedIn() && <div className="settings1">

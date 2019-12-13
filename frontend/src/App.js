@@ -44,8 +44,8 @@ class App extends React.Component{
       cryptosAreLoading: false,
       news: [],
       hasClickedNewsButton: false,
-      currentNews: {},
-      lookingAtSingleNews: false,
+      currentNewsArticle: {},
+      lookingAtSingleNewsArticle: false,
       hasClickedSettings: false
     }
 
@@ -146,7 +146,7 @@ class App extends React.Component{
   .then(data => this.setActiveUser(data, "soft"))
 }
 
-/////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
 
   displayUserCryptos = () => {
     if(!localStorage.token){return}
@@ -174,7 +174,7 @@ class App extends React.Component{
     })
   }
 
-  ////////////////////////////////////////////////////
+  //////////////////////////////////////////////////////////////////////////////
 
   updateUser(user){
     fetch(USER_URL + `/${user.id}`, {
@@ -205,7 +205,7 @@ class App extends React.Component{
     .then( () => this.logout())
   }
 
-  ////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////////////////////
 
   setCurrentCrypto = (crypto) => {
     this.setState({
@@ -334,7 +334,9 @@ class App extends React.Component{
 
   }
 
-setNews = () => {
+//  news
+
+setNewsState = () => {
   this.setState({
     hasClickedNewsButton: true
   })
@@ -343,8 +345,8 @@ setNews = () => {
 
 returnHomeNews = () => {
   this.setState({
-    currentNews: null,
-    lookingAtSingleNews: false,
+    currentNewsArticle: null,
+    lookingAtSingleNewsArticle: false,
     hasClickedNewsButton: false
   })
   this.props.history.push('/dashboard')
@@ -356,10 +358,10 @@ returnHomeNews = () => {
   //   })
   // }
 
-  setCurrentNews = (article) => {
+  setCurrentNewsArticle = (article) => {
     this.setState({
-      currentNews: article,
-      lookingAtSingleNews: true
+      currentNewsArticle: article,
+      lookingAtSingleNewsArticle: true
     })
   }
 
@@ -367,55 +369,57 @@ returnHomeNews = () => {
   //   console.log("hello")
   //   this.setState({
   //     // cryptosAreLoading: true,
-  //     currentNews: null,
-  //     lookingAtSingleNews: false,
+  //     currentNewsArticle: null,
+  //     lookingAtSingleNewsArticle: false,
   //     hasClickedNewsButton: true
   //   })
   // }
 
-  returnToNewsContainer = () => {
-    this.setState({
-      currentNews: null,
-      lookingAtSingleNews: false,
-      hasClickedNewsButton: true
-    })
-  }
+returnToNewsContainer = () => {
+  this.setState({
+    currentNewsArticle: null,
+    lookingAtSingleNewsArticle: false,
+    // hasClickedNewsButton: true
+  })
+}
 
 renderNews = () => {
-  const {news, currentNews, lookingAtSingleNews, hasClickedNewsButton} = this.state
+  const {news, currentNewsArticle, lookingAtSingleNewsArticle, hasClickedNewsButton} = this.state
   if(hasClickedNewsButton === true){
     return <NewsContainer
             returnHomeNews={this.returnHomeNews}
             toggleNews={this.toggleNews}
-            setCurrentNews={this.setCurrentNews}
+            setCurrentNewsArticle={this.setCurrentNewsArticle}
             news={news}
-            currentNews={currentNews}
-            lookingAtSingleNews={lookingAtSingleNews}
+            currentNewsArticle={currentNewsArticle}
+            lookingAtSingleNewsArticle={lookingAtSingleNewsArticle}
             />
   }
 }
 
-renderDetailedViewNews = () => {
-  const {news, currentNews, lookingAtSingleNews} = this.state
-  if(lookingAtSingleNews === true) {
+renderDetailedNewsView = () => {
+  const {news, currentNewsArticle, lookingAtSingleNewsArticle} = this.state
+  if(lookingAtSingleNewsArticle === true) {
     return(
       <div>
         {/*<NewsContainer
           returnHomeNews={this.returnHomeNews}
           toggleNews={this.toggleNews}
-          setCurrentNews={this.setCurrentNews}
+          setCurrentNewsArticle={this.setCurrentNewsArticle}
           news={news}
-          currentNews={currentNews}
-          lookingAtSingleNews={lookingAtSingleNews}
+          currentNewsArticle={currentNewsArticle}
+          lookingAtSingleNewsArticle={lookingAtSingleNewsArticle}
           />*/}
           <ArticleView
-          currentNews={currentNews}
+          currentNewsArticle={currentNewsArticle}
           returnToNewsContainer={this.returnToNewsContainer}
         />
       </div>
         )
   }
 }
+
+///////////////////////////////////////////////////////////////////////////////
 
 renderEditUser = () => {
 if(this.state.hasClickedSettings === true) {
@@ -437,6 +441,8 @@ setEdit = () => {
 
 }
 
+/////////////////////////////////////////////////////////////////////////////////
+
   render(){
 
     return (
@@ -449,12 +455,12 @@ setEdit = () => {
                                               returnMainMenu={this.returnMainMenu}
                                               returnMainMenu1={this.returnMainMenu1}
                                               onCryptos={this.state.hasClickedMyCryptos}
-                                              setNews={this.setNews}
+                                              setNewsState={this.setNewsState}
                                               setEdit={this.setEdit}
 
                                               />}/>
         <main className="main">
-          <Route exact path="/news" render={() => this.renderDetailedViewNews()} />
+          <Route exact path="/news" render={() => this.renderDetailedNewsView()} />
           {this.renderNews()}
           <Route exact path="/login" render={() => <Login attemptLogin={this.attemptLogin}/>}/>
           <Route exact path="/user_signup" render={() => <NewUserForm createNewUser={this.createNewUser}/>}/>
