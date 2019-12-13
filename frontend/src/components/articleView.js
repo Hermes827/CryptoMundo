@@ -15,7 +15,7 @@ class ArticleDetailedView extends React.Component {
         {console.log(this.props.currentNews.url)}
         <br/>
         &nbsp;
-        <button className="returnButtonNews" onClick={this.props.returnMyNews}>
+        <button className="returnButtonNews" onClick={this.props.returnToNewsContainer}>
           Close
         </button>
       </div>

@@ -36,9 +36,9 @@ class Banner extends Component {
     this.props.displayUserCryptos(ev)
   }
 
-  setNews = () => {
-    console.log("hello")
-  }
+  // setNews = () => {
+  //   console.log("hello")
+  // }
 
   render(){
     return <div className="ui attached top">

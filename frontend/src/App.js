@@ -14,6 +14,7 @@ import ArticleView from './components/articleView'
 
 const USER_URL = "http://localhost:3000/api/v1/users"
 const LOGIN_URL = "http://localhost:3000/api/v1/login"
+const currentDate = ""
 const newsAPI = "https://newsapi.org/v2/everything?q=cryptocurrency&from=2019-12-10&sortBy=publishedAt&apiKey=e17454af05b842518705a1a4960a4f94"
 
 class App extends React.Component{
@@ -42,7 +43,7 @@ class App extends React.Component{
       lookingAtSingleCrypto: false,
       cryptosAreLoading: false,
       news: [],
-      hasClickedNews: false,
+      hasClickedNewsButton: false,
       currentNews: {},
       lookingAtSingleNews: false,
       hasClickedSettings: false
@@ -145,6 +146,8 @@ class App extends React.Component{
   .then(data => this.setActiveUser(data, "soft"))
 }
 
+/////////////////////////////////////////////////////////
+
   displayUserCryptos = () => {
     if(!localStorage.token){return}
     fetch("http://localhost:3000/api/v1/profile", {
@@ -170,6 +173,8 @@ class App extends React.Component{
       hasClickedMyCryptos: !this.state.hasClickedMyCryptos
     })
   }
+
+  ////////////////////////////////////////////////////
 
   updateUser(user){
     fetch(USER_URL + `/${user.id}`, {
@@ -199,6 +204,8 @@ class App extends React.Component{
     })
     .then( () => this.logout())
   }
+
+  ////////////////////////////////////////////
 
   setCurrentCrypto = (crypto) => {
     this.setState({
@@ -329,24 +336,25 @@ class App extends React.Component{
 
 setNews = () => {
   this.setState({
-    hasClickedNews: true
+    hasClickedNewsButton: true
   })
 }
+
 
 returnHomeNews = () => {
   this.setState({
     currentNews: null,
     lookingAtSingleNews: false,
-    hasClickedNews: false
+    hasClickedNewsButton: false
   })
   this.props.history.push('/dashboard')
 }
 
-  toggleNews = () => {
-    this.setState({
-      hasClickedNews: !this.state.hasClickedNews
-    })
-  }
+  // toggleNews = () => {  this function might be useless
+  //   this.setState({
+  //     hasClickedNewsButton: !this.state.hasClickedNewsButton
+  //   })
+  // }
 
   setCurrentNews = (article) => {
     this.setState({
@@ -361,49 +369,49 @@ returnHomeNews = () => {
   //     // cryptosAreLoading: true,
   //     currentNews: null,
   //     lookingAtSingleNews: false,
-  //     hasClickedNews: true
+  //     hasClickedNewsButton: true
   //   })
   // }
 
-  returnMyNews = () => {
+  returnToNewsContainer = () => {
     this.setState({
       currentNews: null,
       lookingAtSingleNews: false,
-      hasClickedNews: true
+      hasClickedNewsButton: true
     })
   }
 
 renderNews = () => {
-  const {news} = this.state
-  if(this.state.hasClickedNews === true){
+  const {news, currentNews, lookingAtSingleNews, hasClickedNewsButton} = this.state
+  if(hasClickedNewsButton === true){
     return <NewsContainer
             returnHomeNews={this.returnHomeNews}
             toggleNews={this.toggleNews}
             setCurrentNews={this.setCurrentNews}
             news={news}
-            currentNews={this.state.currentNews}
-            lookingAtSingleNews={this.state.lookingAtSingleNews}
+            currentNews={currentNews}
+            lookingAtSingleNews={lookingAtSingleNews}
             />
   }
 }
 
 renderDetailedViewNews = () => {
-  const {news, currentNews} = this.state
-  if(this.state.lookingAtSingleNews === true) {
+  const {news, currentNews, lookingAtSingleNews} = this.state
+  if(lookingAtSingleNews === true) {
     return(
       <div>
-        <NewsContainer
-                returnHomeNews={this.returnHomeNews}
-                toggleNews={this.toggleNews}
-                setCurrentNews={this.setCurrentNews}
-                news={news}
-                currentNews={this.state.currentNews}
-                lookingAtSingleNews={this.state.lookingAtSingleNews}
-                />
-                <ArticleView
-                currentNews={currentNews}
-                returnMyNews={this.returnMyNews}
-                />
+        {/*<NewsContainer
+          returnHomeNews={this.returnHomeNews}
+          toggleNews={this.toggleNews}
+          setCurrentNews={this.setCurrentNews}
+          news={news}
+          currentNews={currentNews}
+          lookingAtSingleNews={lookingAtSingleNews}
+          />*/}
+          <ArticleView
+          currentNews={currentNews}
+          returnToNewsContainer={this.returnToNewsContainer}
+        />
       </div>
         )
   }

@@ -34,7 +34,7 @@ function changeState(state, action){
 //                 />
 //                 <ArticleView
 //                 currentNews={currentNews}
-//                 returnMyNews={this.returnMyNews}
+//                 returnToNewsContainer={this.returnToNewsContainer}
 //                 />
 //       </div>
 //         )
@@ -43,7 +43,7 @@ function changeState(state, action){
 
 // renderNews = () => {
 //   const {news} = this.state
-//   if(this.state.hasClickedNews === true){
+//   if(this.state.hasClickedNewsButton === true){
 //     return <NewsContainer
 //             returnHomeNews={this.returnHomeNews}
 //             toggleNews={this.toggleNews}
@@ -55,17 +55,17 @@ function changeState(state, action){
 //   }
 // }
 
-returnMyNews = () => {
+returnToNewsContainer = () => {
   this.setState({
     currentNews: null,
     lookingAtSingleNews: false,
-    hasClickedNews: true
+    hasClickedNewsButton: true
   })
 }
 
 toggleNews = () => {
   // this.setState({
-  //   hasClickedNews: !this.state.hasClickedNews
+  //   hasClickedNewsButton: !this.state.hasClickedNewsButton
   // })
   console.log("hello")
 }
@@ -83,13 +83,13 @@ setCurrentNews = (article) => {
 //     // cryptosAreLoading: true,
 //     currentNews: null,
 //     lookingAtSingleNews: false,
-//     hasClickedNews: true
+//     hasClickedNewsButton: true
 //   })
 // }
 
 // setNews = () => {
 //   this.setState({
-//     hasClickedNews: true
+//     hasClickedNewsButton: true
 //   })
 // }
 
@@ -97,6 +97,8 @@ returnHomeNews = () => {
   this.setState({
     currentNews: null,
     lookingAtSingleNews: false,
-    hasClickedNews: false
+    hasClickedNewsButton: false
   })
 }
+
+  {this.renderNews()}

@@ -8,7 +8,6 @@ class NewsContainer extends Component {
       <div className="articles">
       <h1 className="ccHeader">News Stories</h1>
       <button className="CCbutton" onClick={this.props.returnHomeNews}>Return to homepage</button>
-
         <div>
 
         {
