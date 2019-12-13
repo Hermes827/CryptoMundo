@@ -43,7 +43,7 @@ class App extends React.Component{
       lookingAtSingleCrypto: false,
       cryptosAreLoading: false,
       news: [],
-      hasClickedNewsButton: false,
+      hasClickedNewsDBButton: false,
       currentNewsArticle: {},
       lookingAtSingleNewsArticle: false,
       hasClickedSettings: false
@@ -338,86 +338,77 @@ class App extends React.Component{
 
 setNewsState = () => {
   this.setState({
-    hasClickedNewsButton: true
+    hasClickedNewsDBButton: true
   })
 }
 
-
-returnHomeNews = () => {
+returnToHomepageFromNewsContainer = () => {
   this.setState({
     currentNewsArticle: null,
     lookingAtSingleNewsArticle: false,
-    hasClickedNewsButton: false
+    hasClickedNewsDBButton: false
   })
-  this.props.history.push('/dashboard')
+  this.props.history.push('/dashboard') //optional, will keep for right now
 }
 
-  // toggleNews = () => {  this function might be useless
-  //   this.setState({
-  //     hasClickedNewsButton: !this.state.hasClickedNewsButton
-  //   })
-  // }
+// toggleNews = () => {  //this function might be useless
+//   this.setState({
+//     hasClickedNewsDBButton: !this.state.hasClickedNewsDBButton
+//   })
+// }
 
-  setCurrentNewsArticle = (article) => {
-    this.setState({
-      currentNewsArticle: article,
-      lookingAtSingleNewsArticle: true
-    })
-  }
+setCurrentNewsArticle = (article) => {
+  this.setState({
+    currentNewsArticle: article,
+    lookingAtSingleNewsArticle: true
+  })
+}
 
-  // returnHomeNews = () => {
-  //   console.log("hello")
-  //   this.setState({
-  //     // cryptosAreLoading: true,
-  //     currentNewsArticle: null,
-  //     lookingAtSingleNewsArticle: false,
-  //     hasClickedNewsButton: true
-  //   })
-  // }
+// returnToHomepageFromNewsContainer = () => {  //whats the purpose of cryptos are loading?
+//   console.log("hello")
+//   this.setState({
+//     // cryptosAreLoading: true,
+//     currentNewsArticle: null,
+//     lookingAtSingleNewsArticle: false,
+//     hasClickedNewsDBButton: true
+//   })
+// }
 
 returnToNewsContainer = () => {
   this.setState({
     currentNewsArticle: null,
     lookingAtSingleNewsArticle: false,
-    // hasClickedNewsButton: true
+    // hasClickedNewsDBButton: true
   })
 }
 
 renderNews = () => {
-  const {news, currentNewsArticle, lookingAtSingleNewsArticle, hasClickedNewsButton} = this.state
-  if(hasClickedNewsButton === true){
-    return <NewsContainer
-            returnHomeNews={this.returnHomeNews}
-            toggleNews={this.toggleNews}
-            setCurrentNewsArticle={this.setCurrentNewsArticle}
-            news={news}
-            currentNewsArticle={currentNewsArticle}
-            lookingAtSingleNewsArticle={lookingAtSingleNewsArticle}
-            />
+const {news, currentNewsArticle, lookingAtSingleNewsArticle, hasClickedNewsDBButton} = this.state
+if(hasClickedNewsDBButton === true){
+    return (
+      <NewsContainer
+        returnToHomepageFromNewsContainer={this.returnToHomepageFromNewsContainer}
+        setCurrentNewsArticle={this.setCurrentNewsArticle}
+        news={news}
+        currentNewsArticle={currentNewsArticle}
+        lookingAtSingleNewsArticle={lookingAtSingleNewsArticle}
+      />
+        )
   }
 }
 
 renderDetailedNewsView = () => {
-  const {news, currentNewsArticle, lookingAtSingleNewsArticle} = this.state
-  if(lookingAtSingleNewsArticle === true) {
-    return(
-      <div>
-        {/*<NewsContainer
-          returnHomeNews={this.returnHomeNews}
-          toggleNews={this.toggleNews}
-          setCurrentNewsArticle={this.setCurrentNewsArticle}
-          news={news}
-          currentNewsArticle={currentNewsArticle}
-          lookingAtSingleNewsArticle={lookingAtSingleNewsArticle}
-          />*/}
+const {news, currentNewsArticle, lookingAtSingleNewsArticle} = this.state
+if(lookingAtSingleNewsArticle === true) {
+    return (
           <ArticleView
           currentNewsArticle={currentNewsArticle}
           returnToNewsContainer={this.returnToNewsContainer}
-        />
-      </div>
+          />
         )
   }
 }
+
 
 ///////////////////////////////////////////////////////////////////////////////
 
@@ -473,11 +464,9 @@ setEdit = () => {
                                                          />
                                                        <Route exact path="/update_profile" render={() => this.renderEditUser()}/>
         </main>
-
       </div>
     );
   }
-
 }
 
 export default withRouter(App);

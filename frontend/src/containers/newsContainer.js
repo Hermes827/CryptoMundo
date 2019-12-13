@@ -7,7 +7,7 @@ class NewsContainer extends Component {
     return (
       <div className="articles">
       <h1 className="ccHeader">News Stories</h1>
-      <button className="CCbutton" onClick={this.props.returnHomeNews}>Return to homepage</button>
+      <button className="CCbutton" onClick={this.props.returnToHomepageFromNewsContainer}>Return to homepage</button>
         <div>
 
         {
@@ -15,7 +15,7 @@ class NewsContainer extends Component {
             return <Article
                     className="article"
                     article={article}
-                    toggleNews={this.props.toggleNews}
+                    
                     setCurrentNewsArticle={this.props.setCurrentNewsArticle}
                     />
           })

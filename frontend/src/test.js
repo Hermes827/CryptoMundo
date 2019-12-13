@@ -25,7 +25,7 @@ function changeState(state, action){
 //     return(
 //       <div>
 //         <NewsContainer
-//                 returnHomeNews={this.returnHomeNews}
+//                 returnToHomepageFromNewsContainer={this.returnToHomepageFromNewsContainer}
 //                 toggleNews={this.toggleNews}
 //                 setCurrentNewsArticle={this.setCurrentNewsArticle}
 //                 news={news}
@@ -43,9 +43,9 @@ function changeState(state, action){
 
 // renderNews = () => {
 //   const {news} = this.state
-//   if(this.state.hasClickedNewsButton === true){
+//   if(this.state.hasClickedNewsDBButton === true){
 //     return <NewsContainer
-//             returnHomeNews={this.returnHomeNews}
+//             returnToHomepageFromNewsContainer={this.returnToHomepageFromNewsContainer}
 //             toggleNews={this.toggleNews}
 //             setCurrentNewsArticle={this.setCurrentNewsArticle}
 //             news={news}
@@ -59,13 +59,13 @@ returnToNewsContainer = () => {
   this.setState({
     currentNewsArticle: null,
     lookingAtSingleNewsArticle: false,
-    hasClickedNewsButton: true
+    hasClickedNewsDBButton: true
   })
 }
 
 toggleNews = () => {
   // this.setState({
-  //   hasClickedNewsButton: !this.state.hasClickedNewsButton
+  //   hasClickedNewsDBButton: !this.state.hasClickedNewsDBButton
   // })
   console.log("hello")
 }
@@ -77,27 +77,27 @@ setCurrentNewsArticle = (article) => {
   })
 }
 
-// returnHomeNews = () => {
+// returnToHomepageFromNewsContainer = () => {
 //   console.log("hello")
 //   this.setState({
 //     // cryptosAreLoading: true,
 //     currentNewsArticle: null,
 //     lookingAtSingleNewsArticle: false,
-//     hasClickedNewsButton: true
+//     hasClickedNewsDBButton: true
 //   })
 // }
 
 // setNewsState = () => {
 //   this.setState({
-//     hasClickedNewsButton: true
+//     hasClickedNewsDBButton: true
 //   })
 // }
 
-returnHomeNews = () => {
+returnToHomepageFromNewsContainer = () => {
   this.setState({
     currentNewsArticle: null,
     lookingAtSingleNewsArticle: false,
-    hasClickedNewsButton: false
+    hasClickedNewsDBButton: false
   })
 }
 
