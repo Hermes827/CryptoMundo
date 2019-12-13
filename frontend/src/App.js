@@ -14,21 +14,23 @@ import ArticleView from './components/articleView'
 
 const USER_URL = "http://localhost:3000/api/v1/users"
 const LOGIN_URL = "http://localhost:3000/api/v1/login"
-const currentDate = ""
 const newsAPI = "https://newsapi.org/v2/everything?q=cryptocurrency&from=2019-12-10&sortBy=publishedAt&apiKey=e17454af05b842518705a1a4960a4f94"
+
+// ^I have to keep API up here, for some reason when I move the const closer to the function  using it
+// it breaks the app.
 
 class App extends React.Component{
 
-  componentDidMount(){
-    fetch(newsAPI)
-      .then(res => res.json())
-      .then(data => {
-        this.setState({
-          news: data.articles
-        })
-        console.log(data.articles)
-      })
-  }
+  // componentDidMount(){
+  //   fetch(newsAPI)
+  //     .then(res => res.json())
+  //     .then(data => {
+  //       this.setState({
+  //         news: data.articles
+  //       })
+  //       console.log(data.articles)
+  //     })
+  // }
 
   constructor(props){
     super(props)
@@ -43,7 +45,7 @@ class App extends React.Component{
       lookingAtSingleCrypto: false,
       cryptosAreLoading: false,
       news: [],
-      hasClickedNewsDBButton: false,
+
       currentNewsArticle: {},
       lookingAtSingleNewsArticle: false,
       hasClickedSettings: false
@@ -336,26 +338,24 @@ class App extends React.Component{
 
 //  news
 
-setNewsState = () => {
-  this.setState({
-    hasClickedNewsDBButton: true
-  })
+getNews = () => {
+  fetch(newsAPI)
+    .then(res => res.json())
+    .then(data => {
+      this.setState({
+        news: data.articles
+      })
+      console.log(data.articles)
+    })
 }
 
 returnToHomepageFromNewsContainer = () => {
   this.setState({
     currentNewsArticle: null,
-    lookingAtSingleNewsArticle: false,
-    hasClickedNewsDBButton: false
+    lookingAtSingleNewsArticle: false
   })
-  this.props.history.push('/dashboard') //optional, will keep for right now
+  this.props.history.push('/dashboard')
 }
-
-// toggleNews = () => {  //this function might be useless
-//   this.setState({
-//     hasClickedNewsDBButton: !this.state.hasClickedNewsDBButton
-//   })
-// }
 
 setCurrentNewsArticle = (article) => {
   this.setState({
@@ -364,37 +364,11 @@ setCurrentNewsArticle = (article) => {
   })
 }
 
-// returnToHomepageFromNewsContainer = () => {  //whats the purpose of cryptos are loading?
-//   console.log("hello")
-//   this.setState({
-//     // cryptosAreLoading: true,
-//     currentNewsArticle: null,
-//     lookingAtSingleNewsArticle: false,
-//     hasClickedNewsDBButton: true
-//   })
-// }
-
 returnToNewsContainer = () => {
   this.setState({
     currentNewsArticle: null,
-    lookingAtSingleNewsArticle: false,
-    // hasClickedNewsDBButton: true
+    lookingAtSingleNewsArticle: false
   })
-}
-
-renderNews = () => {
-const {news, currentNewsArticle, lookingAtSingleNewsArticle, hasClickedNewsDBButton} = this.state
-if(hasClickedNewsDBButton === true){
-    return (
-      <NewsContainer
-        returnToHomepageFromNewsContainer={this.returnToHomepageFromNewsContainer}
-        setCurrentNewsArticle={this.setCurrentNewsArticle}
-        news={news}
-        currentNewsArticle={currentNewsArticle}
-        lookingAtSingleNewsArticle={lookingAtSingleNewsArticle}
-      />
-        )
-  }
 }
 
 renderDetailedNewsView = () => {
@@ -408,7 +382,6 @@ if(lookingAtSingleNewsArticle === true) {
         )
   }
 }
-
 
 ///////////////////////////////////////////////////////////////////////////////
 
@@ -439,20 +412,23 @@ setEdit = () => {
     return (
       <div className="App">
         <Route path='/' render={() => <Banner current_user={this.state.current_user}
-
-
                                               logout={this.logout}
                                               displayUserCryptos={this.displayUserCryptos}
                                               returnMainMenu={this.returnMainMenu}
                                               returnMainMenu1={this.returnMainMenu1}
                                               onCryptos={this.state.hasClickedMyCryptos}
-                                              setNewsState={this.setNewsState}
+                                              getNews={this.getNews}
                                               setEdit={this.setEdit}
-
                                               />}/>
         <main className="main">
-          <Route exact path="/news" render={() => this.renderDetailedNewsView()} />
-          {this.renderNews()}
+          <Route exact path="/news" render={() => <NewsContainer
+                                                      returnToHomepageFromNewsContainer={this.returnToHomepageFromNewsContainer}
+                                                      setCurrentNewsArticle={this.setCurrentNewsArticle}
+                                                      news={this.state.news}
+                                                      currentNewsArticle={this.state.currentNewsArticle}
+                                                      lookingAtSingleNewsArticle={this.state.lookingAtSingleNewsArticle}
+                                                />}/>
+                                                {this.renderDetailedNewsView()}
           <Route exact path="/login" render={() => <Login attemptLogin={this.attemptLogin}/>}/>
           <Route exact path="/user_signup" render={() => <NewUserForm createNewUser={this.createNewUser}/>}/>
           <Route path='/my-crypto' render={() => this.renderDetailedView()} />

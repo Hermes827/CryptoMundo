@@ -3,6 +3,16 @@ import Article from '../components/article'
 
 class NewsContainer extends Component {
 
+
+// constructor(){
+//   props()
+//   this.state = {
+//     news: []
+//   }
+// }
+//
+
+
   render(){
     return (
       <div className="articles">
