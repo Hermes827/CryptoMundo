@@ -1,7 +1,7 @@
 import React from 'react'
 import UserCrypto from '../components/UserCrypto'
 
-class UserCryptos extends React.Component {
+class UserCryptoContainer extends React.Component {
 
 getPrices = () => {
   const values = []
@@ -85,4 +85,4 @@ return result
 
 }
 
-export default UserCryptos
+export default UserCryptoContainer
