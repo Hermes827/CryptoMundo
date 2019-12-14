@@ -14,8 +14,9 @@ import ArticleView from './components/articleView'
 import {NEWS_API} from './constants'
 import {USER_URL} from './constants'
 import {LOGIN_URL} from './constants'
+import {PROFILE} from './constants'
 
-class App extends React.Component{
+class App extends React.Component {
 
   constructor(props){
     super(props)
@@ -134,31 +135,7 @@ class App extends React.Component{
 
 ///////////////////////////////////////////////////////////////////////////////
 
-  displayUserCryptos = () => {
-    if(!localStorage.token){return}
-    fetch("http://localhost:3000/api/v1/profile", {
-      method: "GET",
-      headers: {
-        'Authorization': "Bearer " + localStorage.token,
-      }
-    })
-    .then(res => res.json())
-    .then(data => {
-      this.setState({
-        userCryptos: data.user.cryptos,
-        hasClickedMyCryptos: !this.state.hasClickedMyCryptos,
-        cryptosAreLoading: false
-      })
-      console.log(data)
-    })
-  }
 
-
-  toggleMyCryptos() {
-    this.setState({
-      hasClickedMyCryptos: !this.state.hasClickedMyCryptos
-    })
-  }
 
   //////////////////////////////////////////////////////////////////////////////
 
@@ -192,6 +169,33 @@ class App extends React.Component{
   }
 
   ////////////////////////////////////////////////////////////////////////////
+
+  // Usercrypto
+
+  displayUserCryptos = () => {
+    if(!localStorage.token){return}
+    fetch("http://localhost:3000/api/v1/profile", {
+      method: "GET",
+      headers: {
+        'Authorization': "Bearer " + localStorage.token,
+      }
+    })
+    .then(res => res.json())
+    .then(data => {
+      this.setState({
+        userCryptos: data.user.cryptos,
+        hasClickedMyCryptos: !this.state.hasClickedMyCryptos,
+        cryptosAreLoading: false
+      })
+    })
+  }
+
+
+  toggleMyCryptos() {
+    this.setState({
+      hasClickedMyCryptos: !this.state.hasClickedMyCryptos
+    })
+  }
 
   setCurrentCrypto = (crypto) => {
     this.setState({
@@ -329,16 +333,7 @@ getNews = () => {
       this.setState({
         news: data.articles
       })
-      console.log(data.articles)
     })
-}
-
-returnToHomepageFromNewsContainer = () => {
-  this.setState({
-    currentNewsArticle: null,
-    lookingAtSingleNewsArticle: false
-  })
-  this.props.history.push('/dashboard')
 }
 
 setCurrentNewsArticle = (article) => {
@@ -348,15 +343,8 @@ setCurrentNewsArticle = (article) => {
   })
 }
 
-returnToNewsContainer = () => {
-  this.setState({
-    currentNewsArticle: null,
-    lookingAtSingleNewsArticle: false
-  })
-}
-
 renderDetailedNewsView = () => {
-const {news, currentNewsArticle, lookingAtSingleNewsArticle} = this.state
+const {currentNewsArticle, lookingAtSingleNewsArticle} = this.state
 if(lookingAtSingleNewsArticle === true) {
     return (
           <ArticleView
@@ -367,6 +355,20 @@ if(lookingAtSingleNewsArticle === true) {
   }
 }
 
+returnToNewsContainer = () => {
+  this.setState({
+    currentNewsArticle: null,
+    lookingAtSingleNewsArticle: false
+  })
+}
+
+returnToHomepageFromNewsContainer = () => {
+  this.setState({
+    currentNewsArticle: null,
+    lookingAtSingleNewsArticle: false
+  })
+  this.props.history.push('/dashboard')
+}
 ///////////////////////////////////////////////////////////////////////////////
 
 renderEditUser = () => {
@@ -395,15 +397,16 @@ setEdit = () => {
 
     return (
       <div className="App">
-        <Route path='/' render={() => <Banner current_user={this.state.current_user}
-                                              logout={this.logout}
-                                              displayUserCryptos={this.displayUserCryptos}
-                                              returnMainMenu={this.returnMainMenu}
-                                              returnMainMenu1={this.returnMainMenu1}
-                                              onCryptos={this.state.hasClickedMyCryptos}
-                                              getNews={this.getNews}
-                                              setEdit={this.setEdit}
-                                              />}/>
+        <Route path='/' render={() => <Banner
+                                          current_user={this.state.current_user}
+                                          logout={this.logout}
+                                          displayUserCryptos={this.displayUserCryptos}
+                                          returnMainMenu={this.returnMainMenu}
+                                          returnMainMenu1={this.returnMainMenu1}
+                                          hasClickedMyCryptos={this.state.hasClickedMyCryptos}
+                                          getNews={this.getNews}
+                                          setEdit={this.setEdit}
+                                      />}/>
         <main className="main">
           <Route exact path="/news" render={() => <NewsContainer
                                                       returnToHomepageFromNewsContainer={this.returnToHomepageFromNewsContainer}
@@ -411,7 +414,7 @@ setEdit = () => {
                                                       news={this.state.news}
                                                       currentNewsArticle={this.state.currentNewsArticle}
                                                       lookingAtSingleNewsArticle={this.state.lookingAtSingleNewsArticle}
-                                                />}/>
+                                                  />}/>
                                                 {this.renderDetailedNewsView()}
           <Route exact path="/login" render={() => <Login attemptLogin={this.attemptLogin}/>}/>
           <Route exact path="/user_signup" render={() => <NewUserForm createNewUser={this.createNewUser}/>}/>
