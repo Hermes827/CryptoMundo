@@ -7,7 +7,7 @@ import {withRouter} from 'react-router';
 import Dashboard from './containers/Dashboard'
 import EditUserContainer from './containers/EditUserContainer'
 import './App.css';
-import UserCryptos from './containers/UserCryptos'
+import UserCryptosContainer from './containers/UserCryptosContainer'
 import UserCryptoDetailedView from './components/UserCryptoDetailedView'
 import NewsContainer from './containers/newsContainer'
 import ArticleView from './components/articleView'
@@ -218,7 +218,7 @@ class App extends React.Component {
   renderUserCryptos = () => {
     const {userCryptos} = this.state
     if(this.state.hasClickedMyCryptos === true &&!this.state.cryptosAreLoading) {
-      return <UserCryptos
+      return <UserCryptosContainer
               returnHome={this.returnHome}
               toggleCryptos={this.toggleMyCryptos}
               userCryptos={userCryptos}
@@ -245,7 +245,7 @@ class App extends React.Component {
     if(this.state.lookingAtSingleCrypto === true) {
       return(
         <div>
-              <UserCryptos
+              <UserCryptosContainer
               returnHome={this.returnHome}
               toggleCryptos={this.toggleMyCryptos}
               userCryptos={userCryptos}
