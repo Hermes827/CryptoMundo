@@ -3,15 +3,13 @@ import {Link, withRouter} from 'react-router-dom'
 
 class Banner extends Component {
 
-
   constructor(props){
     super(props)
-    this.state = {
-      active: this.props.onCryptos ? "cryptos" : "main"
-    }
 
-    this.selectMain = this.selectMain.bind(this)
-    this.selectCryptos = this.selectCryptos.bind(this)
+    this.state = {
+      active: this.props.hasClickedMyCryptos ? "cryptos" : "main"
+    }
+    
   }
 
   userIsLoggedIn(){
@@ -19,26 +17,22 @@ class Banner extends Component {
   }
 
   static getDerivedStateFromProps(props, state){
-    return {active: props.onCryptos ? "cryptos" : "main"}
+    return {active: props.hasClickedMyCryptos ? "cryptos" : "main"}
   }
 
-  selectMain(ev){
+  selectMain = (ev) => {
     this.setState({
       active: "main"
     })
     this.props.returnMainMenu(ev)
   }
 
-  selectCryptos(ev){
+  selectCryptos = (ev) => {
     this.setState({
       active: "cryptos"
     })
     this.props.displayUserCryptos(ev)
   }
-
-  // setNewsState = () => {
-  //   console.log("hello")
-  // }
 
   render(){
     return <div className="ui attached top">
@@ -54,11 +48,12 @@ class Banner extends Component {
           My Cryptos
         </a>
         </div>
+
         <div className="right menu">
           {!this.userIsLoggedIn() &&
             <>
             <div className="news">
-            <Link to="/news"><div className="ui button" onClick={this.props.setNewsState}>News</div></Link>
+            <Link to="/news"><div className="ui button" onClick={this.props.getNews}>News</div></Link>
             </div>
             <div className="signup1">
             <Link to='/user_signup'><div className="ui primary button">Sign up</div></Link>
@@ -69,11 +64,13 @@ class Banner extends Component {
             </div>
           </>
           }
+
           {this.userIsLoggedIn() && <div className="news1">
                                       <div>
-                                      <Link to="/news"><div className="ui button"  onClick={this.props.setNewsState}>News</div></Link>
+                                      <Link to="/news"><div className="ui button" onClick={this.props.getNews}>News</div></Link>
                                       </div>
                                     </div>}
+
           {this.userIsLoggedIn() && <div className="settings1">
                                         <div onClick={() => this.props.history.push('/update_profile')} className="ui button">
                                           <div onClick={this.props.setEdit}>
@@ -81,22 +78,16 @@ class Banner extends Component {
                                           </div>
                                         </div>
                                     </div>}
+
           {this.userIsLoggedIn() && <div className="logout1"><div onClick={this.props.logout} className="ui primary button">Log Out</div></div>}
 
           <div className="item">
-
           </div>
         </div>
       </div>
-
-
     </div>;
   }
 }
 
 export default withRouter(Banner)
-
-
-
-
     // { this.userIsLoggedIn() && <div className="item">Welcome, {this.props.current_user.username}</div>}
