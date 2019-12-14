@@ -11,26 +11,11 @@ import UserCryptos from './containers/UserCryptos'
 import UserCryptoDetailedView from './components/UserCryptoDetailedView'
 import NewsContainer from './containers/newsContainer'
 import ArticleView from './components/articleView'
-
-const USER_URL = "http://localhost:3000/api/v1/users"
-const LOGIN_URL = "http://localhost:3000/api/v1/login"
-const newsAPI = "https://newsapi.org/v2/everything?q=cryptocurrency&from=2019-12-10&sortBy=publishedAt&apiKey=e17454af05b842518705a1a4960a4f94"
-
-// ^I have to keep API up here, for some reason when I move the const closer to the function  using it
-// it breaks the app.
+import {NEWS_API} from './constants'
+import {USER_URL} from './constants'
+import {LOGIN_URL} from './constants'
 
 class App extends React.Component{
-
-  // componentDidMount(){
-  //   fetch(newsAPI)
-  //     .then(res => res.json())
-  //     .then(data => {
-  //       this.setState({
-  //         news: data.articles
-  //       })
-  //       console.log(data.articles)
-  //     })
-  // }
 
   constructor(props){
     super(props)
@@ -45,7 +30,6 @@ class App extends React.Component{
       lookingAtSingleCrypto: false,
       cryptosAreLoading: false,
       news: [],
-
       currentNewsArticle: {},
       lookingAtSingleNewsArticle: false,
       hasClickedSettings: false
@@ -339,7 +323,7 @@ class App extends React.Component{
 //  news
 
 getNews = () => {
-  fetch(newsAPI)
+  fetch(NEWS_API)
     .then(res => res.json())
     .then(data => {
       this.setState({
