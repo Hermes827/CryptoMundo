@@ -20,12 +20,12 @@ class Banner extends Component {
     // return {active: props.hasClickedMyCryptos ? "cryptos" : "main"}
   }
 
-  selectMain = (ev) => {
-    // this.setState({
-    //   active: "main"
-    // })
-    this.props.returnMainMenu(ev)
-  }
+  // selectMain = (ev) => {
+  //   // this.setState({
+  //   //   active: "main"
+  //   // })
+  //   this.props.returnMainMenu(ev)
+  // }
 
   // selectCryptos = () => {
   //   // this.setState({ not necessary I guess

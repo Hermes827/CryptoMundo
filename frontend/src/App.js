@@ -239,7 +239,7 @@ class App extends React.Component {
   }
 
 
-  renderDetailedView = () => {
+  renderDetailedUserCryptoView = () => {
     const {userCryptos, currentCrypto, lookingAtSingleCrypto} = this.state
     if(lookingAtSingleCrypto === true) {
       return(
@@ -271,18 +271,17 @@ class App extends React.Component {
     })
   }
 
-  returnMainMenu = () => {
-    this.setState({
-      // hasClickedMyCryptos: false,
-      lookingAtSingleCrypto: false
-    })
-    this.props.history.push('/dashboard')
-  }
+  // returnMainMenu = () => {
+  //   this.setState({
+  //     // hasClickedMyCryptos: false,
+  //     lookingAtSingleCrypto: false
+  //   })
+  //   this.props.history.push('/dashboard')
+  // }
 
   returnHome = () => {
-    console.log("hello")
     this.setState({
-      cryptosAreLoading: true,
+      // cryptosAreLoading: true,
       currentCrypto: null,
       lookingAtSingleCrypto: false,
       // hasClickedMyCryptos: true
@@ -399,9 +398,6 @@ setEdit = () => {
                                           current_user={this.state.current_user}
                                           logout={this.logout}
                                           displayUserCryptos={this.displayUserCryptos}
-                                          returnMainMenu={this.returnMainMenu}
-                                          returnMainMenu1={this.returnMainMenu1}
-
                                           getNews={this.getNews}
                                           setEdit={this.setEdit}
                                       />}/>
@@ -422,7 +418,7 @@ setEdit = () => {
                                                       userCryptos={this.state.userCryptos}
                                                       setCurrentCrypto={this.setCurrentCrypto}
                                                       />}/>
-                                                      {this.renderDetailedView()}
+                                                      {this.renderDetailedUserCryptoView()}
           <Route exact path="/dashboard" render={() =>  <Dashboard
                                                          setFeedback={this.setFeedback}
                                                          feedback={this.state.feedback}
