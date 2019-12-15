@@ -16,9 +16,9 @@ class Banner extends Component {
     return this.props.current_user.username
   }
 
-  static getDerivedStateFromProps(props, state){
-    // return {active: props.hasClickedMyCryptos ? "cryptos" : "main"}
-  }
+  // static getDerivedStateFromProps(props, state){
+  //   // return {active: props.hasClickedMyCryptos ? "cryptos" : "main"}
+  // }
 
   // selectMain = (ev) => {
   //   // this.setState({
@@ -62,10 +62,8 @@ class Banner extends Component {
               <Link to="/news"><div className="ui button" onClick={this.props.getNews}>News</div></Link>
               </div>
 
-                <div onClick={() => this.props.history.push('/update_profile')} className="ui button">
-                  <div onClick={this.props.setEdit}>
-                  Settings
-                  </div>
+                <div className="ui button">
+                  <Link to="/update_profile"><div>Settings</div></Link>
                 </div>
 
                 <div onClick={this.props.logout} className="ui primary button">
