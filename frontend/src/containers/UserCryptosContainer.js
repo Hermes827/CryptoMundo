@@ -62,7 +62,7 @@ return result
         return <UserCrypto
                 countCrypto={this.countCrypto}
                 key={"user-"+crypto.name+"-"+crypto.id}
-                toggleCryptos={this.props.toggleCryptos}
+              
                 crypto={crypto}
                 setCurrentCrypto={this.props.setCurrentCrypto}
                 />

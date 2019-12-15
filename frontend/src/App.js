@@ -42,7 +42,7 @@ class App extends React.Component {
     this.logout = this.logout.bind(this)
     this.updateUser = this.updateUser.bind(this)
     this.deleteUser = this.deleteUser.bind(this)
-    this.toggleMyCryptos = this.toggleMyCryptos.bind(this)
+    // this.toggleMyCryptos = this.toggleMyCryptos.bind(this)
     this.setError = this.setError.bind(this)
     this.setFeedback = this.setFeedback.bind(this)
 
@@ -191,11 +191,11 @@ class App extends React.Component {
   }
 
 
-  toggleMyCryptos() {
-    this.setState({
-      // hasClickedMyCryptos: !this.state.hasClickedMyCryptos
-    })
-  }
+  // toggleMyCryptos() {
+  //   this.setState({
+  //     // hasClickedMyCryptos: !this.state.hasClickedMyCryptos
+  //   })
+  // }
 
   setCurrentCrypto = (crypto) => {
     this.setState({
@@ -203,7 +203,6 @@ class App extends React.Component {
       lookingAtSingleCrypto: true
     })
     this.props.history.push('/my-crypto/' + crypto.id)
-
   }
 
   setCurrentCrypto1 = (crypto) => {
@@ -212,7 +211,6 @@ class App extends React.Component {
       lookingAtSingleCrypto: true
     })
     // this.props.history.push('/my-crypto/' + crypto.id)
-
   }
 
   // renderUserCryptos = () => {
@@ -287,38 +285,31 @@ class App extends React.Component {
       // hasClickedMyCryptos: true
     })
     this.props.history.push('/dashboard')
-
   }
 
 
   deleteCrypto = (crypto) => {
-    const cryptoId = crypto.id
-    fetch("http://localhost:3000/api/v1/remove_crypto/"+ cryptoId, {
+    fetch("http://localhost:3000/api/v1/remove_crypto/"+ crypto.id, {
       method: "DELETE",
       headers: {
         'Authorization': "Bearer " + localStorage.token
       },
-      body: JSON.stringify({crypto_id: cryptoId})
+      body: JSON.stringify({crypto_id: crypto.id})
     })
     .then(res => res.json())
     .then(data => {
       let cryptoNames = data.user.cryptos.map((crypto) => {
         return crypto.name
       })
-      // console.log(cryptoNames)
-      // console.log(data.user.cryptos)
       if(!cryptoNames.includes(crypto.name)){
         setTimeout(() => this.setState({
           currentCrypto: null,
           lookingAtSingleCrypto: false,
         }), 2000)
       }
-
-
       this.setError(`Deleted ${crypto.name} from Cryptos`)
       this.displayUserCryptos()
     })
-
   }
 
 //  news
@@ -414,7 +405,7 @@ setEdit = () => {
           <Route exact path="/user_signup" render={() => <NewUserForm createNewUser={this.createNewUser}/>}/>
           <Route path='/my-crypto' render={() => <UserCryptosContainer
                                                       returnHome={this.returnHome}
-                                                      toggleCryptos={this.toggleMyCryptos}
+
                                                       userCryptos={this.state.userCryptos}
                                                       setCurrentCrypto={this.setCurrentCrypto}
                                                       />}/>
