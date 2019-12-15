@@ -26,7 +26,7 @@ class App extends React.Component {
       error: "",
       feedback: "",
       userCryptos: [],
-      hasClickedMyCryptos: false,
+      // hasClickedMyCryptos: false,
       currentCrypto: {},
       lookingAtSingleCrypto: false,
       cryptosAreLoading: false,
@@ -113,7 +113,7 @@ class App extends React.Component {
   logout(){
     this.setState({
       current_user: {},
-      hasClickedMyCryptos: false,
+      // hasClickedMyCryptos: false,
       currentCrypto: {},
       lookingAtSingleCrypto: false
     })
@@ -184,7 +184,7 @@ class App extends React.Component {
     .then(data => {
       this.setState({
         userCryptos: data.user.cryptos,
-        hasClickedMyCryptos: !this.state.hasClickedMyCryptos,
+        // hasClickedMyCryptos: !this.state.hasClickedMyCryptos,
         cryptosAreLoading: false
       })
     })
@@ -193,7 +193,7 @@ class App extends React.Component {
 
   toggleMyCryptos() {
     this.setState({
-      hasClickedMyCryptos: !this.state.hasClickedMyCryptos
+      // hasClickedMyCryptos: !this.state.hasClickedMyCryptos
     })
   }
 
@@ -247,14 +247,13 @@ class App extends React.Component {
               <UserCryptoDetailedView
               countCrypto={this.countCrypto}
               currentCrypto={currentCrypto}
-              returnMyCryptos={this.returnMyCryptos}
+              returnToUserCryptosContainer={this.returnToUserCryptosContainer}
               deleteCrypto={this.deleteCrypto}
               error={this.state.error}
               />
         </div>
           )
     }
-
   }
 
   // <UserCryptosContainer
@@ -264,18 +263,17 @@ class App extends React.Component {
   // setCurrentCrypto={this.setCurrentCrypto}
   // />
 
-  returnMyCryptos = () => {
+  returnToUserCryptosContainer = () => {
     this.setState({
       currentCrypto: null,
       lookingAtSingleCrypto: false,
-      hasClickedMyCryptos: true
+      // hasClickedMyCryptos: true
     })
-    this.props.history.push('/dashboard')
   }
 
   returnMainMenu = () => {
     this.setState({
-      hasClickedMyCryptos: false,
+      // hasClickedMyCryptos: false,
       lookingAtSingleCrypto: false
     })
     this.props.history.push('/dashboard')
@@ -287,7 +285,7 @@ class App extends React.Component {
       cryptosAreLoading: true,
       currentCrypto: null,
       lookingAtSingleCrypto: false,
-      hasClickedMyCryptos: true
+      // hasClickedMyCryptos: true
     })
     this.props.history.push('/dashboard')
 
@@ -403,7 +401,7 @@ setEdit = () => {
                                           displayUserCryptos={this.displayUserCryptos}
                                           returnMainMenu={this.returnMainMenu}
                                           returnMainMenu1={this.returnMainMenu1}
-                                          hasClickedMyCryptos={this.state.hasClickedMyCryptos}
+
                                           getNews={this.getNews}
                                           setEdit={this.setEdit}
                                       />}/>

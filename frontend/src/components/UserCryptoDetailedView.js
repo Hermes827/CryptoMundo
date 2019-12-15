@@ -15,7 +15,7 @@ class UserCryptoDetailedView extends React.Component {
           <h3>Total Supply: {this.props.currentCrypto.supply}</h3>
           <h3>Daily High: {this.props.currentCrypto.highday}</h3>
           <h3>Daily Low: {this.props.currentCrypto.lowday}</h3>
-          <button className="returnButton" onClick={this.props.returnMyCryptos}>
+          <button className="returnButton" onClick={this.props.returnToUserCryptosContainer}>
             Return
           </button>
           &nbsp;
