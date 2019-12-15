@@ -61,6 +61,20 @@ class App extends React.Component {
     setTimeout(() => this.setState({error: ""}), 1500)
   }
 
+  renewState(){
+  if(!localStorage.token){return}
+  fetch("http://localhost:3000/api/v1/profile", {
+    method: "GET",
+    headers: {
+      'Authorization': "Bearer " + localStorage.token
+    }
+  })
+  .then(res => res.json())
+  .then(data => this.setActiveUser(data, "soft"))
+}
+
+  // user stuff
+
   createNewUser(user){
     fetch(USER_URL, {
       method: "POST",
@@ -73,23 +87,6 @@ class App extends React.Component {
     .then(data => {
       this.setActiveUser(data)
       this.props.history.push('/dashboard')
-    })
-  }
-
-  attemptLogin(user){
-    fetch(LOGIN_URL, {
-      method: "POST",
-      headers: {
-        "content-type": "application/json"
-      },
-      body: JSON.stringify({user})
-    })
-    .then(res => res.json())
-    .then(data => {
-      this.setActiveUser(data)
-      if(!data.message){
-        this.props.history.push('/dashboard')
-      }
     })
   }
 
@@ -106,35 +103,6 @@ class App extends React.Component {
       if(data.jwt){localStorage.token = data.jwt}
     }
   }
-
-  logout(){
-    this.setState({
-      current_user: {},
-      // hasClickedMyCryptos: false,
-      currentCrypto: {},
-      lookingAtSingleCrypto: false
-    })
-    delete localStorage.token
-    this.props.history.push('/login')
-  }
-
-  renewState(){
-  if(!localStorage.token){return}
-  fetch("http://localhost:3000/api/v1/profile", {
-    method: "GET",
-    headers: {
-      'Authorization': "Bearer " + localStorage.token
-    }
-  })
-  .then(res => res.json())
-  .then(data => this.setActiveUser(data, "soft"))
-}
-
-///////////////////////////////////////////////////////////////////////////////
-
-
-
-  //////////////////////////////////////////////////////////////////////////////
 
   updateUser(user){
     fetch(USER_URL + `/${user.id}`, {
@@ -155,6 +123,26 @@ class App extends React.Component {
     })
   }
 
+  renderEditUser = () => {
+  if(this.state.hasClickedSettings === true) {
+    return <EditUserContainer
+              current_user={this.state.current_user}
+              updateUser={this.updateUser}
+              deleteUser={this.deleteUser}
+              setEdit={this.setEdit}
+            />
+  }
+  }
+
+  setEdit = () => {
+    console.log("hello")
+    this.setState({
+      hasClickedSettings: !this.state.hasClickedSettings
+    })
+    this.props.history.push('/dashboard')
+
+  }
+
   deleteUser(id){
     fetch(USER_URL + `/${id}`, {
       method: "DELETE",
@@ -165,7 +153,35 @@ class App extends React.Component {
     .then( () => this.logout())
   }
 
-  ////////////////////////////////////////////////////////////////////////////
+  // login
+
+  attemptLogin(user){
+    fetch(LOGIN_URL, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json"
+      },
+      body: JSON.stringify({user})
+    })
+    .then(res => res.json())
+    .then(data => {
+      this.setActiveUser(data)
+      if(!data.message){
+        this.props.history.push('/dashboard')
+      }
+    })
+  }
+
+  logout(){
+    this.setState({
+      current_user: {},
+      // hasClickedMyCryptos: false,
+      currentCrypto: {},
+      lookingAtSingleCrypto: false
+    })
+    delete localStorage.token
+    this.props.history.push('/login')
+  }
 
   // Usercrypto
 
@@ -305,28 +321,6 @@ returnToHomepageFromNewsContainer = () => {
     lookingAtSingleNewsArticle: false
   })
   this.props.history.push('/dashboard')
-}
-
-// edit user
-
-renderEditUser = () => {
-if(this.state.hasClickedSettings === true) {
-  return <EditUserContainer
-            current_user={this.state.current_user}
-            updateUser={this.updateUser}
-            deleteUser={this.deleteUser}
-            setEdit={this.setEdit}
-          />
-}
-}
-
-setEdit = () => {
-  console.log("hello")
-  this.setState({
-    hasClickedSettings: !this.state.hasClickedSettings
-  })
-  this.props.history.push('/dashboard')
-
 }
 
 /////////////////////////////////////////////////////////////////////////////////
