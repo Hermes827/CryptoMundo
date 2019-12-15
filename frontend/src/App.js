@@ -215,17 +215,17 @@ class App extends React.Component {
 
   }
 
-  renderUserCryptos = () => {
-    const {userCryptos} = this.state
-    if(this.state.hasClickedMyCryptos === true &&!this.state.cryptosAreLoading) {
-      return <UserCryptosContainer
-              returnHome={this.returnHome}
-              toggleCryptos={this.toggleMyCryptos}
-              userCryptos={userCryptos}
-              setCurrentCrypto={this.setCurrentCrypto}
-              />
-    }
-  }
+  // renderUserCryptos = () => {
+  //   const {userCryptos} = this.state
+  //   if(this.state.hasClickedMyCryptos === true && !this.state.cryptosAreLoading) {
+  //     return <UserCryptosContainer
+  //             returnHome={this.returnHome}
+  //             toggleCryptos={this.toggleMyCryptos}
+  //             userCryptos={userCryptos}
+  //             setCurrentCrypto={this.setCurrentCrypto}
+  //             />
+  //   }
+  // }
 
   countCrypto = (cc) => {
     const cryptos = []
@@ -240,17 +240,10 @@ class App extends React.Component {
 
 
   renderDetailedView = () => {
-    const {userCryptos} = this.state
-    const {currentCrypto} = this.state
-    if(this.state.lookingAtSingleCrypto === true) {
+    const {userCryptos, currentCrypto, lookingAtSingleCrypto} = this.state
+    if(lookingAtSingleCrypto === true) {
       return(
         <div>
-              <UserCryptosContainer
-              returnHome={this.returnHome}
-              toggleCryptos={this.toggleMyCryptos}
-              userCryptos={userCryptos}
-              setCurrentCrypto={this.setCurrentCrypto}
-              />
               <UserCryptoDetailedView
               countCrypto={this.countCrypto}
               currentCrypto={currentCrypto}
@@ -263,6 +256,13 @@ class App extends React.Component {
     }
 
   }
+
+  // <UserCryptosContainer
+  // returnHome={this.returnHome}
+  // toggleCryptos={this.toggleMyCryptos}
+  // userCryptos={userCryptos}
+  // setCurrentCrypto={this.setCurrentCrypto}
+  // />
 
   returnMyCryptos = () => {
     this.setState({
@@ -407,7 +407,7 @@ setEdit = () => {
                                           getNews={this.getNews}
                                           setEdit={this.setEdit}
                                       />}/>
-        <main className="main">
+
           <Route exact path="/news" render={() => <NewsContainer
                                                       returnToHomepageFromNewsContainer={this.returnToHomepageFromNewsContainer}
                                                       setCurrentNewsArticle={this.setCurrentNewsArticle}
@@ -418,15 +418,20 @@ setEdit = () => {
                                                 {this.renderDetailedNewsView()}
           <Route exact path="/login" render={() => <Login attemptLogin={this.attemptLogin}/>}/>
           <Route exact path="/user_signup" render={() => <NewUserForm createNewUser={this.createNewUser}/>}/>
-          <Route path='/my-crypto' render={() => this.renderDetailedView()} />
-          {this.renderUserCryptos()}
+          <Route path='/my-crypto' render={() => <UserCryptosContainer
+                                                      returnHome={this.returnHome}
+                                                      toggleCryptos={this.toggleMyCryptos}
+                                                      userCryptos={this.state.userCryptos}
+                                                      setCurrentCrypto={this.setCurrentCrypto}
+                                                      />}/>
+                                                      {this.renderDetailedView()}
           <Route exact path="/dashboard" render={() =>  <Dashboard
                                                          setFeedback={this.setFeedback}
                                                          feedback={this.state.feedback}
                                                          />}
                                                          />
                                                        <Route exact path="/update_profile" render={() => this.renderEditUser()}/>
-        </main>
+
       </div>
     );
   }

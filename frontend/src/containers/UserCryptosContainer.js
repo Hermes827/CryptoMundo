@@ -21,7 +21,6 @@ countCrypto = (cc) => {
   this.props.userCryptos.map((crypto) => {
     if(cc.name === crypto.name) {
       cryptos.push(crypto)
-  
     }
   })
   return cryptos.length
@@ -49,16 +48,6 @@ for (const item of array) {
 }
 return result
 }
-
-// highday: "$ 8,250.00"
-// id: 1
-// image: "/media/19633/btc.png"
-// lowday: "$ 7,834.57"
-// market: "CryptoCompare Index"
-// name: "BTC"
-// price: "8129.49"
-// supply: "Ƀ 17,755,400.0"
-// volume: "$ 372,457,436.4"
 
   render(){
     return(

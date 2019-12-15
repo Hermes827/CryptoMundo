@@ -6,10 +6,10 @@ class Banner extends Component {
   constructor(props){
     super(props)
 
-    this.state = {
-      active: this.props.hasClickedMyCryptos ? "cryptos" : "main"
-    }
-    
+    // this.state = {
+    //   active: this.props.hasClickedMyCryptos ? "cryptos" : "main"
+    // }
+
   }
 
   userIsLoggedIn(){
@@ -21,40 +21,28 @@ class Banner extends Component {
   }
 
   selectMain = (ev) => {
-    this.setState({
-      active: "main"
-    })
+    // this.setState({
+    //   active: "main"
+    // })
     this.props.returnMainMenu(ev)
   }
 
-  selectCryptos = (ev) => {
-    this.setState({
-      active: "cryptos"
-    })
-    this.props.displayUserCryptos(ev)
-  }
+  // selectCryptos = () => {
+  //   // this.setState({ not necessary I guess
+  //   //   active: "cryptos"
+  //   // })
+  //   this.props.displayUserCryptos()
+  // }
 
   render(){
-    return <div className="ui attached top">
+    return (
+    <div>
 
       <div className="banner">
-        <div className="home">
-        <a href="#/" className={this.state.active === "main" ? 'item active' : "item"} onClick={this.selectMain}>
-          Home
-        </a>
-        </div>
-        <div  className="myCryptos">
-        <a href="#/" className={this.state.active === "cryptos" ? 'item active' : "item"} onClick={this.selectCryptos}>
-          My Cryptos
-        </a>
-        </div>
 
-        <div className="right menu">
+
           {!this.userIsLoggedIn() &&
-            <>
-            <div className="news">
-            <Link to="/news"><div className="ui button" onClick={this.props.getNews}>News</div></Link>
-            </div>
+            <div>
             <div className="signup1">
             <Link to='/user_signup'><div className="ui primary button">Sign up</div></Link>
             </div>
@@ -62,32 +50,48 @@ class Banner extends Component {
             <div className="login1">
             <Link to="/login"><div className="ui button">Login</div></Link>
             </div>
-          </>
+          </div>
           }
 
-          {this.userIsLoggedIn() && <div className="news1">
-                                      <div>
-                                      <Link to="/news"><div className="ui button" onClick={this.props.getNews}>News</div></Link>
-                                      </div>
-                                    </div>}
+          {this.userIsLoggedIn() &&
+            <div>
+              <div>
+              <Link to="/my-crypto"><div className="ui button" onClick={this.props.displayUserCryptos}>My Cryptos</div></Link>
+              </div>
 
-          {this.userIsLoggedIn() && <div className="settings1">
-                                        <div onClick={() => this.props.history.push('/update_profile')} className="ui button">
-                                          <div onClick={this.props.setEdit}>
-                                          Settings
-                                          </div>
-                                        </div>
-                                    </div>}
+                <div>
+                <Link to="/news"><div className="ui button" onClick={this.props.getNews}>News</div></Link>
+                </div>
 
-          {this.userIsLoggedIn() && <div className="logout1"><div onClick={this.props.logout} className="ui primary button">Log Out</div></div>}
+                  <div onClick={() => this.props.history.push('/update_profile')} className="ui button">
+                    <div onClick={this.props.setEdit}>
+                    Settings
+                    </div>
+                  </div>
 
-          <div className="item">
-          </div>
-        </div>
+                <div onClick={this.props.logout} className="ui primary button">
+                  Log Out
+                </div>
+              </div>
+                  }
       </div>
-    </div>;
+
+    </div>
+  )
   }
 }
 
 export default withRouter(Banner)
     // { this.userIsLoggedIn() && <div className="item">Welcome, {this.props.current_user.username}</div>}
+
+    // <div className="myCryptos">
+    // <a href="#/" onClick={this.selectCryptos}>
+    //   My Cryptos
+    // </a>
+    // </div>
+
+    // <div className="home">
+    // <a href="#/" className={this.state.active === "main" ? 'item active' : "item"} onClick={this.selectMain}>
+    //   Home
+    // </a>
+    // </div>
