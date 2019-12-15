@@ -105,7 +105,7 @@ returnHome = () => {
   }
 
 
-  renderDetailedView(){
+  renderDetailedUserCryptoView(){
     const {currentCrypto} = this.state
     if(this.state.lookingAtSingleCrypto === true) {
       return <DetailedView
@@ -134,7 +134,7 @@ returnHome = () => {
 
           <br/>
           </div>
-          {this.renderDetailedView()}
+          {this.renderDetailedUserCryptoView()}
         </div>
     );
   }

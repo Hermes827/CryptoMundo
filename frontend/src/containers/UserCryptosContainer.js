@@ -1,7 +1,7 @@
 import React from 'react'
 import UserCrypto from '../components/UserCrypto'
 
-class UserCryptos extends React.Component {
+class UserCryptosContainer extends React.Component {
 
 getPrices = () => {
   const values = []
@@ -21,7 +21,6 @@ countCrypto = (cc) => {
   this.props.userCryptos.map((crypto) => {
     if(cc.name === crypto.name) {
       cryptos.push(crypto)
-  
     }
   })
   return cryptos.length
@@ -50,30 +49,18 @@ for (const item of array) {
 return result
 }
 
-// highday: "$ 8,250.00"
-// id: 1
-// image: "/media/19633/btc.png"
-// lowday: "$ 7,834.57"
-// market: "CryptoCompare Index"
-// name: "BTC"
-// price: "8129.49"
-// supply: "Ƀ 17,755,400.0"
-// volume: "$ 372,457,436.4"
-
   render(){
     return(
       <div className="userCryptos">
       <h1 className="ccHeader">My Cryptocurrencies</h1>
       <h1 className="">Total portfolio value: ${this.getPrices()}</h1>
       <button className="CCbutton" onClick={this.props.returnHome}>Return to homepage</button>
-
       <div>
 
       {this.distinctCrypto().map((crypto)=>{
         return <UserCrypto
                 countCrypto={this.countCrypto}
                 key={"user-"+crypto.name+"-"+crypto.id}
-                toggleCryptos={this.props.toggleCryptos}
                 crypto={crypto}
                 setCurrentCrypto={this.props.setCurrentCrypto}
                 />
@@ -85,4 +72,4 @@ return result
 
 }
 
-export default UserCryptos
+export default UserCryptosContainer

@@ -7,7 +7,7 @@ import {withRouter} from 'react-router';
 import Dashboard from './containers/Dashboard'
 import EditUserContainer from './containers/EditUserContainer'
 import './App.css';
-import UserCryptos from './containers/UserCryptos'
+import UserCryptosContainer from './containers/UserCryptosContainer'
 import UserCryptoDetailedView from './components/UserCryptoDetailedView'
 import NewsContainer from './containers/newsContainer'
 import ArticleView from './components/articleView'
@@ -26,7 +26,7 @@ class App extends React.Component {
       error: "",
       feedback: "",
       userCryptos: [],
-      hasClickedMyCryptos: false,
+      // hasClickedMyCryptos: false,
       currentCrypto: {},
       lookingAtSingleCrypto: false,
       cryptosAreLoading: false,
@@ -42,11 +42,8 @@ class App extends React.Component {
     this.logout = this.logout.bind(this)
     this.updateUser = this.updateUser.bind(this)
     this.deleteUser = this.deleteUser.bind(this)
-    this.toggleMyCryptos = this.toggleMyCryptos.bind(this)
     this.setError = this.setError.bind(this)
     this.setFeedback = this.setFeedback.bind(this)
-
-
     this.renewState();
   }
 
@@ -113,7 +110,7 @@ class App extends React.Component {
   logout(){
     this.setState({
       current_user: {},
-      hasClickedMyCryptos: false,
+      // hasClickedMyCryptos: false,
       currentCrypto: {},
       lookingAtSingleCrypto: false
     })
@@ -184,16 +181,8 @@ class App extends React.Component {
     .then(data => {
       this.setState({
         userCryptos: data.user.cryptos,
-        hasClickedMyCryptos: !this.state.hasClickedMyCryptos,
         cryptosAreLoading: false
       })
-    })
-  }
-
-
-  toggleMyCryptos() {
-    this.setState({
-      hasClickedMyCryptos: !this.state.hasClickedMyCryptos
     })
   }
 
@@ -203,28 +192,6 @@ class App extends React.Component {
       lookingAtSingleCrypto: true
     })
     this.props.history.push('/my-crypto/' + crypto.id)
-
-  }
-
-  setCurrentCrypto1 = (crypto) => {
-    this.setState({
-      currentCrypto: crypto,
-      lookingAtSingleCrypto: true
-    })
-    // this.props.history.push('/my-crypto/' + crypto.id)
-
-  }
-
-  renderUserCryptos = () => {
-    const {userCryptos} = this.state
-    if(this.state.hasClickedMyCryptos === true &&!this.state.cryptosAreLoading) {
-      return <UserCryptos
-              returnHome={this.returnHome}
-              toggleCryptos={this.toggleMyCryptos}
-              userCryptos={userCryptos}
-              setCurrentCrypto={this.setCurrentCrypto}
-              />
-    }
   }
 
   countCrypto = (cc) => {
@@ -232,96 +199,66 @@ class App extends React.Component {
     this.state.userCryptos.map((crypto) => {
       if(cc.name === crypto.name) {
         cryptos.push(crypto)
-        console.log(crypto)
       }
     })
     return cryptos.length
   }
 
-
-  renderDetailedView = () => {
-    const {userCryptos} = this.state
-    const {currentCrypto} = this.state
-    if(this.state.lookingAtSingleCrypto === true) {
+  renderDetailedUserCryptoView = () => {
+    const {userCryptos, currentCrypto, lookingAtSingleCrypto} = this.state
+    if(lookingAtSingleCrypto === true) {
       return(
         <div>
-              <UserCryptos
-              returnHome={this.returnHome}
-              toggleCryptos={this.toggleMyCryptos}
-              userCryptos={userCryptos}
-              setCurrentCrypto={this.setCurrentCrypto}
-              />
               <UserCryptoDetailedView
               countCrypto={this.countCrypto}
               currentCrypto={currentCrypto}
-              returnMyCryptos={this.returnMyCryptos}
+              returnToUserCryptosContainer={this.returnToUserCryptosContainer}
               deleteCrypto={this.deleteCrypto}
               error={this.state.error}
               />
         </div>
           )
     }
-
   }
 
-  returnMyCryptos = () => {
+  returnToUserCryptosContainer = () => {
     this.setState({
       currentCrypto: null,
       lookingAtSingleCrypto: false,
-      hasClickedMyCryptos: true
     })
-    this.props.history.push('/dashboard')
   }
 
-  returnMainMenu = () => {
+  returnHome = () => {
     this.setState({
-      hasClickedMyCryptos: false,
+      currentCrypto: null,
       lookingAtSingleCrypto: false
     })
     this.props.history.push('/dashboard')
   }
 
-  returnHome = () => {
-    console.log("hello")
-    this.setState({
-      cryptosAreLoading: true,
-      currentCrypto: null,
-      lookingAtSingleCrypto: false,
-      hasClickedMyCryptos: true
-    })
-    this.props.history.push('/dashboard')
-
-  }
-
 
   deleteCrypto = (crypto) => {
-    const cryptoId = crypto.id
-    fetch("http://localhost:3000/api/v1/remove_crypto/"+ cryptoId, {
+    fetch("http://localhost:3000/api/v1/remove_crypto/"+ crypto.id, {
       method: "DELETE",
       headers: {
         'Authorization': "Bearer " + localStorage.token
       },
-      body: JSON.stringify({crypto_id: cryptoId})
+      body: JSON.stringify({crypto_id: crypto.id})
     })
     .then(res => res.json())
     .then(data => {
       let cryptoNames = data.user.cryptos.map((crypto) => {
         return crypto.name
       })
-      // console.log(cryptoNames)
-      // console.log(data.user.cryptos)
       if(!cryptoNames.includes(crypto.name)){
         setTimeout(() => this.setState({
           currentCrypto: null,
           lookingAtSingleCrypto: false,
         }), 2000)
       }
-
-
       this.setError(`Deleted ${crypto.name} from Cryptos`)
       this.displayUserCryptos()
     })
-
   }
 
 //  news
@@ -369,7 +306,8 @@ returnToHomepageFromNewsContainer = () => {
   })
   this.props.history.push('/dashboard')
 }
-///////////////////////////////////////////////////////////////////////////////
+
+// edit user
 
 renderEditUser = () => {
 if(this.state.hasClickedSettings === true) {
@@ -401,13 +339,10 @@ setEdit = () => {
                                           current_user={this.state.current_user}
                                           logout={this.logout}
                                           displayUserCryptos={this.displayUserCryptos}
-                                          returnMainMenu={this.returnMainMenu}
-                                          returnMainMenu1={this.returnMainMenu1}
-                                          hasClickedMyCryptos={this.state.hasClickedMyCryptos}
                                           getNews={this.getNews}
                                           setEdit={this.setEdit}
                                       />}/>
-        <main className="main">
+
           <Route exact path="/news" render={() => <NewsContainer
                                                       returnToHomepageFromNewsContainer={this.returnToHomepageFromNewsContainer}
                                                       setCurrentNewsArticle={this.setCurrentNewsArticle}
@@ -418,15 +353,19 @@ setEdit = () => {
                                                 {this.renderDetailedNewsView()}
           <Route exact path="/login" render={() => <Login attemptLogin={this.attemptLogin}/>}/>
           <Route exact path="/user_signup" render={() => <NewUserForm createNewUser={this.createNewUser}/>}/>
-          <Route path='/my-crypto' render={() => this.renderDetailedView()} />
-          {this.renderUserCryptos()}
+          <Route path='/my-crypto' render={() => <UserCryptosContainer
+                                                      returnHome={this.returnHome}
+                                                      userCryptos={this.state.userCryptos}
+                                                      setCurrentCrypto={this.setCurrentCrypto}
+                                                      />}/>
+                                                      {this.renderDetailedUserCryptoView()}
           <Route exact path="/dashboard" render={() =>  <Dashboard
                                                          setFeedback={this.setFeedback}
                                                          feedback={this.state.feedback}
                                                          />}
                                                          />
                                                        <Route exact path="/update_profile" render={() => this.renderEditUser()}/>
-        </main>
+
       </div>
     );
   }
