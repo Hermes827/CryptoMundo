@@ -42,11 +42,8 @@ class App extends React.Component {
     this.logout = this.logout.bind(this)
     this.updateUser = this.updateUser.bind(this)
     this.deleteUser = this.deleteUser.bind(this)
-    // this.toggleMyCryptos = this.toggleMyCryptos.bind(this)
     this.setError = this.setError.bind(this)
     this.setFeedback = this.setFeedback.bind(this)
-
-
     this.renewState();
   }
 
@@ -184,18 +181,10 @@ class App extends React.Component {
     .then(data => {
       this.setState({
         userCryptos: data.user.cryptos,
-        // hasClickedMyCryptos: !this.state.hasClickedMyCryptos,
         cryptosAreLoading: false
       })
     })
   }
-
-
-  // toggleMyCryptos() {
-  //   this.setState({
-  //     // hasClickedMyCryptos: !this.state.hasClickedMyCryptos
-  //   })
-  // }
 
   setCurrentCrypto = (crypto) => {
     this.setState({
@@ -205,37 +194,15 @@ class App extends React.Component {
     this.props.history.push('/my-crypto/' + crypto.id)
   }
 
-  setCurrentCrypto1 = (crypto) => {
-    this.setState({
-      currentCrypto: crypto,
-      lookingAtSingleCrypto: true
-    })
-    // this.props.history.push('/my-crypto/' + crypto.id)
-  }
-
-  // renderUserCryptos = () => {
-  //   const {userCryptos} = this.state
-  //   if(this.state.hasClickedMyCryptos === true && !this.state.cryptosAreLoading) {
-  //     return <UserCryptosContainer
-  //             returnHome={this.returnHome}
-  //             toggleCryptos={this.toggleMyCryptos}
-  //             userCryptos={userCryptos}
-  //             setCurrentCrypto={this.setCurrentCrypto}
-  //             />
-  //   }
-  // }
-
   countCrypto = (cc) => {
     const cryptos = []
     this.state.userCryptos.map((crypto) => {
       if(cc.name === crypto.name) {
         cryptos.push(crypto)
-        console.log(crypto)
       }
     })
     return cryptos.length
   }
-
 
   renderDetailedUserCryptoView = () => {
     const {userCryptos, currentCrypto, lookingAtSingleCrypto} = this.state
@@ -254,35 +221,17 @@ class App extends React.Component {
     }
   }
 
-  // <UserCryptosContainer
-  // returnHome={this.returnHome}
-  // toggleCryptos={this.toggleMyCryptos}
-  // userCryptos={userCryptos}
-  // setCurrentCrypto={this.setCurrentCrypto}
-  // />
-
   returnToUserCryptosContainer = () => {
     this.setState({
       currentCrypto: null,
       lookingAtSingleCrypto: false,
-      // hasClickedMyCryptos: true
     })
   }
 
-  // returnMainMenu = () => {
-  //   this.setState({
-  //     // hasClickedMyCryptos: false,
-  //     lookingAtSingleCrypto: false
-  //   })
-  //   this.props.history.push('/dashboard')
-  // }
-
   returnHome = () => {
     this.setState({
-      // cryptosAreLoading: true,
       currentCrypto: null,
-      lookingAtSingleCrypto: false,
-      // hasClickedMyCryptos: true
+      lookingAtSingleCrypto: false
     })
     this.props.history.push('/dashboard')
   }
@@ -357,7 +306,8 @@ returnToHomepageFromNewsContainer = () => {
   })
   this.props.history.push('/dashboard')
 }
-///////////////////////////////////////////////////////////////////////////////
+
+// edit user
 
 renderEditUser = () => {
 if(this.state.hasClickedSettings === true) {
@@ -405,7 +355,6 @@ setEdit = () => {
           <Route exact path="/user_signup" render={() => <NewUserForm createNewUser={this.createNewUser}/>}/>
           <Route path='/my-crypto' render={() => <UserCryptosContainer
                                                       returnHome={this.returnHome}
-
                                                       userCryptos={this.state.userCryptos}
                                                       setCurrentCrypto={this.setCurrentCrypto}
                                                       />}/>

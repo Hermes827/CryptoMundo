@@ -55,14 +55,12 @@ return result
       <h1 className="ccHeader">My Cryptocurrencies</h1>
       <h1 className="">Total portfolio value: ${this.getPrices()}</h1>
       <button className="CCbutton" onClick={this.props.returnHome}>Return to homepage</button>
-
       <div>
 
       {this.distinctCrypto().map((crypto)=>{
         return <UserCrypto
                 countCrypto={this.countCrypto}
                 key={"user-"+crypto.name+"-"+crypto.id}
-              
                 crypto={crypto}
                 setCurrentCrypto={this.props.setCurrentCrypto}
                 />

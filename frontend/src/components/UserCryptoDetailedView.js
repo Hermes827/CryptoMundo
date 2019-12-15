@@ -22,11 +22,9 @@ class UserCryptoDetailedView extends React.Component {
           <button className="detailButton" onClick={()=>this.props.deleteCrypto(this.props.currentCrypto)}>
             Delete from my portfolio
           </button>
-
       </div>
     )
   }
-
 }
 
 export default UserCryptoDetailedView

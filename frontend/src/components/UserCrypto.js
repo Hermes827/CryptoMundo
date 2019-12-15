@@ -13,7 +13,6 @@ class UserCrypto extends React.Component {
   // }
 
   viewCrypto(){
-    // this.props.toggleCryptos()
     this.props.setCurrentCrypto(this.props.crypto)
   }
 
