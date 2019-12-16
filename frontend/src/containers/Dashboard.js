@@ -78,7 +78,7 @@ export default class Dashboard extends Component {
 
 
 
-returnHome = () => {
+returnToHomepageFromCryptosContainers = () => {
   console.log("hello")
   this.setState({
     cryptosAreLoading: true,
@@ -98,7 +98,7 @@ returnHome = () => {
         <CryptosContainer
           cryptos={this.state.cryptos}
           setCurrentCrypto={this.setCurrentCrypto}
-          returnHome={this.returnHome}
+          returnToHomepageFromCryptosContainers={this.returnToHomepageFromCryptosContainers}
           />
       </div>
     }

@@ -54,7 +54,7 @@ return result
       <div className="userCryptos">
       <h1 className="ccHeader">My Cryptocurrencies</h1>
       <h1 className="">Total portfolio value: ${this.getPrices()}</h1>
-      <button className="CCbutton" onClick={this.props.returnHome}>Return to homepage</button>
+      <button className="CCbutton" onClick={this.props.returnToHomepageFromCryptosContainers}>Return to homepage</button>
       <div>
 
       {this.distinctCrypto().map((crypto)=>{
