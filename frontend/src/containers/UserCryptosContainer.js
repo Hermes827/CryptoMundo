@@ -1,13 +1,113 @@
 import React from 'react'
 import UserCrypto from '../components/UserCrypto'
 import {withRouter} from 'react-router';
-
+import UserCryptoDetailedView from '../components/UserCryptoDetailedView'
 
 class UserCryptosContainer extends React.Component {
 
+  constructor(props){
+    super(props)
+
+    this.state = {
+      error: "",
+      userCryptos: [],
+      currentCrypto: {},
+      lookingAtSingleCrypto: false
+    }
+  }
+
+  setError(str){
+    this.setState({
+      error: str
+    })
+    setTimeout(() => this.setState({error: ""}), 1500)
+  }
+
+  componentDidMount(){
+    if(!localStorage.token){return}
+    fetch("http://localhost:3000/api/v1/profile", {
+      method: "GET",
+      headers: {
+        'Authorization': "Bearer " + localStorage.token,
+      }
+    })
+    .then(res => res.json())
+    .then(data => {
+      this.setState({
+        userCryptos: data.user.cryptos
+        // cryptosAreLoading: false
+      })
+    })
+  }
+
+  setCurrentCrypto = (crypto) => {
+    this.setState({
+      currentCrypto: crypto,
+      lookingAtSingleCrypto: true
+    })
+    this.props.history.push('/my-crypto/' + crypto.id)
+  }
+
+  renderDetailedUserCryptoView = () => {
+    const {currentCrypto, lookingAtSingleCrypto} = this.state
+    if(lookingAtSingleCrypto === true) {
+      return(
+        <div>
+        <UserCryptoDetailedView
+        countCrypto={this.countCrypto}
+        currentCrypto={currentCrypto}
+        returnToUserCryptosContainer={this.returnToUserCryptosContainer}
+        deleteCrypto={this.deleteCrypto}
+        error={this.state.error}
+        />
+        </div>
+          )
+    }
+  }
+
+  returnToUserCryptosContainer = () => {
+    this.setState({
+      currentCrypto: null,
+      lookingAtSingleCrypto: false,
+    })
+  }
+
+  returnToHomepageFromCryptosContainers = () => {
+    this.setState({
+      currentCrypto: null,
+      lookingAtSingleCrypto: false
+    })
+    this.props.history.push('/dashboard')
+  }
+
+
+  deleteCrypto = (crypto) => {
+    fetch("http://localhost:3000/api/v1/remove_crypto/"+ crypto.id, {
+      method: "DELETE",
+      headers: {
+        'Authorization': "Bearer " + localStorage.token
+      },
+      body: JSON.stringify({crypto_id: crypto.id})
+    })
+    .then(res => res.json())
+    .then(data => {
+      let cryptoNames = data.user.cryptos.map((crypto) => {
+        return crypto.name
+      })
+      if(!cryptoNames.includes(crypto.name)){
+        setTimeout(() => this.setState({
+          currentCrypto: null,
+          lookingAtSingleCrypto: false,
+        }), 2000)
+      }
+      this.setError("Deleted ${crypto.name} from Cryptos")
+      this.componentDidMount()
+    })
+  }
+
 getPrices = () => {
   const values = []
-  this.props.userCryptos.map((crypto)=> {
+  this.state.userCryptos.map((crypto)=> {
     values.push(parseInt(crypto.price))
   })
   if(values.length >= 1) {
@@ -20,7 +120,7 @@ getPrices = () => {
 
 countCrypto = (cc) => {
   const cryptos = []
-  this.props.userCryptos.map((crypto) => {
+  this.state.userCryptos.map((crypto) => {
     if(cc.name === crypto.name) {
       cryptos.push(crypto)
     }
@@ -29,7 +129,7 @@ countCrypto = (cc) => {
 }
 
 distinctCrypto = () => {
-const array = this.props.userCryptos
+const array = this.state.userCryptos
 const result = [];
 const map = new Map();
 for (const item of array) {
@@ -56,15 +156,15 @@ return result
       <div className="userCryptos">
       <h1 className="ccHeader">My Cryptocurrencies</h1>
       <h1 className="">Total portfolio value: ${this.getPrices()}</h1>
-      <button className="CCbutton" onClick={this.props.returnToHomepageFromCryptosContainers}>Return to homepage</button>
+      <button className="CCbutton" onClick={this.returnToHomepageFromCryptosContainers}>Return to homepage</button>
       <div>
-
+      {this.renderDetailedUserCryptoView()}
       {this.distinctCrypto().map((crypto)=>{
         return <UserCrypto
                 countCrypto={this.countCrypto}
                 key={"user-"+crypto.name+"-"+crypto.id}
                 crypto={crypto}
-                setCurrentCrypto={this.props.setCurrentCrypto}
+                setCurrentCrypto={this.setCurrentCrypto}
                 />
       })}
       </div>
