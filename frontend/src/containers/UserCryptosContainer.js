@@ -1,5 +1,7 @@
 import React from 'react'
 import UserCrypto from '../components/UserCrypto'
+import {withRouter} from 'react-router';
+
 
 class UserCryptosContainer extends React.Component {
 
@@ -27,7 +29,7 @@ countCrypto = (cc) => {
 }
 
 distinctCrypto = () => {
-  const array = this.props.userCryptos
+const array = this.props.userCryptos
 const result = [];
 const map = new Map();
 for (const item of array) {
@@ -72,4 +74,4 @@ return result
 
 }
 
-export default UserCryptosContainer
+export default withRouter(UserCryptosContainer)

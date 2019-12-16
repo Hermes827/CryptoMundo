@@ -59,7 +59,7 @@ class Banner extends Component {
               </div>
 
               <div>
-              <Link to="/news"><div className="ui button" onClick={this.props.getNews}>News</div></Link>
+              <Link to="/news"><div className="ui button">News</div></Link>
               </div>
 
                 <div className="ui button">

@@ -9,9 +9,7 @@ const API = "https://min-api.cryptocompare.com/data/top/totalvolfull?limit=10&ts
 const random = document.getElementsByClassName("title")
 
 
-export default class Dashboard extends Component {
-
-
+class Dashboard extends Component {
 
   constructor(props){
     super(props)
@@ -37,7 +35,6 @@ export default class Dashboard extends Component {
 
   }
 
-
   setCurrentCrypto = (crypto) => {
     this.setState({
       currentCrypto: crypto,
@@ -51,7 +48,6 @@ export default class Dashboard extends Component {
   }
 
   returnMainMenu = () => {
-
     this.setState({
       currentCrypto: null,
       lookingAtSingleCrypto: false
@@ -139,3 +135,5 @@ returnToHomepageFromCryptosContainers = () => {
     );
   }
 }
+
+export default Dashboard

@@ -183,16 +183,6 @@ class App extends React.Component {
     this.props.history.push('/my-crypto/' + crypto.id)
   }
 
-  countCrypto = (cc) => {
-    const cryptos = []
-    this.state.userCryptos.map((crypto) => {
-      if(cc.name === crypto.name) {
-        cryptos.push(crypto)
-      }
-    })
-    return cryptos.length
-  }
-
   renderDetailedUserCryptoView = () => {
     const {currentCrypto, lookingAtSingleCrypto} = this.state
     if(lookingAtSingleCrypto === true) {
@@ -245,56 +235,57 @@ class App extends React.Component {
           lookingAtSingleCrypto: false,
         }), 2000)
       }
-      this.setError(`Deleted ${crypto.name} from Cryptos`)
+      this.setError("Deleted ${crypto.name} from Cryptos")
       this.displayUserCryptos()
     })
   }
 
 //  news
 
-getNews = () => {
-  fetch(NEWS_API)
-    .then(res => res.json())
-    .then(data => {
-      this.setState({
-        news: data.articles
-      })
-    })
-}
-
-setCurrentNewsArticle = (article) => {
-  this.setState({
-    currentNewsArticle: article,
-    lookingAtSingleNewsArticle: true
-  })
-}
-
-renderDetailedNewsView = () => {
-const {currentNewsArticle, lookingAtSingleNewsArticle} = this.state
-if(lookingAtSingleNewsArticle === true) {
-    return (
-          <ArticleView
-          currentNewsArticle={currentNewsArticle}
-          returnToNewsContainer={this.returnToNewsContainer}
-          />
-        )
-  }
-}
-
-returnToNewsContainer = () => {
-  this.setState({
-    currentNewsArticle: null,
-    lookingAtSingleNewsArticle: false
-  })
-}
-
-returnToHomepageFromNewsContainer = () => {
-  this.setState({
-    currentNewsArticle: null,
-    lookingAtSingleNewsArticle: false
-  })
-  this.props.history.push('/dashboard')
-}
+// getNews = () => {
+//   fetch(NEWS_API)
+//     .then(res => res.json())
+//     .then(data => {
+//       this.setState({
+//         news: data.articles
+//       })
+//     })
+// }
+//
+//
+// setCurrentNewsArticle = (article) => {
+//   this.setState({
+//     currentNewsArticle: article,
+//     lookingAtSingleNewsArticle: true
+//   })
+// }
+//
+// renderDetailedNewsView = () => {
+// const {currentNewsArticle, lookingAtSingleNewsArticle} = this.state
+// if(lookingAtSingleNewsArticle === true) {
+//     return (
+//           <ArticleView
+//           currentNewsArticle={currentNewsArticle}
+//           returnToNewsContainer={this.returnToNewsContainer}
+//           />
+//         )
+//   }
+// }
+//
+// returnToNewsContainer = () => {
+//   this.setState({
+//     currentNewsArticle: null,
+//     lookingAtSingleNewsArticle: false
+//   })
+// }
+//
+// returnToHomepageFromNewsContainer = () => {
+//   this.setState({
+//     currentNewsArticle: null,
+//     lookingAtSingleNewsArticle: false
+//   })
+//   this.props.history.push('/dashboard')
+// }
 
 /////////////////////////////////////////////////////////////////////////////////
 
@@ -311,13 +302,9 @@ returnToHomepageFromNewsContainer = () => {
                                       />}/>
 
           <Route exact path="/news" render={() => <NewsContainer
-                                                  returnToHomepageFromNewsContainer={this.returnToHomepageFromNewsContainer}
-                                                  setCurrentNewsArticle={this.setCurrentNewsArticle}
-                                                  news={this.state.news}
-                                                  currentNewsArticle={this.state.currentNewsArticle}
-                                                  lookingAtSingleNewsArticle={this.state.lookingAtSingleNewsArticle}
+                                                  
                                                   />}/>
-                                                  {this.renderDetailedNewsView()}
+
 
           <Route exact path="/login" render={() => <Login attemptLogin={this.attemptLogin}/>}/>
 
