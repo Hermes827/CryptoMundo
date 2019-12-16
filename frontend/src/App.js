@@ -14,7 +14,6 @@ import ArticleView from './components/articleView'
 import {NEWS_API} from './constants'
 import {USER_URL} from './constants'
 import {LOGIN_URL} from './constants'
-import {PROFILE} from './constants'
 
 class App extends React.Component {
 
@@ -26,14 +25,12 @@ class App extends React.Component {
       error: "",
       feedback: "",
       userCryptos: [],
-      // hasClickedMyCryptos: false,
       currentCrypto: {},
       lookingAtSingleCrypto: false,
       cryptosAreLoading: false,
       news: [],
       currentNewsArticle: {},
-      lookingAtSingleNewsArticle: false,
-      hasClickedSettings: false
+      lookingAtSingleNewsArticle: false
     }
 
     this.createNewUser = this.createNewUser.bind(this)
@@ -63,32 +60,7 @@ class App extends React.Component {
 
   // user stuff
 
-  createNewUser(user){
-    fetch(USER_URL, {
-      method: "POST",
-      headers: {
-        "content-type": "application/json"
-      },
-      body: JSON.stringify({user})
-    })
-    .then(res => res.json())
-    .then(data => {
-      console.log(data)
-      this.setActiveUser(data)
-      this.props.history.push('/dashboard')
-    })
-  }
-
-  // setActiveUser(data){
-  //     this.setState({
-  //       current_user: data.user,
-  //       error: ""
-  //     })
-  //     localStorage.token = data.jwt
-  //     console.log(data)
-  //   }
-
-  renewState(){ //this function is connected with setactiveuser "soft"
+  renewState(){
   if(!localStorage.token){return}
   fetch("http://localhost:3000/api/v1/profile", {
     method: "GET",
@@ -99,7 +71,6 @@ class App extends React.Component {
   .then(res => res.json())
   .then(data => this.setActiveUser(data, "soft"))
 }
-
 
   setActiveUser(data, mode="hard"){
     if(data.message && mode === "soft"){
@@ -115,19 +86,20 @@ class App extends React.Component {
     }
   }
 
-  // setActiveUser(data, mode="hard"){
-  //   if(data.message && mode === "soft"){
-  //     return
-  //   } else if(data.message){
-  //     this.setState({error: data.message})
-  //   } else {
-  //     this.setState({
-  //       current_user: data.user,
-  //       error: ""
-  //     })
-  //     if(data.jwt){localStorage.token = data.jwt}
-  //   }
-  // }
+  createNewUser(user){
+    fetch(USER_URL, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json"
+      },
+      body: JSON.stringify({user})
+    })
+    .then(res => res.json())
+    .then(data => {
+      this.setActiveUser(data)
+      this.props.history.push('/dashboard')
+    })
+  }
 
   updateUser(user){
     fetch(USER_URL + `/${user.id}`, {
@@ -146,27 +118,8 @@ class App extends React.Component {
     })
   }
 
-  // renderEditUser = () => {
-  // if(this.state.hasClickedSettings === true) {
-  //   return <EditUserContainer
-  //             current_user={this.state.current_user}
-  //             updateUser={this.updateUser}
-  //             deleteUser={this.deleteUser}
-  //             setEdit={this.setEdit}
-  //           />
-  // }
-  // }
-
-  // setEdit = () => {
-  //   this.setState({
-  //     hasClickedSettings: !this.state.hasClickedSettings
-  //   })
-  //   this.props.history.push('/dashboard')
-  //
-  // }
-
-  deleteUser(id){
-    fetch(USER_URL + `/${id}`, {
+  deleteUser(user){
+    fetch(USER_URL + `/${user.id}`, {
       method: "DELETE",
       headers: {
         'Authorization': "Bearer " + localStorage.token
@@ -197,9 +150,7 @@ class App extends React.Component {
   logout(){
     this.setState({
       current_user: {},
-      // hasClickedMyCryptos: false,
-      currentCrypto: {},
-      lookingAtSingleCrypto: false
+      currentCrypto: {}
     })
     delete localStorage.token
     this.props.history.push('/login')
