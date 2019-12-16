@@ -14,7 +14,6 @@ import ArticleView from './components/articleView'
 import {NEWS_API} from './constants'
 import {USER_URL} from './constants'
 import {LOGIN_URL} from './constants'
-import {PROFILE} from './constants'
 
 class App extends React.Component {
 
@@ -26,14 +25,12 @@ class App extends React.Component {
       error: "",
       feedback: "",
       userCryptos: [],
-      // hasClickedMyCryptos: false,
       currentCrypto: {},
       lookingAtSingleCrypto: false,
       cryptosAreLoading: false,
       news: [],
       currentNewsArticle: {},
-      lookingAtSingleNewsArticle: false,
-      hasClickedSettings: false
+      lookingAtSingleNewsArticle: false
     }
 
     this.createNewUser = this.createNewUser.bind(this)
@@ -61,6 +58,34 @@ class App extends React.Component {
     setTimeout(() => this.setState({error: ""}), 1500)
   }
 
+  // user stuff
+
+  renewState(){
+  if(!localStorage.token){return}
+  fetch("http://localhost:3000/api/v1/profile", {
+    method: "GET",
+    headers: {
+      'Authorization': "Bearer " + localStorage.token
+    }
+  })
+  .then(res => res.json())
+  .then(data => this.setActiveUser(data, "soft"))
+}
+
+  setActiveUser(data, mode="hard"){
+    if(data.message && mode === "soft"){
+      return
+    } else if(data.message){
+      this.setState({error: data.message})
+    } else {
+      this.setState({
+        current_user: data.user,
+        error: ""
+      })
+      if(data.jwt){localStorage.token = data.jwt}
+    }
+  }
+
   createNewUser(user){
     fetch(USER_URL, {
       method: "POST",
@@ -75,6 +100,35 @@ class App extends React.Component {
       this.props.history.push('/dashboard')
     })
   }
+
+  updateUser(user){
+    fetch(USER_URL + `/${user.id}`, {
+      method: "PATCH",
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': "Bearer " + localStorage.token,
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify({user})
+    })
+    .then(res => res.json())
+    .then(data => {
+      this.setActiveUser(data)
+      this.props.history.push('/dashboard')
+    })
+  }
+
+  deleteUser(user){
+    fetch(USER_URL + `/${user.id}`, {
+      method: "DELETE",
+      headers: {
+        'Authorization': "Bearer " + localStorage.token
+      }
+    })
+    .then( () => this.logout())
+  }
+
+  // login
 
   attemptLogin(user){
     fetch(LOGIN_URL, {
@@ -93,79 +147,14 @@ class App extends React.Component {
     })
   }
 
-  setActiveUser(data, mode="hard"){
-    if(data.message && mode === "soft"){
-      return
-    } else if(data.message){
-      this.setState({error: data.message})
-    } else {
-      this.setState({
-        current_user: data.user,
-        error: ""
-      })
-      if(data.jwt){localStorage.token = data.jwt}
-    }
-  }
-
   logout(){
     this.setState({
       current_user: {},
-      // hasClickedMyCryptos: false,
-      currentCrypto: {},
-      lookingAtSingleCrypto: false
+      currentCrypto: {}
     })
     delete localStorage.token
     this.props.history.push('/login')
   }
-
-  renewState(){
-  if(!localStorage.token){return}
-  fetch("http://localhost:3000/api/v1/profile", {
-    method: "GET",
-    headers: {
-      'Authorization': "Bearer " + localStorage.token
-    }
-  })
-  .then(res => res.json())
-  .then(data => this.setActiveUser(data, "soft"))
-}
-
-///////////////////////////////////////////////////////////////////////////////
-
-
-
-  //////////////////////////////////////////////////////////////////////////////
-
-  updateUser(user){
-    fetch(USER_URL + `/${user.id}`, {
-      method: "PATCH",
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': "Bearer " + localStorage.token,
-        'Accept': 'application/json'
-      },
-      body: JSON.stringify({
-        user
-      })
-    })
-    .then(res => res.json())
-    .then(data => {
-      this.setActiveUser(data)
-      this.props.history.push('/dashboard')
-    })
-  }
-
-  deleteUser(id){
-    fetch(USER_URL + `/${id}`, {
-      method: "DELETE",
-      headers: {
-        'Authorization': "Bearer " + localStorage.token
-      }
-    })
-    .then( () => this.logout())
-  }
-
-  ////////////////////////////////////////////////////////////////////////////
 
   // Usercrypto
 
@@ -307,28 +296,6 @@ returnToHomepageFromNewsContainer = () => {
   this.props.history.push('/dashboard')
 }
 
-// edit user
-
-renderEditUser = () => {
-if(this.state.hasClickedSettings === true) {
-  return <EditUserContainer
-            current_user={this.state.current_user}
-            updateUser={this.updateUser}
-            deleteUser={this.deleteUser}
-            setEdit={this.setEdit}
-          />
-}
-}
-
-setEdit = () => {
-  console.log("hello")
-  this.setState({
-    hasClickedSettings: !this.state.hasClickedSettings
-  })
-  this.props.history.push('/dashboard')
-
-}
-
 /////////////////////////////////////////////////////////////////////////////////
 
   render(){
@@ -351,20 +318,30 @@ setEdit = () => {
                                                       lookingAtSingleNewsArticle={this.state.lookingAtSingleNewsArticle}
                                                   />}/>
                                                 {this.renderDetailedNewsView()}
+
           <Route exact path="/login" render={() => <Login attemptLogin={this.attemptLogin}/>}/>
+
           <Route exact path="/user_signup" render={() => <NewUserForm createNewUser={this.createNewUser}/>}/>
+
           <Route path='/my-crypto' render={() => <UserCryptosContainer
                                                       returnHome={this.returnHome}
                                                       userCryptos={this.state.userCryptos}
                                                       setCurrentCrypto={this.setCurrentCrypto}
                                                       />}/>
                                                       {this.renderDetailedUserCryptoView()}
+
           <Route exact path="/dashboard" render={() =>  <Dashboard
                                                          setFeedback={this.setFeedback}
                                                          feedback={this.state.feedback}
                                                          />}
                                                          />
-                                                       <Route exact path="/update_profile" render={() => this.renderEditUser()}/>
+
+          <Route exact path="/update_profile" render={() => <EditUserContainer
+                                                              current_user={this.state.current_user}
+                                                              updateUser={this.updateUser}
+                                                              deleteUser={this.deleteUser}
+                                                              setEdit={this.setEdit}
+                                                              />}/>
 
       </div>
     );
