@@ -99,13 +99,13 @@
   border-color: orange;
   /* opacity: 0.75; */
   background-color: black;
-  text-align: center;
-  margin-right: 60%;
+  /* text-align: center; */
+  /* margin-right: 1000px; */
   margin-left: 3%;
   height: 89%;
   position: fixed;
   width: 45%;
-  margin-top: -14%;
+  margin-top: -45%;
   margin-bottom: 2%;
   padding-bottom: 3%;
 }

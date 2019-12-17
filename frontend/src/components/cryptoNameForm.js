@@ -26,7 +26,7 @@ class cryptoNameForm extends React.Component {
   render(){
     return(
       <div>
-            <button className="crypto-button" onClick={this.props.turnOn}>
+            <button className="crypto-button" onClick={this.props.toggleState}>
               See all cryptocurrencies
 
             </button>
