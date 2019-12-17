@@ -1,13 +1,11 @@
 import React, { Component } from 'react'
+import {Redirect} from 'react-router-dom'
+import {withRouter} from 'react-router';
 import CryptosContainer from './cryptosContainer'
 import CryptoNameForm from '../components/cryptoNameForm'
-import {Redirect} from 'react-router-dom'
-import DetailedView from '../components/detailedView'
+import CryptoDetailedView from '../components/CryptoDetailedView'
 
-const URL = "http://localhost:3000/api/v1/searchbyname"
-const API = "https://min-api.cryptocompare.com/data/top/totalvolfull?limit=10&tsym=USD&api_key={2eb0a0afcdbd0af89e90104132e9424984ac9324e5c2b62272a6afbe9567cb19}"
-const random = document.getElementsByClassName("title")
-
+// const API = "https://min-api.cryptocompare.com/data/top/totalvolfull?limit=10&tsym=USD&api_key={2eb0a0afcdbd0af89e90104132e9424984ac9324e5c2b62272a6afbe9567cb19}"
 
 class Dashboard extends Component {
 
@@ -16,44 +14,53 @@ class Dashboard extends Component {
       this.state = {
         cryptos: [],
         lookingAtSingleCrypto: false,
+        cryptoContainerIsOpen: false,
         currentCrypto: {},
-        cryptosAreLoading: false
+        feedback: "",
+        cryptoContainerIsOpen: false
       }
     }
 
-  getCryptosName = (event) => {
-    this.setLoading()
-    fetch(URL)
-      .then(res => res.json())
-      .then(data => {
-        this.setState({
-          cryptos: data,
-          cryptosAreLoading: false
-        })
-        console.log(data)
+    setFeedback(str){
+      this.setState({
+        feedback: str
       })
+      setTimeout(() => this.setState({feedback: ""}), 1500)
+    }
 
-  }
+    componentDidMount(){
+      fetch("http://localhost:3000/api/v1/searchbyname")
+        .then(res => res.json())
+        .then(data => {
+          this.setState({
+            cryptos: data
+            })
+        })
+    }
+
+  // getCryptosName = () => {
+  //   fetch("http://localhost:3000/api/v1/searchbyname")
+  //     .then(res => res.json())
+  //     .then(data => {
+  //       this.setState({
+  //         cryptos: data
+  //         })
+  //     })
+  // }
 
   setCurrentCrypto = (crypto) => {
     this.setState({
       currentCrypto: crypto,
       lookingAtSingleCrypto: true
     })
-
   }
 
-  setLoading(){
-    this.setState({CryptosAreLoading: true})
-  }
-
-  returnMainMenu = () => {
+  returnToCryptosContainer = () => {
     this.setState({
       currentCrypto: null,
       lookingAtSingleCrypto: false
     })
   }
-
 
   addCrypto = (crypto) => {
     fetch("http://localhost:3000/api/v1/add_crypto", {
@@ -67,28 +74,20 @@ class Dashboard extends Component {
     })
     .then(res => res.json())
     .then(data => {
-      this.props.setFeedback(`Added ${crypto.name} to portfolio`)
+      this.setFeedback(`Added ${crypto.name} to portfolio`)
     })
   }
 
-
-
-
 returnToHomepageFromCryptosContainers = () => {
-  console.log("hello")
   this.setState({
-    cryptosAreLoading: true,
     currentCrypto: null,
-    lookingAtSingleCrypto: false
+    lookingAtSingleCrypto: false,
+    cryptoContainerIsOpen: false
   })
 }
 
-
-
   renderCryptos() {
-    if(this.state.cryptos.length === 0 && !this.state.cryptosAreLoading){
-      return null
-    } else if (!this.state.cryptosAreLoading){
+    if(this.state.cryptoContainerIsOpen === true){
       return  <div className="cryptosContainer">
         <h2 className="card-title">View Cryptos</h2>
         <CryptosContainer
@@ -100,34 +99,36 @@ returnToHomepageFromCryptosContainers = () => {
     }
   }
 
+  turnOn = () => {
+    this.setState({
+      cryptoContainerIsOpen: true
+    })
+    console.log("hello")
+  }
+
 
   renderDetailedUserCryptoView(){
-    const {currentCrypto} = this.state
-    if(this.state.lookingAtSingleCrypto === true) {
-      return <DetailedView
-              feedback={this.props.feedback}
+    const {currentCrypto, lookingAtSingleCrypto} = this.state
+    if(lookingAtSingleCrypto === true) {
+      return <CryptoDetailedView
+              feedback={this.state.feedback}
               currentCrypto={currentCrypto}
-              returnMainMenu={this.returnMainMenu}
+              returnToCryptosContainer={this.returnToCryptosContainer}
               addCrypto={this.addCrypto}
               />
     }
   }
 
 
+
   render(){
-    if(!localStorage.token){
-      return <Redirect to="/login" />
-    }
 
     return (
-
         <div className="App">
-            {this.renderCryptos()}
-
+          {this.renderCryptos()}
           <div className="forms">
             <h1 className="title">Crypto Mundo</h1>
-            <CryptoNameForm getCryptosName={this.getCryptosName}/>
-
+            <CryptoNameForm turnOn={this.turnOn}/>
           <br/>
           </div>
           {this.renderDetailedUserCryptoView()}
@@ -136,4 +137,4 @@ returnToHomepageFromCryptosContainers = () => {
   }
 }
 
-export default Dashboard
+export default withRouter(Dashboard)

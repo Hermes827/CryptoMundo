@@ -1,6 +1,6 @@
 import React from 'react'
-import UserCrypto from '../components/UserCrypto'
 import {withRouter} from 'react-router';
+import UserCrypto from '../components/UserCrypto'
 import UserCryptoDetailedView from '../components/UserCryptoDetailedView'
 
 class UserCryptosContainer extends React.Component {

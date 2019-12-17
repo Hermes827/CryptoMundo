@@ -8,7 +8,6 @@ import Dashboard from './containers/Dashboard'
 import EditUserContainer from './containers/EditUserContainer'
 import './App.css';
 import UserCryptosContainer from './containers/UserCryptosContainer'
-import UserCryptoDetailedView from './components/UserCryptoDetailedView'
 import NewsContainer from './containers/newsContainer'
 import {USER_URL} from './constants'
 import {LOGIN_URL} from './constants'
@@ -21,14 +20,7 @@ class App extends React.Component {
     this.state = {
       current_user: {},
       error: "",
-      feedback: "",
-      userCryptos: [],
-      currentCrypto: {},
-      lookingAtSingleCrypto: false,
-      cryptosAreLoading: false,
-      news: [],
-      currentNewsArticle: {},
-      lookingAtSingleNewsArticle: false
+      feedback: ""
     }
 
     this.createNewUser = this.createNewUser.bind(this)
@@ -37,24 +29,15 @@ class App extends React.Component {
     this.logout = this.logout.bind(this)
     this.updateUser = this.updateUser.bind(this)
     this.deleteUser = this.deleteUser.bind(this)
-    this.setError = this.setError.bind(this)
-    this.setFeedback = this.setFeedback.bind(this)
     this.renewState();
   }
 
-  setFeedback(str){
-    this.setState({
-      feedback: str
-    })
-    setTimeout(() => this.setState({feedback: ""}), 1500)
-  }
-
-  setError(str){
-    this.setState({
-      error: str
-    })
-    setTimeout(() => this.setState({error: ""}), 1500)
-  }
+  // setFeedback(str){
+  //   this.setState({
+  //     feedback: str
+  //   })
+  //   setTimeout(() => this.setState({feedback: ""}), 1500)
+  // }
 
   // user stuff
 
@@ -176,11 +159,7 @@ class App extends React.Component {
 
           <Route path='/my-crypto' render={() => <UserCryptosContainer/>}/>
 
-
-          <Route exact path="/dashboard" render={() =>  <Dashboard
-                                                         setFeedback={this.setFeedback}
-                                                         feedback={this.state.feedback}
-                                                         />}/>
+          <Route exact path="/dashboard" render={() => <Dashboard/>}/>
 
           <Route exact path="/update_profile" render={() => <EditUserContainer
                                                             current_user={this.state.current_user}

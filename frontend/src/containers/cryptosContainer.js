@@ -4,6 +4,29 @@ import Crypto from '../components/crypto'
 
 class CryptosContainer extends React.Component {
 
+  constructor(props){
+    super(props)
+      this.state = {
+        cryptos: [],
+        lookingAtSingleCrypto: false,
+        cryptoContainerIsOpen: false,
+        currentCrypto: {},
+        feedback: ""
+      }
+    }
+
+
+  componentDidMount(){
+    fetch("http://localhost:3000/api/v1/searchbyname")
+      .then(res => res.json())
+      .then(data => {
+        this.setState({
+          cryptos: data
+          })
+          console.log(data)
+      })
+  }
+
   render(){
     return(
       <div className="cryptoItem">

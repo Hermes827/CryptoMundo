@@ -1,13 +1,13 @@
 import React from 'react'
 
-class DetailedView extends React.Component {
+class CryptoDetailedView extends React.Component {
 
           // <h3>Market: {this.props.currentCrypto.market}</h3>
           //
 
   render(){
     return(
-      <div className="detailedView">
+      <div className="CryptoDetailedView">
           <h3>{this.props.currentCrypto.name}</h3>
           <img className="logo1" src={"https://www.cryptocompare.com" + this.props.currentCrypto.image}></img>
           <br/>
@@ -21,7 +21,7 @@ class DetailedView extends React.Component {
           <h3>Daily Volume: {this.props.currentCrypto.volume} USD</h3>
           <h3>Total Supply: {this.props.currentCrypto.supply}</h3>
 
-          <button className="returnButton" onClick={this.props.returnMainMenu}>
+          <button className="returnButton" onClick={this.props.returnToCryptosContainer}>
             Go back to cryptos
           </button>
           &nbsp;
@@ -35,4 +35,4 @@ class DetailedView extends React.Component {
 
 }
 
-export default DetailedView
+export default CryptoDetailedView
