@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import Login from './components/login';
-import Banner from './components/Banner'
+import Dashboard from './components/Dashboard'
 import NewUserForm from './components/NewUserForm'
 import { Route } from 'react-router-dom';
 import {withRouter} from 'react-router';
@@ -70,7 +70,7 @@ class App extends React.Component {
     .then(res => res.json())
     .then(data => {
       this.setActiveUser(data)
-      this.props.history.push('/centerConsole')
+      this.props.history.push('/center_console')
     })
   }
 
@@ -87,7 +87,7 @@ class App extends React.Component {
     .then(res => res.json())
     .then(data => {
       this.setActiveUser(data)
-      this.props.history.push('/centerConsole')
+      this.props.history.push('/center_console')
     })
   }
 
@@ -115,7 +115,7 @@ class App extends React.Component {
     .then(data => {
       this.setActiveUser(data)
       if(!data.message){
-        this.props.history.push('/centerConsole')
+        this.props.history.push('/center_console')
       }
     })
   }
@@ -135,7 +135,7 @@ class App extends React.Component {
 
     return (
       <div className="App">
-        <Route path='/' render={() => <Banner
+        <Route path='/' render={() => <Dashboard
                                       current_user={this.state.current_user}
                                       logout={this.logout}
                                       displayUserCryptos={this.displayUserCryptos}
@@ -149,9 +149,9 @@ class App extends React.Component {
 
           <Route exact path="/user_signup" render={() => <NewUserForm createNewUser={this.createNewUser}/>}/>
 
-          <Route path='/my-crypto' render={() => <UserCryptosContainer/>}/>
+          <Route path='/my_crypto' render={() => <UserCryptosContainer/>}/>
 
-          <Route exact path="/centerConsole" render={() => <CenterConsole/>}/>
+          <Route exact path="/center_console" render={() => <CenterConsole/>}/>
 
           <Route exact path="/update_profile" render={() => <EditUserContainer
                                                             current_user={this.state.current_user}

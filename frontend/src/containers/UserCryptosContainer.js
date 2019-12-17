@@ -45,7 +45,7 @@ class UserCryptosContainer extends React.Component {
       currentCrypto: crypto,
       lookingAtSingleCrypto: true
     })
-    this.props.history.push('/my-crypto/' + crypto.id)
+    this.props.history.push('/my_crypto/' + crypto.id)
   }
 
   renderDetailedUserCryptoView = () => {
@@ -77,7 +77,7 @@ class UserCryptosContainer extends React.Component {
       currentCrypto: null,
       lookingAtSingleCrypto: false
     })
-    this.props.history.push('/centerConsole')
+    this.props.history.push('/center_console')
   }
 
 

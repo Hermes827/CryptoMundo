@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import {Link, withRouter} from 'react-router-dom'
 
-class Banner extends Component {
+class Dashboard extends Component {
 
   constructor(){
     super()
@@ -32,7 +32,7 @@ class Banner extends Component {
 
             {!this.userIsLoggedIn() &&
               <div>
-              <div className="banner">
+              <div className="dashboard">
               <div className="signup1"><Link to='/user_signup'><div className="ui primary button">Sign up</div></Link></div>
               <div className="login1"><Link to="/login"><div className="ui button">Login</div></Link></div>
               </div>
@@ -40,8 +40,8 @@ class Banner extends Component {
             }
 
             {this.userIsLoggedIn() &&
-              <div className="banner">
-              <div><Link to="/my-crypto"><div className="ui button" onClick={this.props.displayUserCryptos}>My Cryptos</div></Link></div>
+              <div className="dashboard">
+              <div><Link to="/my_crypto"><div className="ui button" onClick={this.props.displayUserCryptos}>My Cryptos</div></Link></div>
               <div><Link to="/news"><div className="ui button">News</div></Link></div>
               <div className="ui button"><Link to="/update_profile"><div>Settings</div></Link></div>
               <div onClick={this.props.logout} className="ui primary button">Log Out</div>
@@ -55,4 +55,4 @@ class Banner extends Component {
   }
 }
 
-export default withRouter(Banner)
+export default withRouter(Dashboard)
