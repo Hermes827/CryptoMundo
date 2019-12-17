@@ -24,6 +24,7 @@ class CryptosContainer extends React.Component {
         this.setState({
           cryptos: data
           })
+          console.log(data)
       })
   }
 
@@ -76,14 +77,6 @@ class CryptosContainer extends React.Component {
     })
   }
 
-// returnToHomepageFromCryptosContainers = () => {
-//   this.setState({
-//     currentCrypto: null,
-//     lookingAtSingleCrypto: false,
-//     hasClickedButton: false
-//   })
-// }
-
   render(){
     return(
       <div className="cryptoItem">
@@ -98,13 +91,11 @@ class CryptosContainer extends React.Component {
                   crypto={crypto}
                   setCurrentCrypto={this.setCurrentCrypto}
                   />
-
         })
       }
     </div>
     )
   }
-
 }
 
 export default CryptosContainer

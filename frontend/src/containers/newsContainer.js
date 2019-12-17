@@ -58,7 +58,7 @@ class NewsContainer extends Component {
       currentNewsArticle: null,
       lookingAtSingleNewsArticle: false
     })
-    this.props.history.push('/dashboard')
+    this.props.history.push('/centerConsole')
   }
 
   render(){

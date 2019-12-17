@@ -1,12 +1,12 @@
 import React from 'react';
+import './App.css';
 import Login from './components/login';
 import Banner from './components/Banner'
 import NewUserForm from './components/NewUserForm'
 import { Route } from 'react-router-dom';
 import {withRouter} from 'react-router';
-import Dashboard from './containers/Dashboard'
+import CenterConsole from './containers/centerConsole'
 import EditUserContainer from './containers/EditUserContainer'
-import './App.css';
 import UserCryptosContainer from './containers/UserCryptosContainer'
 import NewsContainer from './containers/newsContainer'
 import {USER_URL} from './constants'
@@ -19,8 +19,7 @@ class App extends React.Component {
 
     this.state = {
       current_user: {},
-      error: "",
-      feedback: ""
+      error: ""
     }
 
     this.createNewUser = this.createNewUser.bind(this)
@@ -31,13 +30,6 @@ class App extends React.Component {
     this.deleteUser = this.deleteUser.bind(this)
     this.renewState();
   }
-
-  // setFeedback(str){
-  //   this.setState({
-  //     feedback: str
-  //   })
-  //   setTimeout(() => this.setState({feedback: ""}), 1500)
-  // }
 
   // user stuff
 
@@ -78,7 +70,7 @@ class App extends React.Component {
     .then(res => res.json())
     .then(data => {
       this.setActiveUser(data)
-      this.props.history.push('/dashboard')
+      this.props.history.push('/centerConsole')
     })
   }
 
@@ -95,7 +87,7 @@ class App extends React.Component {
     .then(res => res.json())
     .then(data => {
       this.setActiveUser(data)
-      this.props.history.push('/dashboard')
+      this.props.history.push('/centerConsole')
     })
   }
 
@@ -123,7 +115,7 @@ class App extends React.Component {
     .then(data => {
       this.setActiveUser(data)
       if(!data.message){
-        this.props.history.push('/dashboard')
+        this.props.history.push('/centerConsole')
       }
     })
   }
@@ -159,7 +151,7 @@ class App extends React.Component {
 
           <Route path='/my-crypto' render={() => <UserCryptosContainer/>}/>
 
-          <Route exact path="/dashboard" render={() => <Dashboard/>}/>
+          <Route exact path="/centerConsole" render={() => <CenterConsole/>}/>
 
           <Route exact path="/update_profile" render={() => <EditUserContainer
                                                             current_user={this.state.current_user}

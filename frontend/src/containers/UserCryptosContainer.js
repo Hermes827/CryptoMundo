@@ -77,7 +77,7 @@ class UserCryptosContainer extends React.Component {
       currentCrypto: null,
       lookingAtSingleCrypto: false
     })
-    this.props.history.push('/dashboard')
+    this.props.history.push('/centerConsole')
   }
 
 

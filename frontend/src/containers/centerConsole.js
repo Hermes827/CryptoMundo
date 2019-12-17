@@ -1,9 +1,7 @@
 import React, { Component } from 'react'
-import {Redirect} from 'react-router-dom'
-import {withRouter} from 'react-router';
 import CryptosContainer from './cryptosContainer'
 
-class Dashboard extends Component {
+class centerConsole extends Component {
 
   constructor(props){
     super(props)
@@ -14,8 +12,6 @@ class Dashboard extends Component {
 
 returnToHomepageFromCryptosContainers = () => {
   this.setState({
-    // currentCrypto: null,
-    // lookingAtSingleCrypto: false,
     hasClickedButton: false
   })
 }
@@ -55,4 +51,4 @@ returnToHomepageFromCryptosContainers = () => {
   }
 }
 
-export default withRouter(Dashboard)
+export default centerConsole

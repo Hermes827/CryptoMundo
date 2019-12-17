@@ -166,6 +166,22 @@
 
 }
 
+.default-form {
+  /* background-color: rgba(189, 195, 199, .75); */
+  /* padding: 25px; */
+  width: 50%;
+  margin: auto;
+  margin-top: 5%;
+  color:  white;
+  border-style: solid;
+  background-color: black;
+  border-color: orange;
+  padding-bottom: 2%;
+  /* opacity: 0.8; */
+  font-family: Orbitron;
+
+}
+
 .login {
   color: orange;
   font-size: 20px;
@@ -625,4 +641,8 @@ body {
   font-size: 110%;
   font-family: Orbitron;
   margin-top: 3%;
+}
+
+.disappear {
+  display: none;
 }
