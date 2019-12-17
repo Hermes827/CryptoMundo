@@ -8,10 +8,6 @@ class UserCrypto extends React.Component {
     this.viewCrypto = this.viewCrypto.bind(this)
   }
 
-  // trim(str){
-  //   return str.length > 15 ? str.substr(0, 15) + '...' : str;
-  // }
-
   viewCrypto(){
     this.props.setCurrentCrypto(this.props.crypto)
   }
