@@ -21,19 +21,17 @@ class Dashboard extends Component {
 
   render(){
     return (
-      <div>
+      <div className="dashboard">
 
             {!this.userIsLoggedIn() &&
               <div>
-              <div className="dashboard">
-              <div className="signup1"><Link to='/user_signup'><div className="ui primary button">Sign up</div></Link></div>
-              <div className="login1"><Link to="/login"><div className="ui button">Login</div></Link></div>
-              </div>
+              <div className="dashboard-signup"><Link to='/user_signup'><div>Sign up</div></Link></div>
+              <div className="dashboard-login"><Link to="/login"><div>Login</div></Link></div>
               </div>
             }
 
             {this.userIsLoggedIn() &&
-              <div className="dashboard">
+              <div>
               <div><Link to="/my_crypto"><div className="ui button" onClick={this.props.displayUserCryptos}>My Cryptos</div></Link></div>
               <div><Link to="/news"><div className="ui button">News</div></Link></div>
               <div className="ui button"><Link to="/update_profile"><div>Settings</div></Link></div>

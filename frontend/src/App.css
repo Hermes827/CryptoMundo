@@ -307,12 +307,7 @@ iframe {
   margin: 0;
 }
 
-.dashboard {
-  background-color: black;
-  color: orange;
-  opacity: 0.85;
-  font-family: Orbitron;
-}
+
 
 body {
  background: url("picture/Cryptocurrency.jpg") no-repeat center center fixed;
@@ -443,44 +438,7 @@ body {
   color: orange;
 }
 
-.signup1 {
-  float: left;
-  border-style: solid;
-  border-color: black;
-  padding-top: 1%;
-  padding-bottom: 1%;
-  padding-left: 5%;
-  padding-right: 5%;
-  background-color: black;
-  font-size: 170%;
-  color: orange;
-}
 
-/* .login1 {
-  float: left;
-  border-style: solid;
-  border-color: black;
-  padding-top: 1%;
-  padding-bottom: 1%;
-  padding-left: 5%;
-  padding-right: 5%;
-  background-color: black;
-  font-size: 170%;
-  color: orange;
-} */
-
-.news1 {
-  float: left;
-  border-style: solid;
-  border-color: black;
-  padding-top: 1%;
-  padding-bottom: 1%;
-  padding-left: 5%;
-  padding-right: 5%;
-  background-color: black;
-  font-size: 170%;
-  color: orange;
-}
 
 .news {
   float: left;
@@ -645,6 +603,41 @@ body {
 
 .disappear {
   display: none;
+}
+
+/* dashboard */
+
+.dashboard {
+  background-color: black;
+  color: orange;
+  opacity: 0.85;
+  font-size: 2em;
+  display: flex;
+  height: 2em;
+  padding-top: 0.5em;
+}
+
+.dashboard-signup {
+  float: left;
+  margin: 0 7em;
+}
+
+.dashboard-login {
+  float: left;
+  margin: 0 7em;
+}
+
+.news1 {
+  float: left;
+  border-style: solid;
+  border-color: black;
+  padding-top: 1%;
+  padding-bottom: 1%;
+  padding-left: 5%;
+  padding-right: 5%;
+  background-color: black;
+  font-size: 170%;
+  color: orange;
 }
 
 /* login */
