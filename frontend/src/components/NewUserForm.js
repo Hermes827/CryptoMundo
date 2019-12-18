@@ -24,24 +24,25 @@ export default class NewUserForm extends Component {
 
 
   render(){
-    return <div className="user-form">
-            <h2 className="title subtitle">Create a new account at Crypto Mundo!</h2>
-            <form className="NewUserForm" onSubmit={this.handleSubmit}>
-              <div className="two fields">
+    return (
+            <div className="signup-form">
+            <h2 className="signup-title">Create a new account at Crypto Mundo!</h2>
+            <form onSubmit={this.handleSubmit}>
+              <div>
                 <div>
-                  <label className="login">Username&nbsp;&nbsp;
+                  <label>Username&nbsp;&nbsp;
                     <input className="input" type="text" name="username" placeholder="username"/>
                   </label>
                 </div>
                 <br/>
                 <div>
-                  <label className="login">Password&nbsp;&nbsp;
+                  <label>Password&nbsp;&nbsp;
                     <input className="input" type="password" name="password" placeholder="password"/>
                   </label>
                 </div>
                 <br/>
                 <div>
-                  <label className="login">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Email&nbsp;&nbsp;
+                  <label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Email&nbsp;&nbsp;
                     <input className="input" type="text" name="email" placeholder="email"/>
                   </label>
                 </div>
@@ -50,5 +51,6 @@ export default class NewUserForm extends Component {
               <input className="submit-button" type="submit" value="Create Account"/>
             </form>
           </div>
+        )
   }
 }
