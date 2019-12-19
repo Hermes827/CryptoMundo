@@ -1,16 +1,21 @@
 class Api::V1::CryptosController < ApplicationController
   skip_before_action :authorized
 
+  def destroy
+    Crypto.all.delete_all
+  end
+
   def searchByName
-    response = HTTParty.get("https://min-api.cryptocompare.com/data/top/totalvolfull?limit=10&tsym=USD&api_key={2eb0a0afcdbd0af89e90104132e9424984ac9324e5c2b62272a6afbe9567cb19}")
+
+    destroy
+
+    response = HTTParty.get("https://min-api.cryptocompare.com/data/top/mktcapfull?limit=50&tsym=USD&api_key={2eb0a0afcdbd0af89e90104132e9424984ac9324e5c2b62272a6afbe9567cb19}")
     data = JSON.parse(response.to_s)
     addCryptos(data)
-
     # modify amount of cryptos that API fetches by changing number after limit
 
     render json: Crypto.all
     # render json: data
-
   end
 
   def addCryptos(data)
