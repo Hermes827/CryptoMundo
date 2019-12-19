@@ -24,7 +24,6 @@ class CryptosContainer extends React.Component {
         this.setState({
           cryptos: data
           })
-          console.log(data)
       })
   }
 
@@ -80,7 +79,7 @@ class CryptosContainer extends React.Component {
   render(){
     return(
       <div className="cryptoItem">
-        <h1 className="ccHeader">All Cryptocurrencies</h1>
+        <h1 className="ccHeader">Top 50 Cryptocurrencies by Market Cap</h1>
         <button className="CCbutton" onClick={this.props.returnToHomepageFromCryptosContainers}>Return to homepage</button>
             {this.renderDetailedUserCryptoView()}
         {
