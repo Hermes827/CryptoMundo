@@ -14,7 +14,7 @@ class Api::V1::CryptosController < ApplicationController
     addCryptos(data)
     # modify amount of cryptos that API fetches by changing number after limit
 
-    render json: data
+    render json: Crypto.all
     # render json: data
   end
 
