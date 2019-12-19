@@ -38,7 +38,7 @@ returnToHomepageFromCryptosContainers = () => {
   render(){
 
     return (
-        <div className="App">
+        <div>
           <div className="forms">
           <h1 className="title">Crypto Mundo</h1>
           <button className="crypto-button" onClick={this.toggleState}>

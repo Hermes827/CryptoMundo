@@ -10,8 +10,8 @@ class Dashboard extends Component {
   renderDefaultForm(){
     if(this.props.history.location.pathname === "/"){
       return (
-        <div className="App">
-          <div className="forms">
+        <div>
+          <div className="dashboard-centerConsole-form">
           <h1 className="title">Crypto Mundo</h1>
           </div>
         </div>
@@ -19,16 +19,15 @@ class Dashboard extends Component {
     }
   }
 
+
   render(){
     return (
       <div>
 
             {!this.userIsLoggedIn() &&
-              <div>
               <div className="dashboard">
-              <div className="signup1"><Link to='/user_signup'><div className="ui primary button">Sign up</div></Link></div>
-              <div className="login1"><Link to="/login"><div className="ui button">Login</div></Link></div>
-              </div>
+              <div className="dashboard-signup"><Link to='/user_signup'><div>Sign up</div></Link></div>
+              <div className="dashboard-login"><Link to="/login"><div>Login</div></Link></div>
               </div>
             }
 

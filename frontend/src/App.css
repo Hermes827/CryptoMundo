@@ -7,6 +7,9 @@
 
 .App {
   text-align: center;
+  font-size: 20px;
+  font-family: Orbitron;
+  color: orange;
 }
 
 .App-logo {
@@ -166,6 +169,9 @@
 
 }
 
+
+
+
 .default-form {
   /* background-color: rgba(189, 195, 199, .75); */
   /* padding: 25px; */
@@ -182,17 +188,17 @@
 
 }
 
-.login {
+/* .login {
   color: orange;
   font-size: 20px;
-}
+} */
 
 .title {
   font-size: 100px;
-  color: orange;
   margin: 25px;
-  /* text-shadow: 0 0 3px black; */
-  /* visibility: hidden; */
+  /* text-shadow: 0 0 3px black;
+  visibility: hidden; */
+
 
 }
 
@@ -206,9 +212,11 @@
   visibility: hidden;
 }
 
-.subtitle {
+/* .subtitle {
   font-size: 3em;
-}
+} */
+
+
 
 .forms {
   /* border-style: solid;
@@ -301,12 +309,7 @@ iframe {
   margin: 0;
 }
 
-.dashboard {
-  background-color: black;
-  color: orange;
-  opacity: 0.85;
-  font-family: Orbitron;
-}
+
 
 body {
  background: url("picture/Cryptocurrency.jpg") no-repeat center center fixed;
@@ -437,44 +440,7 @@ body {
   color: orange;
 }
 
-.signup1 {
-  float: left;
-  border-style: solid;
-  border-color: black;
-  padding-top: 1%;
-  padding-bottom: 1%;
-  padding-left: 5%;
-  padding-right: 5%;
-  background-color: black;
-  font-size: 170%;
-  color: orange;
-}
 
-.login1 {
-  /* float: left; */
-  border-style: solid;
-  border-color: black;
-  padding-top: 1%;
-  padding-bottom: 1%;
-  padding-left: 5%;
-  padding-right: 5%;
-  background-color: black;
-  font-size: 170%;
-  color: orange;
-}
-
-.news1 {
-  float: left;
-  border-style: solid;
-  border-color: black;
-  padding-top: 1%;
-  padding-bottom: 1%;
-  padding-left: 5%;
-  padding-right: 5%;
-  background-color: black;
-  font-size: 170%;
-  color: orange;
-}
 
 .news {
   float: left;
@@ -522,22 +488,16 @@ body {
 }
 
 .input {
-  width: 50%;
+  width: 30em;
 }
 
-.login-button {
-  width: 20%;
-  font-size: 120%;
-  height: 20%;
-  font-family: Orbitron;
 
-}
 
-.submit-button  {
+/* .submit-button  {
   width: 20%;
   font-size: 120%;
   font-family: Orbitron;
-}
+} */
 
 .editBtn {
   display:inline-block;
@@ -646,3 +606,107 @@ body {
 .disappear {
   display: none;
 }
+
+/* dashboard */
+
+.dashboard {
+  background-color: black;
+  opacity: 0.85;
+  font-size: 2em;
+  display: flex;
+  height: 2em;
+  padding-top: 0.5em;
+}
+
+.dashboard-signup {
+  float: left;
+  margin: 0 7em;
+}
+
+.dashboard-login {
+  float: left;
+  margin: 0 7em;
+}
+
+.news1 {
+  float: left;
+  border-style: solid;
+  border-color: black;
+  padding-top: 1%;
+  padding-bottom: 1%;
+  padding-left: 5%;
+  padding-right: 5%;
+  background-color: black;
+  font-size: 170%;
+  color: orange;
+}
+
+.dashboard-centerConsole-form {
+  background-color: black;
+  border-style: solid;
+  border-color: orange;
+  width: 30em;
+  margin: auto;
+  margin-top: 5em;
+  padding-bottom: 1.5em;
+}
+
+/* login */
+
+.login-form {
+  background-color: black;
+  border-style: solid;
+  border-color: orange;
+  width: 30em;
+  margin: auto;
+  margin-top: 5em;
+  padding-bottom: 1.5em;
+}
+
+.login-title {
+  font-size: 3em;
+  margin: 0.5em 0em;
+}
+
+.login-button {
+  width: 3.5em;
+  font-size: 1.25em;
+  height: 1.5em;
+  font-family: Orbitron;
+}
+
+/* signup */
+
+.signup-title {
+  font-size: 3em;
+  margin: 0.5em 0em;
+}
+
+.signup-form {
+  background-color: black;
+  border-style: solid;
+  border-color: orange;
+  width: 30em;
+  margin: auto;
+  margin-top: 3em;
+  padding-bottom: 1.5em;
+}
+
+/* buttons */
+
+.submit-button  {
+  width: 20%;
+  font-size: 120%;
+  font-family: Orbitron;
+}
+
+.inputSubmitBtn {
+  display: none;
+}
+
+/* general */
+
+/* .centerConsole-title {
+    font-size: 3em;
+    margin: 0.5em 0em;
+} */
