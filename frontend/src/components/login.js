@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
+import {withRouter} from 'react-router-dom'
 
-export default class Login extends Component {
+class Login extends Component {
 
   constructor(props){
     super(props)
@@ -34,9 +35,13 @@ export default class Login extends Component {
               </label>
             </div>
           <br/>
-          <button className="login-button" type="submit" value="Login">login</button>
+          <button className="login-button" type="submit" value="Login">Login</button>
         </form>
       </div>
     )
   }
 }
+
+export default withRouter(Login)
+
+// <button type="button" onclick={() => this.props.history.push('/')}>Cancel</button>

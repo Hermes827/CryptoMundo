@@ -196,8 +196,9 @@
 .title {
   font-size: 100px;
   margin: 25px;
-  /* text-shadow: 0 0 3px black; */
-  /* visibility: hidden; */
+  /* text-shadow: 0 0 3px black;
+  visibility: hidden; */
+
 
 }
 
@@ -640,6 +641,16 @@ body {
   color: orange;
 }
 
+.dashboard-centerConsole-form {
+  background-color: black;
+  border-style: solid;
+  border-color: orange;
+  width: 30em;
+  margin: auto;
+  margin-top: 5em;
+  padding-bottom: 1.5em;
+}
+
 /* login */
 
 .login-form {
@@ -692,3 +703,10 @@ body {
 .inputSubmitBtn {
   display: none;
 }
+
+/* general */
+
+/* .centerConsole-title {
+    font-size: 3em;
+    margin: 0.5em 0em;
+} */
