@@ -196,10 +196,6 @@
 .title {
   font-size: 100px;
   margin: 25px;
-  /* text-shadow: 0 0 3px black;
-  visibility: hidden; */
-
-
 }
 
 .hide-title {
@@ -236,12 +232,20 @@
   border-color: orange;
   /* opacity: 0.8; */
   font-family: Orbitron;
+  background-color: black;
+  border-style: solid;
+  border-color: orange;
+  width: 30em;
+  margin: auto;
+  margin-top: 5em;
+  padding-bottom: 1.5em;
 }
 
 .detailedViewImg {
   height: 50%;
   width: 50%;
 }
+
 
 .userCrypto {
   text-align: center;
@@ -517,7 +521,7 @@ body {
 }
 
 .crypto-button {
-  font-size: 110%;
+  font-size: 1.25em;
   font-family: Orbitron;
 }
 
@@ -618,14 +622,19 @@ body {
   padding-top: 0.5em;
 }
 
-.dashboard-signup {
+/* .dashboard-signup {
+  float: left;
+  margin: 0 7em;
+} */
+
+.dashboard-loggedout {
   float: left;
   margin: 0 7em;
 }
 
-.dashboard-login {
+.dashboard-loggedin {
   float: left;
-  margin: 0 7em;
+  margin: 0 2em;
 }
 
 .news1 {
@@ -669,16 +678,14 @@ body {
 }
 
 .login-button {
-  width: 3.5em;
   font-size: 1.25em;
-  height: 1.5em;
   font-family: Orbitron;
 }
 
 /* signup */
 
 .signup-title {
-  font-size: 3em;
+  font-size: 2.9em;
   margin: 0.5em 0em;
 }
 
@@ -710,3 +717,15 @@ body {
     font-size: 3em;
     margin: 0.5em 0em;
 } */
+
+/* center console */
+
+.centerConsole {
+  background-color: black;
+  border-style: solid;
+  border-color: orange;
+  width: 30em;
+  margin: auto;
+  margin-top: 5em;
+  padding-bottom: 1.5em;
+}

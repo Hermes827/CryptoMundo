@@ -13,6 +13,7 @@ class Dashboard extends Component {
         <div>
           <div className="dashboard-centerConsole-form">
           <h1 className="title">Crypto Mundo</h1>
+          <button className="crypto-button" onClick={()=> this.props.history.push('/user_signup')}>Get Started</button>
           </div>
         </div>
       )
@@ -26,17 +27,17 @@ class Dashboard extends Component {
 
             {!this.userIsLoggedIn() &&
               <div className="dashboard">
-              <div className="dashboard-signup"><Link to='/user_signup'><div>Sign up</div></Link></div>
-              <div className="dashboard-login"><Link to="/login"><div>Login</div></Link></div>
+              <div className="dashboard-loggedout"><Link to='/user_signup'><div>Sign up</div></Link></div>
+              <div className="dashboard-loggedout"><Link to="/login"><div>Login</div></Link></div>
               </div>
             }
 
             {this.userIsLoggedIn() &&
               <div className="dashboard">
-              <div><Link to="/my_crypto"><div className="ui button" onClick={this.props.displayUserCryptos}>My Cryptos</div></Link></div>
-              <div><Link to="/news"><div className="ui button">News</div></Link></div>
-              <div className="ui button"><Link to="/update_profile"><div>Settings</div></Link></div>
-              <div onClick={this.props.logout} className="ui primary button">Log Out</div>
+              <div><Link to="/my_crypto"><div className="dashboard-loggedin" onClick={this.props.displayUserCryptos}>My Cryptos</div></Link></div>
+              <div><Link to="/news"><div className="dashboard-loggedin">News</div></Link></div>
+              <div><Link to="/update_profile"><div className="dashboard-loggedin">Settings</div></Link></div>
+              <div onClick={this.props.logout} className="dashboard-loggedin">Log Out</div>
              </div>
             }
 

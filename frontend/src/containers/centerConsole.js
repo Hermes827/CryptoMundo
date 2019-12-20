@@ -39,7 +39,7 @@ returnToHomepageFromCryptosContainers = () => {
 
     return (
         <div>
-          <div className="forms">
+          <div className="centerConsole">
           <h1 className="title">Crypto Mundo</h1>
           <button className="crypto-button" onClick={this.toggleState}>
           See all cryptocurrencies
