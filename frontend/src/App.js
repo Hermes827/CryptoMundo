@@ -132,7 +132,8 @@ class App extends React.Component {
   }
 
   renderDefaultForm(){
-    if(this.props.history.location.pathname === "/"){
+    if(this.props.history.location.pathname === "/login" || this.props.history.location.pathname === "/user_signup"){return}
+    if(!this.state.current_user.username){
       return (
         <div>
           <div className="dashboard-centerConsole-form">
@@ -147,12 +148,6 @@ class App extends React.Component {
   userIsLoggedIn(){
     return this.current_user.username
   }
-
-  // renderCenterConsole(){
-  //   if(this.props.history.location.pathname === "/center_console" && this.state.current_user.username){
-  //     return <CenterConsole/>
-  //   }
-  // }
 
   renderCenterConsole(){
     if(this.props.history.location.pathname === "/center_console" && this.state.current_user.username){
