@@ -28,36 +28,36 @@ class App extends React.Component {
     this.logout = this.logout.bind(this)
     this.updateUser = this.updateUser.bind(this)
     this.deleteUser = this.deleteUser.bind(this)
-    this.renewState();
+    // this.renewState();
   }
 
   // user stuff
 
-  renewState(){
-  if(!localStorage.token){return}
-  fetch("http://localhost:3000/api/v1/profile", {
-    method: "GET",
-    headers: {
-      'Authorization': "Bearer " + localStorage.token
-    }
-  })
-  .then(res => res.json())
-  .then(data => this.setActiveUser(data, "soft"))
-}
+//   renewState(){
+//   if(!localStorage.token){return}
+//   fetch("http://localhost:3000/api/v1/profile", {
+//     method: "GET",
+//     headers: {
+//       'Authorization': "Bearer " + localStorage.token
+//     }
+//   })
+//   .then(res => res.json())
+//   .then(data => this.setActiveUser(data, "soft"))
+// }
 
   setActiveUser(data, mode="hard"){
-    if(data.message && mode === "soft"){
-      return
-    } else if(data.message){
-      this.setState({error: data.message})
-    } else {
+    // if(data.message && mode === "soft"){
+    //   return
+    // } else if(data.message){
+    //   this.setState({error: data.message})
+    // } else {
       this.setState({
         current_user: data.user,
         error: ""
       })
       if(data.jwt){localStorage.token = data.jwt}
     }
-  }
+
 
   createNewUser(user){
     fetch(USER_URL, {
@@ -71,8 +71,10 @@ class App extends React.Component {
     .then(data => {
       this.setActiveUser(data)
       this.props.history.push('/center_console')
+      console.log(data.jwt)
     })
   }
+
 
   updateUser(user){
     fetch(USER_URL + `/${user.id}`, {
@@ -98,7 +100,7 @@ class App extends React.Component {
         'Authorization': "Bearer " + localStorage.token
       }
     })
-    .then( () => this.logout())
+    .then(() => this.logout())
   }
 
   // login

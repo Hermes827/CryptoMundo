@@ -1,10 +1,6 @@
 class Api::V1::CryptosController < ApplicationController
   skip_before_action :authorized
 
-  def destroy
-    Crypto.all.delete_all
-  end
-
   def searchByName
     Crypto.all.delete_all
     response = HTTParty.get("https://min-api.cryptocompare.com/data/top/mktcapfull?limit=50&tsym=USD&api_key={2eb0a0afcdbd0af89e90104132e9424984ac9324e5c2b62272a6afbe9567cb19}")

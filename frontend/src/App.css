@@ -69,14 +69,7 @@
   margin: 20px auto;
   width: 50%;
 }
-.cryptosContainer {
-  overflow-x: auto;
-  margin-bottom: -3%;
-  position: relative;
-  /* margin-top: 10%; */
 
-
-}
 
 .crypto {
   /* border-radius: 50%; */
@@ -93,24 +86,6 @@
   width: 70%;
   height: auto;
   transition: 1s;
-}
-
-.cryptoItem {
-  color: orange;
-  overflow: scroll;
-  border-style: solid;
-  border-color: orange;
-  /* opacity: 0.75; */
-  background-color: black;
-  /* text-align: center; */
-  /* margin-right: 1000px; */
-  margin-left: 3%;
-  height: 89%;
-  position: fixed;
-  width: 45%;
-  margin-top: -45%;
-  margin-bottom: 2%;
-  padding-bottom: 3%;
 }
 
 .main {
@@ -202,11 +177,7 @@
   visibility: hidden;
 }
 
-.card-title {
-  font-size: 3em;
-  color: orange;
-  visibility: hidden;
-}
+
 
 /* .subtitle {
   font-size: 3em;
@@ -322,32 +293,15 @@ body {
  font-family: Orbitron;
 }
 
-.CCbutton {
-  /* margin-left: 80%; */
+/* .CCbutton {
+  margin-left: 80%;
   margin-top: 5%;
   margin-bottom: 5%;
   font-size: 150%;
   font-family: Orbitron;
-}
+} */
 
-.CryptoDetailedView {
-  text-align: center;
-  overflow: scroll;
-  height: 85%;
-  position: fixed;
-  width: 45%;
-  color: orange;
-  font-size: 150%;
-  border-style: solid;
-  border-color: orange;
-  background-color: black;
-  opacity: 0.99;
-  /* width: 40%; */
-  margin-left: 50%;
-  margin-top: -40%;
-  padding-bottom: 5%;
 
-}
 
 .cryptoElement {
   border-style: solid;
@@ -532,11 +486,11 @@ body {
   margin-bottom: 1%;
 }
 
-.ccHeader {
+/* .ccHeader {
   font-size: 300%;
   color: orange;
   font-family: Orbitron;
-}
+} */
 
 .graph {
   border-style: solid;
@@ -728,4 +682,72 @@ body {
   margin: auto;
   margin-top: 5em;
   padding-bottom: 1.5em;
+}
+
+/* crypto container */
+
+.cryptoContainer-title {
+  font-size: 2.5em;
+  color: orange;
+  margin: 0.5em 0;
+}
+
+.cryptoContainer-button {
+  margin: 0.5em;
+  font-size: 1.5em;
+  font-family: Orbitron;
+}
+
+.cryptosContainer {
+
+  float: right;
+  color: orange;
+  background-color: black;
+  overflow: scroll;
+  position: relative;
+  border-style: solid;
+  border-color: orange;
+  height: 35em;
+  width: 30em;
+  margin-top: -26.5em;
+  margin-right: 20em;
+  border-radius: 5em;
+}
+
+.CryptoDetailedView {
+  text-align: center;
+  overflow: scroll;
+  height: 85%;
+  position: fixed;
+  width: 45%;
+  color: orange;
+  font-size: 150%;
+  border-style: solid;
+  border-color: orange;
+  background-color: black;
+  opacity: 0.99;
+  /* width: 40%; */
+  margin-left: 50%;
+  margin-top: -10em;
+  padding-bottom: 5%;
+  border-radius: 5em;
+
+}
+
+/* .cryptosContainer {
+  overflow-x: auto;
+  margin-bottom: -3%;
+  position: relative;
+  margin-top: 10%;
+} */
+
+.card-title {
+  font-size: 3em;
+  color: orange;
+
+}
+
+.random {
+  overflow: scroll;
+  position: fixed;
 }

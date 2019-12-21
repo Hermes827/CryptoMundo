@@ -43,5 +43,3 @@ class Login extends Component {
 }
 
 export default withRouter(Login)
-
-// <button type="button" onclick={() => this.props.history.push('/')}>Cancel</button>
