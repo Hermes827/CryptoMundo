@@ -32,13 +32,23 @@ returnToHomepageFromCryptosContainers = () => {
     })
   }
 
+  dimBackground = () => {
+    console.log("hello")
+    
+  }
+
+  combinedFunction = () => {
+    this.toggleState()
+    this.dimBackground()
+  }
+
   render(){
 
     return (
         <div>
           <div className="centerConsole">
           <h1 className="title">Crypto Mundo</h1>
-          <button className="crypto-button" onClick={this.toggleState}>
+          <button className="crypto-button" onClick={this.combinedFunction}>
           See all cryptocurrencies
           </button>
           {this.renderCryptos()}
