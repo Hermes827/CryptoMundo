@@ -131,6 +131,8 @@ class App extends React.Component {
     this.props.history.push('/login')
   }
 
+  // conditional rendering
+
   renderDefaultForm(){
     if(this.props.history.location.pathname === "/login" || this.props.history.location.pathname === "/user_signup"){return}
     if(!this.state.current_user.username){
@@ -143,10 +145,6 @@ class App extends React.Component {
         </div>
       )
     }
-  }
-
-  userIsLoggedIn(){
-    return this.current_user.username
   }
 
   renderCenterConsole(){
@@ -185,8 +183,6 @@ class App extends React.Component {
       )
     }
   }
-
-/////////////////////////////////////////////////////////////////////////////////
 
   render(){
 
