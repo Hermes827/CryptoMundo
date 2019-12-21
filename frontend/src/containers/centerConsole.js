@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import CryptosContainer from './cryptosContainer'
+import {withRouter} from 'react-router-dom'
 
 class centerConsole extends Component {
 
@@ -34,7 +35,7 @@ returnToHomepageFromCryptosContainers = () => {
 
   dimBackground = () => {
     console.log("hello")
-    
+
   }
 
   combinedFunction = () => {
@@ -45,7 +46,6 @@ returnToHomepageFromCryptosContainers = () => {
   render(){
 
     return (
-        <div>
           <div className="centerConsole">
           <h1 className="title">Crypto Mundo</h1>
           <button className="crypto-button" onClick={this.combinedFunction}>
@@ -53,9 +53,8 @@ returnToHomepageFromCryptosContainers = () => {
           </button>
           {this.renderCryptos()}
           </div>
-        </div>
     );
   }
 }
 
-export default centerConsole
+export default withRouter(centerConsole)
