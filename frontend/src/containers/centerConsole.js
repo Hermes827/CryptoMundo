@@ -19,12 +19,9 @@ returnToHomepageFromCryptosContainers = () => {
   renderCryptos() {
     if(this.state.hasClickedButton === true){
       return (
-      <div className="cryptosContainer">
-        <h2 className="card-title">View Cryptos</h2>
         <CryptosContainer
         returnToHomepageFromCryptosContainers={this.returnToHomepageFromCryptosContainers}
         />
-      </div>
       )
     }
   }

@@ -2,8 +2,6 @@ import React from 'react'
 import Crypto from '../components/crypto'
 import CryptoDetailedView from '../components/CryptoDetailedView'
 
-// const API = "https://min-api.cryptocompare.com/data/top/totalvolfull?limit=10&tsym=USD&api_key={2eb0a0afcdbd0af89e90104132e9424984ac9324e5c2b62272a6afbe9567cb19}"
-
 class CryptosContainer extends React.Component {
 
   constructor(props){
@@ -78,10 +76,11 @@ class CryptosContainer extends React.Component {
 
   render(){
     return(
-      <div className="cryptoItem">
-        <h1 className="ccHeader">Top 50 Cryptocurrencies by Market Cap</h1>
-        <button className="CCbutton" onClick={this.props.returnToHomepageFromCryptosContainers}>Return to homepage</button>
-            {this.renderDetailedUserCryptoView()}
+        <div className="cryptosContainer">
+        <h1 className="cryptoContainer-title">Top 50 Cryptocurrencies by Market Cap</h1>
+        <button className="cryptoContainer-button" onClick={this.props.returnToHomepageFromCryptosContainers}>Return to homepage</button>
+        {this.renderDetailedUserCryptoView()}
+        <div>
         {
         this.state.cryptos.map((crypto)=>{
           return <Crypto
@@ -91,8 +90,9 @@ class CryptosContainer extends React.Component {
                   setCurrentCrypto={this.setCurrentCrypto}
                   />
         })
-      }
-    </div>
+       }
+       </div>
+       </div>
     )
   }
 }
