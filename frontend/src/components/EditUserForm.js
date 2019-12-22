@@ -1,30 +1,37 @@
 import React, { Component } from 'react'
+import {withRouter} from 'react-router-dom'
 
-export default class EditUserForm extends Component {
+class EditUserForm extends Component {
 
-  constructor(props){
-    super(props)
-    this.state = {
-    }
-
-    this.handleSubmit = this.handleSubmit.bind(this)
+constructor(props){
+  super(props)
+  this.state = {
   }
+  this.returnToCenterConsole = this.returnToCenterConsole.bind(this)
+  this.handleSubmit = this.handleSubmit.bind(this)
+}
 
-  handleSubmit(ev){
-    ev.preventDefault();
-    let user = {
-      id: this.props.current_user.id,
-      username: ev.target.elements['username'].value
-    };
-    if(ev.target.elements['password'].value !== ""){
-      user.password = ev.target.elements['password'].value
-    }
-    if(ev.target.elements['email'].value !== ""){
-      user.email = ev.target.elements['email'].value
-    }
-    console.log(user)
-    this.props.updateUser(user)
+handleSubmit(ev){
+  ev.preventDefault();
+  let user = {
+    id: this.props.current_user.id,
+    username: ev.target.elements['username'].value
+  };
+  if(ev.target.elements['password'].value !== ""){
+    user.password = ev.target.elements['password'].value
   }
+  if(ev.target.elements['email'].value !== ""){
+    user.email = ev.target.elements['email'].value
+  }
+  console.log(user)
+  this.props.updateUser(user)
+}
+
+returnToCenterConsole(){
+    this.props.history.push('/center_console')
+    console.log("hello")
+}
+
 
 
   render(){
@@ -55,8 +62,9 @@ export default class EditUserForm extends Component {
             <button onClick={() => this.props.deleteUser(this.props.current_user.id)}
                     className="updateBtn">Delete Account</button>
                   <br/>
-                  <button onClick={this.props.setEdit}
-                    className="editBtn">Cancel</button>
+                  <button onClick={this.returnToCenterConsole} className="editBtn">Cancel</button>
           </div>
   }
 }
+
+export default withRouter(EditUserForm)

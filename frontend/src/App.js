@@ -187,7 +187,7 @@ class App extends React.Component {
   render(){
 
     return (
-      <div className="App">
+      <div className="App crt">
           <Route path='/' render={() => <Dashboard
                                         current_user={this.state.current_user}
                                         logout={this.logout}

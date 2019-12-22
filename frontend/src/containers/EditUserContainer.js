@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import {Redirect} from 'react-router-dom'
 import EditUserForm from '../components/EditUserForm'
 
-export default class EditUserContainer extends Component {
+class EditUserContainer extends Component {
 
   constructor(props){
     super(props)
@@ -61,3 +61,5 @@ export default class EditUserContainer extends Component {
     }
   }
 }
+
+export default EditUserContainer
