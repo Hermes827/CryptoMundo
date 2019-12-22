@@ -34,7 +34,7 @@ returnToHomepageFromCryptosContainers = () => {
   }
 
   dimBackground = () => {
-    console.log("hello")
+    // console.log("hello")
 
   }
 
