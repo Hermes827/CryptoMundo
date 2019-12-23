@@ -312,23 +312,23 @@ body {
   border-color: orange;
 }
 
-.userCryptos {
+.userCryptosContainer {
   color: orange;
   overflow: scroll;
   border-style: solid;
   border-color: orange;
-  /* opacity: 0.75; */
   background-color: black;
   text-align: center;
-  margin-right: 60%;
-  margin-left: 3%;
-  height: 90%;
+  width: 30em;
+  height: 35em;
+  margin-top: -28em;
+  margin-left: 0.75em;
   position: fixed;
-  width: 45%;
-  margin-top: -5%;
-  padding-bottom: 2%;
+  font-size: 1em;
+  font-family: sans-serif;
   border-radius: 5em;
 }
+
 
 .UserCryptoDetailedView  {
   /* text-align: center;
@@ -345,19 +345,17 @@ body {
   padding-bottom: 7%; */
   text-align: center;
   overflow: scroll;
-  height: 86%;
   position: fixed;
-  width: 45%;
+  height: 35em;
+  width: 32em;
   color: orange;
-  font-size: 150%;
+  /* font-size: 150%; */
   border-style: solid;
   border-color: orange;
   background-color: black;
-  opacity: 0.99;
-  /* width: 40%; */
-  margin-left: 50%;
-  margin-top: -20%;
-  padding-bottom: 4%;
+  margin-left: 36em;
+  margin-top: -33em;
+  border-radius: 5em;
 }
 
 .logo  {
@@ -541,7 +539,7 @@ body {
   text-align: center;
   width: 30em;
   height: 35em;
-  margin-top: -27.5em;
+  margin-top: -28em;
   margin-left: 0.75em;
   position: fixed;
   font-size: 1em;
@@ -728,7 +726,6 @@ body {
 }
 
 .cryptosContainer {
-
   float: right;
   color: orange;
   background-color: black;
@@ -737,30 +734,26 @@ body {
   border-style: solid;
   border-color: orange;
   height: 35em;
-  width: 30em;
+  width: 32em;
   margin-top: -26.5em;
-  margin-right: 20em;
+  margin-right: 17em;
   border-radius: 5em;
 }
 
 .CryptoDetailedView {
   text-align: center;
   overflow: scroll;
-  height: 85%;
   position: fixed;
-  width: 45%;
+  height: 35em;
+  width: 32em;
   color: orange;
-  font-size: 150%;
+  /* font-size: 150%; */
   border-style: solid;
   border-color: orange;
   background-color: black;
-  opacity: 0.99;
-  /* width: 40%; */
-  margin-left: 50%;
-  margin-top: -10em;
-  padding-bottom: 5%;
+  margin-left: 36em;
+  margin-top: -15.7em;
   border-radius: 5em;
-
 }
 
 /* .cryptosContainer {

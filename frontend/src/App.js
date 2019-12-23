@@ -162,7 +162,9 @@ class App extends React.Component {
         <div>
           <div className="dashboard-centerConsole-form">
           <h1 className="title">Crypto Mundo</h1>
-          <br></br>
+            <button className="crypto-button">
+            See all cryptocurrencies
+            </button>
           </div>
         </div>
       )
@@ -213,7 +215,6 @@ class App extends React.Component {
           <Route path='/' render={() => <Dashboard
                                         current_user={this.state.current_user}
                                         logout={this.logout}
-                                        displayUserCryptos={this.displayUserCryptos}
                                         getNews={this.getNews}
                                         setEdit={this.setEdit}
                                         />}/>
