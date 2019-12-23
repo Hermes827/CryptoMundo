@@ -128,22 +128,24 @@
     margin: 0px !important;
 }
 
-.user-form {
-  /* background-color: rgba(189, 195, 199, .75); */
-  /* padding: 25px; */
-  width: 50%;
+.updateUser-form {
+  /* width: 30em;
   margin: auto;
-  margin-top: 5%;
-  color:  white;
+  margin-top: ;
+  color: orange;
   border-style: solid;
   background-color: black;
   border-color: orange;
-  padding-bottom: 2%;
-  /* opacity: 0.8; */
-  font-family: Orbitron;
+  padding-bottom: 2%; */
   border-radius: 5em;
-
-
+  background-color: black;
+  border-style: solid;
+  border-color: orange;
+  width: 30em;
+  margin: auto;
+  margin-top: 0.5em;
+  padding-bottom: 1.5em;
+  border-radius: 5em;
 }
 
 
@@ -526,6 +528,23 @@ body {
   margin-bottom: 2%;
   padding-bottom: 3%;
   font-size: 95%;
+  font-family: sans-serif;
+  border-radius: 5em;
+}
+
+.newsContainer {
+  color: orange;
+  overflow: scroll;
+  border-style: solid;
+  border-color: orange;
+  background-color: black;
+  text-align: center;
+  width: 30em;
+  height: 35em;
+  margin-top: -27.5em;
+  margin-left: 0.75em;
+  position: fixed;
+  font-size: 1em;
   font-family: sans-serif;
   border-radius: 5em;
 }

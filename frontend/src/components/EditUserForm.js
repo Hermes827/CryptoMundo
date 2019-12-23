@@ -35,7 +35,7 @@ returnToCenterConsole(){
 
 
   render(){
-    return <div className="user-form">
+    return <div className="updateUser-form">
             <h2 className="title subtitle">Update Account</h2>
             <form className="edit" onSubmit={this.handleSubmit}>
                 <div className="field">
@@ -45,7 +45,7 @@ returnToCenterConsole(){
                 </div>
                 <br/>
                 <div className="field">
-                  <label>&nbsp;New Password&nbsp;&nbsp;
+                  <label>New Password&nbsp;&nbsp;
                     <input className="input" type="text" name="password" placeholder="password"/>
                   </label>
                 </div>

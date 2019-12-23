@@ -88,7 +88,7 @@ class NewsContainer extends Component {
 
   render(){
     return (
-      <div className="articles">
+      <div className="newsContainer">
       <h1 className="ccHeader">News Stories</h1>
       <button className="CCbutton" onClick={this.returnToHomepageFromNewsContainer}>Return to homepage</button>
       {this.renderDetailedNewsView()}
