@@ -13,8 +13,8 @@ class Dashboard extends Component {
 
             {!this.userIsLoggedIn() &&
               <div className="dashboard">
-              <div className="dashboard-loggedout"><Link to='/user_signup'><div>Sign up</div></Link></div>
-              <div className="dashboard-loggedout"><Link to="/login"><div>Login</div></Link></div>
+              <div><Link to='/user_signup'><div className="dashboard-loggedout">Sign up</div></Link></div>
+              <div><Link to="/login"><div className="dashboard-loggedout">Login</div></Link></div>
               </div>
             }
 

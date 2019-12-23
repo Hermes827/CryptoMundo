@@ -147,6 +147,28 @@ class App extends React.Component {
     }
   }
 
+  // renderCenterConsole(){
+  //   if(this.state.current_user.username){
+  //     return (
+  //       <CenterConsole/>
+  //     )
+  //   }
+  // }
+
+  renderDefaultFormWhenLoggedin(){
+    if(this.props.history.location.pathname === "/update_profile"){return}
+    if(this.props.history.location.pathname != "/center_console" && this.state.current_user.username){
+      return (
+        <div>
+          <div className="dashboard-centerConsole-form">
+          <h1 className="title">Crypto Mundo</h1>
+          <br></br>
+          </div>
+        </div>
+      )
+    }
+  }
+
   renderCenterConsole(){
     if(this.props.history.location.pathname === "/center_console" && this.state.current_user.username){
       return (
@@ -201,6 +223,7 @@ class App extends React.Component {
           <Route exact path="/user_signup" render={() => <NewUserForm createNewUser={this.createNewUser}/>}/>
 
          {this.renderDefaultForm()}
+         {this.renderDefaultFormWhenLoggedin()}
          {this.renderCenterConsole()}
          {this.renderNews()}
          {this.renderUserCryptos()}
