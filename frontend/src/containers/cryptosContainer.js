@@ -74,6 +74,7 @@ class CryptosContainer extends React.Component {
     .then(res => res.json())
     .then(data => {
       this.setFeedback(`Added ${crypto.name} to portfolio`)
+      console.log(data)
     })
   }
 
@@ -95,7 +96,7 @@ class CryptosContainer extends React.Component {
   renderLoadingSpinner(){
     if(this.state.hasClickedButton === true){
       return (
-        <div class="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+        <div className="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
       )
     }
   }

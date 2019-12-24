@@ -322,7 +322,7 @@ body {
   width: 30em;
   height: 35em;
   margin-top: -28em;
-  margin-left: 0.75em;
+  margin-left: 1.75em;
   position: fixed;
   font-size: 1em;
   font-family: sans-serif;
@@ -540,7 +540,9 @@ body {
   width: 30em;
   height: 35em;
   margin-top: -28em;
-  margin-left: 0.75em;
+  /* margin-top: -26.5em; */
+  /* margin-right: 17em; */
+  margin-left: 1.75em;
   position: fixed;
   font-size: 1em;
   font-family: sans-serif;
@@ -552,23 +554,23 @@ body {
 } */
 
 .articleView  {
-
   text-align: center;
   overflow: scroll;
-  height: 86%;
   position: fixed;
-  width: 47%;
+  height: 35em;
+  width: 32em;
   color: orange;
-  font-size: 140%;
   border-style: solid;
   border-color: orange;
   background-color: black;
-  opacity: 0.99;
-  /* width: 40%; */
-  margin-left: 50%;
-  margin-top: -17%;
-  padding-bottom: 4.5%;
-  font-family: sans-serif;
+  margin-left: 36em;
+  margin-top: -11.5em;
+  border-radius: 5em;
+}
+
+.articleView-title {
+  margin: 1em;
+  /* text-align: center; */
 }
 
 .storyImg {

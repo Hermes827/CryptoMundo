@@ -211,7 +211,7 @@ class App extends React.Component {
   render(){
 
     return (
-      <div className="App crt">
+      <div className="App ">
           <Route path='/' render={() => <Dashboard
                                         current_user={this.state.current_user}
                                         logout={this.logout}
@@ -235,3 +235,5 @@ class App extends React.Component {
 }
 
 export default withRouter(App);
+
+// <div className="App crt">
