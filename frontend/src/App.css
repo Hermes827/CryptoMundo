@@ -52,10 +52,12 @@
 
 .feedback-message {
   background-color: green;
-  line-height: 2em;
+  line-height: 3em;
   color: white;
   animation: fadein 1.5s;
-  margin-top: 5%;
+  position: absolute;
+  margin-left: 1em;
+  padding: 0 9em;
 }
 
 @keyframes fadein {
