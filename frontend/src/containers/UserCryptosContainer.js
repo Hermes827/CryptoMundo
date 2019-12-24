@@ -52,8 +52,8 @@ class UserCryptosContainer extends React.Component {
   renderDetailedUserCryptoView = () => {
     const {currentCrypto, lookingAtSingleCrypto} = this.state
     if(lookingAtSingleCrypto === true) {
+      console.log("hello")
       return(
-        <div>
         <UserCryptoDetailedView
         countCrypto={this.countCrypto}
         currentCrypto={currentCrypto}
@@ -61,7 +61,6 @@ class UserCryptosContainer extends React.Component {
         deleteCrypto={this.deleteCrypto}
         error={this.state.error}
         />
-        </div>
           )
     }
   }

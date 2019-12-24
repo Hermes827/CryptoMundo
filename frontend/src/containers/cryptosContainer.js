@@ -25,8 +25,9 @@ class CryptosContainer extends React.Component {
         this.setState({
           cryptos: newData
           })
+        console.log(data)
           this.stopLoadingSpinner()
-          console.log(newData)
+
       })
   }
 
