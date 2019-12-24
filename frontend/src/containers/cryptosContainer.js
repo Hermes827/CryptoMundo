@@ -21,10 +21,12 @@ class CryptosContainer extends React.Component {
     fetch("http://localhost:3000/api/v1/searchbyname")
       .then(res => res.json())
       .then(data => {
+        const newData = data.slice(0,50)
         this.setState({
-          cryptos: data
+          cryptos: newData
           })
           this.stopLoadingSpinner()
+          console.log(newData)
       })
   }
 
