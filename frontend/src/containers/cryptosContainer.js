@@ -11,17 +11,20 @@ class CryptosContainer extends React.Component {
         lookingAtSingleCrypto: false,
         hasClickedButton: false,
         currentCrypto: {},
-        feedback: ""
+        feedback: "",
+        hasClickedButton: false
       }
     }
 
   componentDidMount(){
+    this.startLoadingSpinner()
     fetch("http://localhost:3000/api/v1/searchbyname")
       .then(res => res.json())
       .then(data => {
         this.setState({
           cryptos: data
           })
+          this.stopLoadingSpinner()
       })
   }
 
@@ -71,8 +74,34 @@ class CryptosContainer extends React.Component {
     .then(res => res.json())
     .then(data => {
       this.setFeedback(`Added ${crypto.name} to portfolio`)
+      console.log(data)
     })
   }
+
+  // loading spinner
+
+  startLoadingSpinner(){
+    this.setState({
+      hasClickedButton: true
+    })
+
+  }
+
+  stopLoadingSpinner(){
+    this.setState({
+      hasClickedButton: false
+    })
+  }
+
+  renderLoadingSpinner(){
+    if(this.state.hasClickedButton === true){
+      return (
+        <div className="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+      )
+    }
+  }
+
+
 
   render(){
     return(
@@ -81,6 +110,7 @@ class CryptosContainer extends React.Component {
         <button className="cryptoContainer-button" onClick={this.props.returnToHomepageFromCryptosContainers}>Return to homepage</button>
         {this.renderDetailedUserCryptoView()}
         <div>
+        {this.renderLoadingSpinner()}
         {
         this.state.cryptos.map((crypto)=>{
           return <Crypto

@@ -52,10 +52,12 @@
 
 .feedback-message {
   background-color: green;
-  line-height: 2em;
+  line-height: 3em;
   color: white;
   animation: fadein 1.5s;
-  margin-top: 5%;
+  position: absolute;
+  margin-left: 1em;
+  padding: 0 9em;
 }
 
 @keyframes fadein {
@@ -128,20 +130,24 @@
     margin: 0px !important;
 }
 
-.user-form {
-  /* background-color: rgba(189, 195, 199, .75); */
-  /* padding: 25px; */
-  width: 50%;
+.updateUser-form {
+  /* width: 30em;
   margin: auto;
-  margin-top: 5%;
-  color:  white;
+  margin-top: ;
+  color: orange;
   border-style: solid;
   background-color: black;
   border-color: orange;
-  padding-bottom: 2%;
-  /* opacity: 0.8; */
-  font-family: Orbitron;
-
+  padding-bottom: 2%; */
+  border-radius: 5em;
+  background-color: black;
+  border-style: solid;
+  border-color: orange;
+  width: 30em;
+  margin: auto;
+  margin-top: 0.5em;
+  padding-bottom: 1.5em;
+  border-radius: 5em;
 }
 
 
@@ -293,13 +299,13 @@ body {
  font-family: Orbitron;
 }
 
-/* .CCbutton {
-  margin-left: 80%;
-  margin-top: 5%;
+.CCbutton {
+  /* margin-left: 80%;
+  margin-top: 5%; */
   margin-bottom: 5%;
   font-size: 150%;
   font-family: Orbitron;
-} */
+}
 
 
 
@@ -308,22 +314,23 @@ body {
   border-color: orange;
 }
 
-.userCryptos {
+.userCryptosContainer {
   color: orange;
   overflow: scroll;
   border-style: solid;
   border-color: orange;
-  /* opacity: 0.75; */
   background-color: black;
   text-align: center;
-  margin-right: 60%;
-  margin-left: 3%;
-  height: 90%;
+  width: 30em;
+  height: 35em;
+  margin-top: -28em;
+  margin-left: 1.75em;
   position: fixed;
-  width: 45%;
-  margin-top: -5%;
-  padding-bottom: 2%;
+  font-size: 1em;
+  font-family: sans-serif;
+  border-radius: 5em;
 }
+
 
 .UserCryptoDetailedView  {
   /* text-align: center;
@@ -340,19 +347,17 @@ body {
   padding-bottom: 7%; */
   text-align: center;
   overflow: scroll;
-  height: 86%;
   position: fixed;
-  width: 45%;
+  height: 35em;
+  width: 32em;
   color: orange;
-  font-size: 150%;
+  /* font-size: 150%; */
   border-style: solid;
   border-color: orange;
   background-color: black;
-  opacity: 0.99;
-  /* width: 40%; */
-  margin-left: 50%;
-  margin-top: -20%;
-  padding-bottom: 4%;
+  margin-left: 36em;
+  margin-top: -33em;
+  border-radius: 5em;
 }
 
 .logo  {
@@ -486,11 +491,11 @@ body {
   margin-bottom: 1%;
 }
 
-/* .ccHeader {
+.ccHeader {
   font-size: 300%;
   color: orange;
   font-family: Orbitron;
-} */
+}
 
 .graph {
   border-style: solid;
@@ -524,6 +529,26 @@ body {
   padding-bottom: 3%;
   font-size: 95%;
   font-family: sans-serif;
+  border-radius: 5em;
+}
+
+.newsContainer {
+  color: orange;
+  overflow: scroll;
+  border-style: solid;
+  border-color: orange;
+  background-color: black;
+  text-align: center;
+  width: 30em;
+  height: 35em;
+  margin-top: -28em;
+  /* margin-top: -26.5em; */
+  /* margin-right: 17em; */
+  margin-left: 1.75em;
+  position: fixed;
+  font-size: 1em;
+  font-family: sans-serif;
+  border-radius: 5em;
 }
 
 /* .article {
@@ -531,23 +556,23 @@ body {
 } */
 
 .articleView  {
-
   text-align: center;
   overflow: scroll;
-  height: 86%;
   position: fixed;
-  width: 47%;
+  height: 35em;
+  width: 32em;
   color: orange;
-  font-size: 140%;
   border-style: solid;
   border-color: orange;
   background-color: black;
-  opacity: 0.99;
-  /* width: 40%; */
-  margin-left: 50%;
-  margin-top: -17%;
-  padding-bottom: 4.5%;
-  font-family: sans-serif;
+  margin-left: 36em;
+  margin-top: -11.5em;
+  border-radius: 5em;
+}
+
+.articleView-title {
+  margin: 1em;
+  /* text-align: center; */
 }
 
 .storyImg {
@@ -582,11 +607,13 @@ body {
 } */
 
 .dashboard-loggedout {
+  color: orange;
   float: left;
   margin: 0 7em;
 }
 
 .dashboard-loggedin {
+  color: orange;
   float: left;
   margin: 0 2em;
 }
@@ -612,6 +639,7 @@ body {
   margin: auto;
   margin-top: 5em;
   padding-bottom: 1.5em;
+  border-radius: 5em;
 }
 
 /* login */
@@ -624,6 +652,7 @@ body {
   margin: auto;
   margin-top: 5em;
   padding-bottom: 1.5em;
+  border-radius: 5em;
 }
 
 .login-title {
@@ -651,6 +680,7 @@ body {
   margin: auto;
   margin-top: 3em;
   padding-bottom: 1.5em;
+  border-radius: 5em;
 }
 
 /* buttons */
@@ -676,12 +706,13 @@ body {
 
 .centerConsole {
   background-color: black;
-  border-style: solid;
+  border-style: double;
   border-color: orange;
   width: 30em;
   margin: auto;
   margin-top: 5em;
   padding-bottom: 1.5em;
+  border-radius: 5em;
 }
 
 /* crypto container */
@@ -699,7 +730,6 @@ body {
 }
 
 .cryptosContainer {
-
   float: right;
   color: orange;
   background-color: black;
@@ -708,30 +738,26 @@ body {
   border-style: solid;
   border-color: orange;
   height: 35em;
-  width: 30em;
+  width: 32em;
   margin-top: -26.5em;
-  margin-right: 20em;
+  margin-right: 17em;
   border-radius: 5em;
 }
 
 .CryptoDetailedView {
   text-align: center;
   overflow: scroll;
-  height: 85%;
   position: fixed;
-  width: 45%;
+  height: 35em;
+  width: 32em;
   color: orange;
-  font-size: 150%;
+  /* font-size: 150%; */
   border-style: solid;
   border-color: orange;
   background-color: black;
-  opacity: 0.99;
-  /* width: 40%; */
-  margin-left: 50%;
-  margin-top: -10em;
-  padding-bottom: 5%;
+  margin-left: 36em;
+  margin-top: -15.7em;
   border-radius: 5em;
-
 }
 
 /* .cryptosContainer {
@@ -750,4 +776,247 @@ body {
 .random {
   overflow: scroll;
   position: fixed;
+}
+
+.lds-spinner {
+  color: official;
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+  margin-top: 5em;
+}
+.lds-spinner div {
+  transform-origin: 40px 40px;
+  animation: lds-spinner 1.2s linear infinite;
+}
+.lds-spinner div:after {
+  content: " ";
+  display: block;
+  position: absolute;
+  top: 3px;
+  left: 37px;
+  width: 6px;
+  height: 18px;
+  border-radius: 20%;
+  background: #fff;
+}
+.lds-spinner div:nth-child(1) {
+  transform: rotate(0deg);
+  animation-delay: -1.1s;
+}
+.lds-spinner div:nth-child(2) {
+  transform: rotate(30deg);
+  animation-delay: -1s;
+}
+.lds-spinner div:nth-child(3) {
+  transform: rotate(60deg);
+  animation-delay: -0.9s;
+}
+.lds-spinner div:nth-child(4) {
+  transform: rotate(90deg);
+  animation-delay: -0.8s;
+}
+.lds-spinner div:nth-child(5) {
+  transform: rotate(120deg);
+  animation-delay: -0.7s;
+}
+.lds-spinner div:nth-child(6) {
+  transform: rotate(150deg);
+  animation-delay: -0.6s;
+}
+.lds-spinner div:nth-child(7) {
+  transform: rotate(180deg);
+  animation-delay: -0.5s;
+}
+.lds-spinner div:nth-child(8) {
+  transform: rotate(210deg);
+  animation-delay: -0.4s;
+}
+.lds-spinner div:nth-child(9) {
+  transform: rotate(240deg);
+  animation-delay: -0.3s;
+}
+.lds-spinner div:nth-child(10) {
+  transform: rotate(270deg);
+  animation-delay: -0.2s;
+}
+.lds-spinner div:nth-child(11) {
+  transform: rotate(300deg);
+  animation-delay: -0.1s;
+}
+.lds-spinner div:nth-child(12) {
+  transform: rotate(330deg);
+  animation-delay: 0s;
+}
+@keyframes lds-spinner {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* crt effect */
+
+@keyframes flicker {
+  0% {
+    opacity: 0.27861;
+  }
+  5% {
+    opacity: 0.34769;
+  }
+  10% {
+    opacity: 0.23604;
+  }
+  15% {
+    opacity: 0.90626;
+  }
+  20% {
+    opacity: 0.18128;
+  }
+  25% {
+    opacity: 0.83891;
+  }
+  30% {
+    opacity: 0.65583;
+  }
+  35% {
+    opacity: 0.67807;
+  }
+  40% {
+    opacity: 0.26559;
+  }
+  45% {
+    opacity: 0.84693;
+  }
+  50% {
+    opacity: 0.96019;
+  }
+  55% {
+    opacity: 0.08594;
+  }
+  60% {
+    opacity: 0.20313;
+  }
+  65% {
+    opacity: 0.71988;
+  }
+  70% {
+    opacity: 0.53455;
+  }
+  75% {
+    opacity: 0.37288;
+  }
+  80% {
+    opacity: 0.71428;
+  }
+  85% {
+    opacity: 0.70419;
+  }
+  90% {
+    opacity: 0.7003;
+  }
+  95% {
+    opacity: 0.36108;
+  }
+  100% {
+    opacity: 0.24387;
+  }
+}
+@keyframes textShadow {
+  0% {
+    text-shadow: 0.4389924193300864px 0 1px rgba(0,30,255,0.5), -0.4389924193300864px 0 1px rgba(255,0,80,0.3), 0 0 3px;
+  }
+  5% {
+    text-shadow: 2.7928974010788217px 0 1px rgba(0,30,255,0.5), -2.7928974010788217px 0 1px rgba(255,0,80,0.3), 0 0 3px;
+  }
+  10% {
+    text-shadow: 0.02956275843481219px 0 1px rgba(0,30,255,0.5), -0.02956275843481219px 0 1px rgba(255,0,80,0.3), 0 0 3px;
+  }
+  15% {
+    text-shadow: 0.40218538552878136px 0 1px rgba(0,30,255,0.5), -0.40218538552878136px 0 1px rgba(255,0,80,0.3), 0 0 3px;
+  }
+  20% {
+    text-shadow: 3.4794037899852017px 0 1px rgba(0,30,255,0.5), -3.4794037899852017px 0 1px rgba(255,0,80,0.3), 0 0 3px;
+  }
+  25% {
+    text-shadow: 1.6125630401149584px 0 1px rgba(0,30,255,0.5), -1.6125630401149584px 0 1px rgba(255,0,80,0.3), 0 0 3px;
+  }
+  30% {
+    text-shadow: 0.7015590085143956px 0 1px rgba(0,30,255,0.5), -0.7015590085143956px 0 1px rgba(255,0,80,0.3), 0 0 3px;
+  }
+  35% {
+    text-shadow: 3.896914047650351px 0 1px rgba(0,30,255,0.5), -3.896914047650351px 0 1px rgba(255,0,80,0.3), 0 0 3px;
+  }
+  40% {
+    text-shadow: 3.870905614848819px 0 1px rgba(0,30,255,0.5), -3.870905614848819px 0 1px rgba(255,0,80,0.3), 0 0 3px;
+  }
+  45% {
+    text-shadow: 2.231056963361899px 0 1px rgba(0,30,255,0.5), -2.231056963361899px 0 1px rgba(255,0,80,0.3), 0 0 3px;
+  }
+  50% {
+    text-shadow: 0.08084290417898504px 0 1px rgba(0,30,255,0.5), -0.08084290417898504px 0 1px rgba(255,0,80,0.3), 0 0 3px;
+  }
+  55% {
+    text-shadow: 2.3758461067427543px 0 1px rgba(0,30,255,0.5), -2.3758461067427543px 0 1px rgba(255,0,80,0.3), 0 0 3px;
+  }
+  60% {
+    text-shadow: 2.202193051050636px 0 1px rgba(0,30,255,0.5), -2.202193051050636px 0 1px rgba(255,0,80,0.3), 0 0 3px;
+  }
+  65% {
+    text-shadow: 2.8638780614874975px 0 1px rgba(0,30,255,0.5), -2.8638780614874975px 0 1px rgba(255,0,80,0.3), 0 0 3px;
+  }
+  70% {
+    text-shadow: 0.48874025155497314px 0 1px rgba(0,30,255,0.5), -0.48874025155497314px 0 1px rgba(255,0,80,0.3), 0 0 3px;
+  }
+  75% {
+    text-shadow: 1.8948491305757957px 0 1px rgba(0,30,255,0.5), -1.8948491305757957px 0 1px rgba(255,0,80,0.3), 0 0 3px;
+  }
+  80% {
+    text-shadow: 0.0833037308038857px 0 1px rgba(0,30,255,0.5), -0.0833037308038857px 0 1px rgba(255,0,80,0.3), 0 0 3px;
+  }
+  85% {
+    text-shadow: 0.09769827255241735px 0 1px rgba(0,30,255,0.5), -0.09769827255241735px 0 1px rgba(255,0,80,0.3), 0 0 3px;
+  }
+  90% {
+    text-shadow: 3.443339761481782px 0 1px rgba(0,30,255,0.5), -3.443339761481782px 0 1px rgba(255,0,80,0.3), 0 0 3px;
+  }
+  95% {
+    text-shadow: 2.1841838852799786px 0 1px rgba(0,30,255,0.5), -2.1841838852799786px 0 1px rgba(255,0,80,0.3), 0 0 3px;
+  }
+  100% {
+    text-shadow: 2.6208764473832513px 0 1px rgba(0,30,255,0.5), -2.6208764473832513px 0 1px rgba(255,0,80,0.3), 0 0 3px;
+  }
+}
+.crt::after {
+  content: " ";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: rgba(18, 16, 16, 0.1);
+  opacity: 0;
+  z-index: 2;
+  pointer-events: none;
+  /* animation: flicker 0.15s infinite; */
+}
+.crt::before {
+  content: " ";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+  z-index: 2;
+  background-size: 100% 2px, 3px 100%;
+  pointer-events: none;
+}
+.crt {
+  animation: textShadow 1.6s infinite;
 }

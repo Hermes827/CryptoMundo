@@ -5,9 +5,8 @@ class ArticleDetailedView extends React.Component {
   render(){
 
     return(
-
       <div className="articleView">
-        <h3>{this.props.currentNewsArticle.title}</h3>
+        <h3 className="articleView-title">{this.props.currentNewsArticle.title}</h3>
         <img className="storyImg" src={this.props.currentNewsArticle.urlToImage}></img>
         <h5>{this.props.currentNewsArticle.publishedAt}</h5>
         <h5>{this.props.currentNewsArticle.author}</h5>

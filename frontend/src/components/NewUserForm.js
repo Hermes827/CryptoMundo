@@ -1,14 +1,17 @@
 import React, { Component } from 'react'
+import {withRouter} from 'react-router-dom'
 
-export default class NewUserForm extends Component {
+class NewUserForm extends Component {
 
   constructor(props){
     super(props)
-    this.state = {
-
-    }
-
     this.handleSubmit = this.handleSubmit.bind(this)
+  }
+
+  cancelSignup =  () => {
+    this.props.history.push('/')
+    console.log(this.props.history)
+    // why is this not working??
   }
 
   handleSubmit(ev){
@@ -18,10 +21,8 @@ export default class NewUserForm extends Component {
       password: ev.target.elements['password'].value,
       email: ev.target.elements['email'].value
     }
-
     this.props.createNewUser(user)
   }
-
 
   render(){
     return (
@@ -50,7 +51,10 @@ export default class NewUserForm extends Component {
               <br/>
               <input className="submit-button" type="submit" value="Create Account"/>
             </form>
+            <button onClick={this.cancelSignup}>Cancel</button>
           </div>
         )
   }
 }
+
+export default withRouter(NewUserForm)

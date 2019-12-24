@@ -45,7 +45,8 @@ class UserCryptosContainer extends React.Component {
       currentCrypto: crypto,
       lookingAtSingleCrypto: true
     })
-    this.props.history.push('/my_crypto/' + crypto.id)
+    console.log("hello")
+    // this.props.history.push('/my_crypto/' + crypto.id)
   }
 
   renderDetailedUserCryptoView = () => {
@@ -153,12 +154,11 @@ return result
 
   render(){
     return(
-      <div className="userCryptos">
+      <div className="userCryptosContainer">
       <h1 className="ccHeader">My Cryptocurrencies</h1>
       <h1 className="">Total portfolio value: ${this.getPrices()}</h1>
       <button className="CCbutton" onClick={this.returnToHomepageFromCryptosContainers}>Return to homepage</button>
-      <div>
-      {this.renderDetailedUserCryptoView()}
+
       {this.distinctCrypto().map((crypto)=>{
         return <UserCrypto
                 countCrypto={this.countCrypto}
@@ -167,7 +167,8 @@ return result
                 setCurrentCrypto={this.setCurrentCrypto}
                 />
       })}
-      </div>
+      {this.renderDetailedUserCryptoView()}
+
       </div>
     )
   }

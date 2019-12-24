@@ -131,40 +131,109 @@ class App extends React.Component {
     this.props.history.push('/login')
   }
 
-/////////////////////////////////////////////////////////////////////////////////
+  // conditional rendering
+
+  renderDefaultForm(){
+    if(this.props.history.location.pathname === "/login" || this.props.history.location.pathname === "/user_signup"){return}
+    if(!this.state.current_user.username){
+      return (
+        <div>
+          <div className="dashboard-centerConsole-form">
+          <h1 className="title">Crypto Mundo</h1>
+          <button className="crypto-button" onClick={()=> this.props.history.push('/user_signup')}>Get Started!</button>
+          </div>
+        </div>
+      )
+    }
+  }
+
+  // renderCenterConsole(){
+  //   if(this.state.current_user.username){
+  //     return (
+  //       <CenterConsole/>
+  //     )
+  //   }
+  // }
+
+  renderDefaultFormWhenLoggedin(){
+    if(this.props.history.location.pathname === "/update_profile"){return}
+    if(this.props.history.location.pathname != "/center_console" && this.state.current_user.username){
+      return (
+        <div>
+          <div className="dashboard-centerConsole-form">
+          <h1 className="title">Crypto Mundo</h1>
+            <button className="crypto-button">
+            See all cryptocurrencies
+            </button>
+          </div>
+        </div>
+      )
+    }
+  }
+
+  renderCenterConsole(){
+    if(this.props.history.location.pathname === "/center_console" && this.state.current_user.username){
+      return (
+        <CenterConsole/>
+      )
+    }
+  }
+
+  renderNews(){
+    if(this.props.history.location.pathname === "/news" && this.state.current_user.username){
+      return (
+        <NewsContainer/>
+      )
+    }
+  }
+
+  renderUserCryptos(){
+    if(this.props.history.location.pathname === "/my_crypto" && this.state.current_user.username){
+      return (
+        <UserCryptosContainer/>
+      )
+    }
+  }
+
+  renderEditUser(){
+    if(this.props.history.location.pathname === "/update_profile" && this.state.current_user.username){
+      return (
+          <EditUserContainer
+            current_user={this.state.current_user}
+            updateUser={this.updateUser}
+            deleteUser={this.deleteUser}
+            setEdit={this.setEdit}
+          />
+      )
+    }
+  }
 
   render(){
 
     return (
-      <div className="App">
-        <Route path='/' render={() => <Dashboard
-                                      current_user={this.state.current_user}
-                                      logout={this.logout}
-                                      displayUserCryptos={this.displayUserCryptos}
-                                      getNews={this.getNews}
-                                      setEdit={this.setEdit}
-                                      />}/>
-
-          <Route exact path="/news" render={() => <NewsContainer/>}/>
+      <div className="App ">
+          <Route path='/' render={() => <Dashboard
+                                        current_user={this.state.current_user}
+                                        logout={this.logout}
+                                        getNews={this.getNews}
+                                        setEdit={this.setEdit}
+                                        />}/>
 
           <Route exact path="/login" render={() => <Login attemptLogin={this.attemptLogin}/>}/>
 
           <Route exact path="/user_signup" render={() => <NewUserForm createNewUser={this.createNewUser}/>}/>
 
-          <Route path='/my_crypto' render={() => <UserCryptosContainer/>}/>
-
-          <Route exact path="/center_console" render={() => <CenterConsole/>}/>
-
-          <Route exact path="/update_profile" render={() => <EditUserContainer
-                                                            current_user={this.state.current_user}
-                                                            updateUser={this.updateUser}
-                                                            deleteUser={this.deleteUser}
-                                                            setEdit={this.setEdit}
-                                                            />}/>
-
+         {this.renderDefaultForm()}
+         {this.renderDefaultFormWhenLoggedin()}
+         {this.renderCenterConsole()}
+         {this.renderNews()}
+         {this.renderUserCryptos()}
+         {this.renderEditUser()}
       </div>
     );
   }
 }
 
 export default withRouter(App);
+
+// <div className="App crt">

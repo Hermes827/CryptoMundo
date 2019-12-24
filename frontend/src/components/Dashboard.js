@@ -7,28 +7,14 @@ class Dashboard extends Component {
     return this.props.current_user.username
   }
 
-  renderDefaultForm(){
-    if(this.props.history.location.pathname === "/"){
-      return (
-        <div>
-          <div className="dashboard-centerConsole-form">
-          <h1 className="title">Crypto Mundo</h1>
-          <button className="crypto-button" onClick={()=> this.props.history.push('/user_signup')}>Get Started</button>
-          </div>
-        </div>
-      )
-    }
-  }
-
-
   render(){
     return (
       <div>
 
             {!this.userIsLoggedIn() &&
               <div className="dashboard">
-              <div className="dashboard-loggedout"><Link to='/user_signup'><div>Sign up</div></Link></div>
-              <div className="dashboard-loggedout"><Link to="/login"><div>Login</div></Link></div>
+              <div><Link to='/user_signup'><div className="dashboard-loggedout">Sign up</div></Link></div>
+              <div><Link to="/login"><div className="dashboard-loggedout">Login</div></Link></div>
               </div>
             }
 
@@ -40,8 +26,6 @@ class Dashboard extends Component {
               <div onClick={this.props.logout} className="dashboard-loggedin">Log Out</div>
              </div>
             }
-
-            {this.renderDefaultForm()}
 
       </div>
   )

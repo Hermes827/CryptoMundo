@@ -13,17 +13,20 @@ class NewsContainer extends Component {
     this.state = {
       news: [],
       currentNewsArticle: {},
-      lookingAtSingleNewsArticle: false
+      lookingAtSingleNewsArticle: false,
+      hasClickedButton: false
     }
   }
 
   componentDidMount(){
+    this.startLoadingSpinner()
     fetch(NEWS_API)
       .then(res => res.json())
       .then(data => {
         this.setState({
           news: data.articles
         })
+        this.stopLoadingSpinner()
       })
   }
 
@@ -61,13 +64,36 @@ class NewsContainer extends Component {
     this.props.history.push('/center_console')
   }
 
+  // loading spinner
+
+  startLoadingSpinner(){
+    this.setState({
+      hasClickedButton: true
+    })
+  }
+
+  stopLoadingSpinner(){
+    this.setState({
+      hasClickedButton: false
+    })
+  }
+
+  renderLoadingSpinner(){
+    if(this.state.hasClickedButton === true){
+      return (
+        <div class="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+      )
+    }
+  }
+
   render(){
     return (
-      <div className="articles">
+      <div className="newsContainer">
       <h1 className="ccHeader">News Stories</h1>
       <button className="CCbutton" onClick={this.returnToHomepageFromNewsContainer}>Return to homepage</button>
       {this.renderDetailedNewsView()}
       <div>
+        {this.renderLoadingSpinner()}
         {
           this.state.news.map((article)=> {
             return <Article
